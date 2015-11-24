@@ -3,7 +3,8 @@
 
 
 
-// line 55 "ScoreKeeper.ump"
+// line 41 "ScoreKeeper.ump"
+// line 97 "ScoreKeeper.ump"
 public class Infraction
 {
 

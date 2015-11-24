@@ -5,6 +5,7 @@
 import java.util.*;
 
 // line 1 "ScoreKeeper.ump"
+// line 66 "ScoreKeeper.ump"
 public class Player
 {
 
@@ -15,31 +16,21 @@ public class Player
   //Player Attributes
   private String name;
   private int jerseyNumber;
-  private int successfulShots;
-  private int failedShots;
-  private int redCards;
-  private int yellowCards;
-  private int penaltyKicksCaused;
 
   //Player Associations
-  private List<Shot> takes;
-  private List<Infraction> commits;
+  private List<Shot> shots;
+  private List<Infraction> infractions;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Player(String aName, int aJerseyNumber, int aSuccessfulShots, int aFailedShots, int aRedCards, int aYellowCards, int aPenaltyKicksCaused)
+  public Player(String aName, int aJerseyNumber)
   {
     name = aName;
     jerseyNumber = aJerseyNumber;
-    successfulShots = aSuccessfulShots;
-    failedShots = aFailedShots;
-    redCards = aRedCards;
-    yellowCards = aYellowCards;
-    penaltyKicksCaused = aPenaltyKicksCaused;
-    takes = new ArrayList<Shot>();
-    commits = new ArrayList<Infraction>();
+    shots = new ArrayList<Shot>();
+    infractions = new ArrayList<Infraction>();
   }
 
   //------------------------
@@ -62,46 +53,6 @@ public class Player
     return wasSet;
   }
 
-  public boolean setSuccessfulShots(int aSuccessfulShots)
-  {
-    boolean wasSet = false;
-    successfulShots = aSuccessfulShots;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setFailedShots(int aFailedShots)
-  {
-    boolean wasSet = false;
-    failedShots = aFailedShots;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setRedCards(int aRedCards)
-  {
-    boolean wasSet = false;
-    redCards = aRedCards;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setYellowCards(int aYellowCards)
-  {
-    boolean wasSet = false;
-    yellowCards = aYellowCards;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setPenaltyKicksCaused(int aPenaltyKicksCaused)
-  {
-    boolean wasSet = false;
-    penaltyKicksCaused = aPenaltyKicksCaused;
-    wasSet = true;
-    return wasSet;
-  }
-
   public String getName()
   {
     return name;
@@ -112,211 +63,186 @@ public class Player
     return jerseyNumber;
   }
 
-  public int getSuccessfulShots()
+  public Shot getShot(int index)
   {
-    return successfulShots;
+    Shot aShot = shots.get(index);
+    return aShot;
   }
 
-  public int getFailedShots()
+  public List<Shot> getShots()
   {
-    return failedShots;
+    List<Shot> newShots = Collections.unmodifiableList(shots);
+    return newShots;
   }
 
-  public int getRedCards()
+  public int numberOfShots()
   {
-    return redCards;
-  }
-
-  public int getYellowCards()
-  {
-    return yellowCards;
-  }
-
-  public int getPenaltyKicksCaused()
-  {
-    return penaltyKicksCaused;
-  }
-
-  public Shot getTake(int index)
-  {
-    Shot aTake = takes.get(index);
-    return aTake;
-  }
-
-  public List<Shot> getTakes()
-  {
-    List<Shot> newTakes = Collections.unmodifiableList(takes);
-    return newTakes;
-  }
-
-  public int numberOfTakes()
-  {
-    int number = takes.size();
+    int number = shots.size();
     return number;
   }
 
-  public boolean hasTakes()
+  public boolean hasShots()
   {
-    boolean has = takes.size() > 0;
+    boolean has = shots.size() > 0;
     return has;
   }
 
-  public int indexOfTake(Shot aTake)
+  public int indexOfShot(Shot aShot)
   {
-    int index = takes.indexOf(aTake);
+    int index = shots.indexOf(aShot);
     return index;
   }
 
-  public Infraction getCommit(int index)
+  public Infraction getInfraction(int index)
   {
-    Infraction aCommit = commits.get(index);
-    return aCommit;
+    Infraction aInfraction = infractions.get(index);
+    return aInfraction;
   }
 
-  public List<Infraction> getCommits()
+  public List<Infraction> getInfractions()
   {
-    List<Infraction> newCommits = Collections.unmodifiableList(commits);
-    return newCommits;
+    List<Infraction> newInfractions = Collections.unmodifiableList(infractions);
+    return newInfractions;
   }
 
-  public int numberOfCommits()
+  public int numberOfInfractions()
   {
-    int number = commits.size();
+    int number = infractions.size();
     return number;
   }
 
-  public boolean hasCommits()
+  public boolean hasInfractions()
   {
-    boolean has = commits.size() > 0;
+    boolean has = infractions.size() > 0;
     return has;
   }
 
-  public int indexOfCommit(Infraction aCommit)
+  public int indexOfInfraction(Infraction aInfraction)
   {
-    int index = commits.indexOf(aCommit);
+    int index = infractions.indexOf(aInfraction);
     return index;
   }
 
-  public static int minimumNumberOfTakes()
+  public static int minimumNumberOfShots()
   {
     return 0;
   }
 
-  public boolean addTake(Shot aTake)
+  public boolean addShot(Shot aShot)
   {
     boolean wasAdded = false;
-    if (takes.contains(aTake)) { return false; }
-    if (takes.contains(aTake)) { return false; }
-    takes.add(aTake);
+    if (shots.contains(aShot)) { return false; }
+    if (shots.contains(aShot)) { return false; }
+    shots.add(aShot);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeTake(Shot aTake)
+  public boolean removeShot(Shot aShot)
   {
     boolean wasRemoved = false;
-    if (takes.contains(aTake))
+    if (shots.contains(aShot))
     {
-      takes.remove(aTake);
+      shots.remove(aShot);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addTakeAt(Shot aTake, int index)
+  public boolean addShotAt(Shot aShot, int index)
   {  
     boolean wasAdded = false;
-    if(addTake(aTake))
+    if(addShot(aShot))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTakes()) { index = numberOfTakes() - 1; }
-      takes.remove(aTake);
-      takes.add(index, aTake);
+      if(index > numberOfShots()) { index = numberOfShots() - 1; }
+      shots.remove(aShot);
+      shots.add(index, aShot);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveTakeAt(Shot aTake, int index)
+  public boolean addOrMoveShotAt(Shot aShot, int index)
   {
     boolean wasAdded = false;
-    if(takes.contains(aTake))
+    if(shots.contains(aShot))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTakes()) { index = numberOfTakes() - 1; }
-      takes.remove(aTake);
-      takes.add(index, aTake);
+      if(index > numberOfShots()) { index = numberOfShots() - 1; }
+      shots.remove(aShot);
+      shots.add(index, aShot);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addTakeAt(aTake, index);
+      wasAdded = addShotAt(aShot, index);
     }
     return wasAdded;
   }
 
-  public static int minimumNumberOfCommits()
+  public static int minimumNumberOfInfractions()
   {
     return 0;
   }
 
-  public boolean addCommit(Infraction aCommit)
+  public boolean addInfraction(Infraction aInfraction)
   {
     boolean wasAdded = false;
-    if (commits.contains(aCommit)) { return false; }
-    if (commits.contains(aCommit)) { return false; }
-    commits.add(aCommit);
+    if (infractions.contains(aInfraction)) { return false; }
+    if (infractions.contains(aInfraction)) { return false; }
+    infractions.add(aInfraction);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeCommit(Infraction aCommit)
+  public boolean removeInfraction(Infraction aInfraction)
   {
     boolean wasRemoved = false;
-    if (commits.contains(aCommit))
+    if (infractions.contains(aInfraction))
     {
-      commits.remove(aCommit);
+      infractions.remove(aInfraction);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addCommitAt(Infraction aCommit, int index)
+  public boolean addInfractionAt(Infraction aInfraction, int index)
   {  
     boolean wasAdded = false;
-    if(addCommit(aCommit))
+    if(addInfraction(aInfraction))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfCommits()) { index = numberOfCommits() - 1; }
-      commits.remove(aCommit);
-      commits.add(index, aCommit);
+      if(index > numberOfInfractions()) { index = numberOfInfractions() - 1; }
+      infractions.remove(aInfraction);
+      infractions.add(index, aInfraction);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveCommitAt(Infraction aCommit, int index)
+  public boolean addOrMoveInfractionAt(Infraction aInfraction, int index)
   {
     boolean wasAdded = false;
-    if(commits.contains(aCommit))
+    if(infractions.contains(aInfraction))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfCommits()) { index = numberOfCommits() - 1; }
-      commits.remove(aCommit);
-      commits.add(index, aCommit);
+      if(index > numberOfInfractions()) { index = numberOfInfractions() - 1; }
+      infractions.remove(aInfraction);
+      infractions.add(index, aInfraction);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addCommitAt(aCommit, index);
+      wasAdded = addInfractionAt(aInfraction, index);
     }
     return wasAdded;
   }
 
   public void delete()
   {
-    takes.clear();
-    commits.clear();
+    shots.clear();
+    infractions.clear();
   }
 
 
@@ -325,12 +251,7 @@ public class Player
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "," +
-            "jerseyNumber" + ":" + getJerseyNumber()+ "," +
-            "successfulShots" + ":" + getSuccessfulShots()+ "," +
-            "failedShots" + ":" + getFailedShots()+ "," +
-            "redCards" + ":" + getRedCards()+ "," +
-            "yellowCards" + ":" + getYellowCards()+ "," +
-            "penaltyKicksCaused" + ":" + getPenaltyKicksCaused()+ "]"
+            "jerseyNumber" + ":" + getJerseyNumber()+ "]"
      + outputString;
   }
 }

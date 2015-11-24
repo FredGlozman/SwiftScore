@@ -3,7 +3,8 @@
 
 
 
-// line 49 "ScoreKeeper.ump"
+// line 35 "ScoreKeeper.ump"
+// line 92 "ScoreKeeper.ump"
 public class Shot
 {
 

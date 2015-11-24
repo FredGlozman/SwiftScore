@@ -4,7 +4,8 @@
 
 import java.util.*;
 
-// line 62 "ScoreKeeper.ump"
+// line 48 "ScoreKeeper.ump"
+// line 102 "ScoreKeeper.ump"
 public class League
 {
 
@@ -19,20 +20,20 @@ public class League
   //------------------------
 
   //League Attributes
-  private List<int> playerScoreRanking;
-  private List<int> playerCombinedPenaltyRanking;
-  private List<int> playerRedPenaltyRanking;
-  private List<int> playerYellowPenaltyRanking;
-  private List<int> teamPointRanking;
-  private List<int> teamGoalsRanking;
-  private List<int> teamCombinedPenaltyRanking;
-  private List<int> teamRedPenaltyRanking;
-  private List<int> teamYellowPenaltyRanking;
+  private List<Integer> playerScoreRanking;
+  private List<Integer> playerCombinedPenaltyRanking;
+  private List<Integer> playerRedPenaltyRanking;
+  private List<Integer> playerYellowPenaltyRanking;
+  private List<Integer> teamPointRanking;
+  private List<Integer> teamGoalsRanking;
+  private List<Integer> teamCombinedPenaltyRanking;
+  private List<Integer> teamRedPenaltyRanking;
+  private List<Integer> teamYellowPenaltyRanking;
 
   //League Associations
-  private List<Team> tracks-t;
-  private List<Game> tracks-g;
-  private List<Player> tracks-p;
+  private List<Team> teams;
+  private List<Game> games;
+  private List<Player> players;
 
   //------------------------
   // CONSTRUCTOR
@@ -40,18 +41,18 @@ public class League
 
   private League()
   {
-    playerScoreRanking = new ArrayList<int>();
-    playerCombinedPenaltyRanking = new ArrayList<int>();
-    playerRedPenaltyRanking = new ArrayList<int>();
-    playerYellowPenaltyRanking = new ArrayList<int>();
-    teamPointRanking = new ArrayList<int>();
-    teamGoalsRanking = new ArrayList<int>();
-    teamCombinedPenaltyRanking = new ArrayList<int>();
-    teamRedPenaltyRanking = new ArrayList<int>();
-    teamYellowPenaltyRanking = new ArrayList<int>();
-    tracks-t = new ArrayList<Team>();
-    tracks-g = new ArrayList<Game>();
-    tracks-p = new ArrayList<Player>();
+    playerScoreRanking = new ArrayList<Integer>();
+    playerCombinedPenaltyRanking = new ArrayList<Integer>();
+    playerRedPenaltyRanking = new ArrayList<Integer>();
+    playerYellowPenaltyRanking = new ArrayList<Integer>();
+    teamPointRanking = new ArrayList<Integer>();
+    teamGoalsRanking = new ArrayList<Integer>();
+    teamCombinedPenaltyRanking = new ArrayList<Integer>();
+    teamRedPenaltyRanking = new ArrayList<Integer>();
+    teamYellowPenaltyRanking = new ArrayList<Integer>();
+    teams = new ArrayList<Team>();
+    games = new ArrayList<Game>();
+    players = new ArrayList<Player>();
   }
 
   public static League getInstance()
@@ -67,141 +68,141 @@ public class League
   // INTERFACE
   //------------------------
 
-  public boolean addPlayerScoreRanking(int aPlayerScoreRanking)
+  public boolean addPlayerScoreRanking(Integer aPlayerScoreRanking)
   {
     boolean wasAdded = false;
     wasAdded = playerScoreRanking.add(aPlayerScoreRanking);
     return wasAdded;
   }
 
-  public boolean removePlayerScoreRanking(int aPlayerScoreRanking)
+  public boolean removePlayerScoreRanking(Integer aPlayerScoreRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = playerScoreRanking.remove(aPlayerScoreRanking);
     return wasRemoved;
   }
 
-  public boolean addPlayerCombinedPenaltyRanking(int aPlayerCombinedPenaltyRanking)
+  public boolean addPlayerCombinedPenaltyRanking(Integer aPlayerCombinedPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = playerCombinedPenaltyRanking.add(aPlayerCombinedPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removePlayerCombinedPenaltyRanking(int aPlayerCombinedPenaltyRanking)
+  public boolean removePlayerCombinedPenaltyRanking(Integer aPlayerCombinedPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = playerCombinedPenaltyRanking.remove(aPlayerCombinedPenaltyRanking);
     return wasRemoved;
   }
 
-  public boolean addPlayerRedPenaltyRanking(int aPlayerRedPenaltyRanking)
+  public boolean addPlayerRedPenaltyRanking(Integer aPlayerRedPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = playerRedPenaltyRanking.add(aPlayerRedPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removePlayerRedPenaltyRanking(int aPlayerRedPenaltyRanking)
+  public boolean removePlayerRedPenaltyRanking(Integer aPlayerRedPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = playerRedPenaltyRanking.remove(aPlayerRedPenaltyRanking);
     return wasRemoved;
   }
 
-  public boolean addPlayerYellowPenaltyRanking(int aPlayerYellowPenaltyRanking)
+  public boolean addPlayerYellowPenaltyRanking(Integer aPlayerYellowPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = playerYellowPenaltyRanking.add(aPlayerYellowPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removePlayerYellowPenaltyRanking(int aPlayerYellowPenaltyRanking)
+  public boolean removePlayerYellowPenaltyRanking(Integer aPlayerYellowPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = playerYellowPenaltyRanking.remove(aPlayerYellowPenaltyRanking);
     return wasRemoved;
   }
 
-  public boolean addTeamPointRanking(int aTeamPointRanking)
+  public boolean addTeamPointRanking(Integer aTeamPointRanking)
   {
     boolean wasAdded = false;
     wasAdded = teamPointRanking.add(aTeamPointRanking);
     return wasAdded;
   }
 
-  public boolean removeTeamPointRanking(int aTeamPointRanking)
+  public boolean removeTeamPointRanking(Integer aTeamPointRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = teamPointRanking.remove(aTeamPointRanking);
     return wasRemoved;
   }
 
-  public boolean addTeamGoalsRanking(int aTeamGoalsRanking)
+  public boolean addTeamGoalsRanking(Integer aTeamGoalsRanking)
   {
     boolean wasAdded = false;
     wasAdded = teamGoalsRanking.add(aTeamGoalsRanking);
     return wasAdded;
   }
 
-  public boolean removeTeamGoalsRanking(int aTeamGoalsRanking)
+  public boolean removeTeamGoalsRanking(Integer aTeamGoalsRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = teamGoalsRanking.remove(aTeamGoalsRanking);
     return wasRemoved;
   }
 
-  public boolean addTeamCombinedPenaltyRanking(int aTeamCombinedPenaltyRanking)
+  public boolean addTeamCombinedPenaltyRanking(Integer aTeamCombinedPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = teamCombinedPenaltyRanking.add(aTeamCombinedPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removeTeamCombinedPenaltyRanking(int aTeamCombinedPenaltyRanking)
+  public boolean removeTeamCombinedPenaltyRanking(Integer aTeamCombinedPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = teamCombinedPenaltyRanking.remove(aTeamCombinedPenaltyRanking);
     return wasRemoved;
   }
 
-  public boolean addTeamRedPenaltyRanking(int aTeamRedPenaltyRanking)
+  public boolean addTeamRedPenaltyRanking(Integer aTeamRedPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = teamRedPenaltyRanking.add(aTeamRedPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removeTeamRedPenaltyRanking(int aTeamRedPenaltyRanking)
+  public boolean removeTeamRedPenaltyRanking(Integer aTeamRedPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = teamRedPenaltyRanking.remove(aTeamRedPenaltyRanking);
     return wasRemoved;
   }
 
-  public boolean addTeamYellowPenaltyRanking(int aTeamYellowPenaltyRanking)
+  public boolean addTeamYellowPenaltyRanking(Integer aTeamYellowPenaltyRanking)
   {
     boolean wasAdded = false;
     wasAdded = teamYellowPenaltyRanking.add(aTeamYellowPenaltyRanking);
     return wasAdded;
   }
 
-  public boolean removeTeamYellowPenaltyRanking(int aTeamYellowPenaltyRanking)
+  public boolean removeTeamYellowPenaltyRanking(Integer aTeamYellowPenaltyRanking)
   {
     boolean wasRemoved = false;
     wasRemoved = teamYellowPenaltyRanking.remove(aTeamYellowPenaltyRanking);
     return wasRemoved;
   }
 
-  public int getPlayerScoreRanking(int index)
+  public Integer getPlayerScoreRanking(int index)
   {
-    int aPlayerScoreRanking = playerScoreRanking.get(index);
+    Integer aPlayerScoreRanking = playerScoreRanking.get(index);
     return aPlayerScoreRanking;
   }
 
-  public int[] getPlayerScoreRanking()
+  public Integer[] getPlayerScoreRanking()
   {
-    int[] newPlayerScoreRanking = playerScoreRanking.toArray(new int[playerScoreRanking.size()]);
+    Integer[] newPlayerScoreRanking = playerScoreRanking.toArray(new Integer[playerScoreRanking.size()]);
     return newPlayerScoreRanking;
   }
 
@@ -217,21 +218,21 @@ public class League
     return has;
   }
 
-  public int indexOfPlayerScoreRanking(int aPlayerScoreRanking)
+  public int indexOfPlayerScoreRanking(Integer aPlayerScoreRanking)
   {
     int index = playerScoreRanking.indexOf(aPlayerScoreRanking);
     return index;
   }
 
-  public int getPlayerCombinedPenaltyRanking(int index)
+  public Integer getPlayerCombinedPenaltyRanking(int index)
   {
-    int aPlayerCombinedPenaltyRanking = playerCombinedPenaltyRanking.get(index);
+    Integer aPlayerCombinedPenaltyRanking = playerCombinedPenaltyRanking.get(index);
     return aPlayerCombinedPenaltyRanking;
   }
 
-  public int[] getPlayerCombinedPenaltyRanking()
+  public Integer[] getPlayerCombinedPenaltyRanking()
   {
-    int[] newPlayerCombinedPenaltyRanking = playerCombinedPenaltyRanking.toArray(new int[playerCombinedPenaltyRanking.size()]);
+    Integer[] newPlayerCombinedPenaltyRanking = playerCombinedPenaltyRanking.toArray(new Integer[playerCombinedPenaltyRanking.size()]);
     return newPlayerCombinedPenaltyRanking;
   }
 
@@ -247,21 +248,21 @@ public class League
     return has;
   }
 
-  public int indexOfPlayerCombinedPenaltyRanking(int aPlayerCombinedPenaltyRanking)
+  public int indexOfPlayerCombinedPenaltyRanking(Integer aPlayerCombinedPenaltyRanking)
   {
     int index = playerCombinedPenaltyRanking.indexOf(aPlayerCombinedPenaltyRanking);
     return index;
   }
 
-  public int getPlayerRedPenaltyRanking(int index)
+  public Integer getPlayerRedPenaltyRanking(int index)
   {
-    int aPlayerRedPenaltyRanking = playerRedPenaltyRanking.get(index);
+    Integer aPlayerRedPenaltyRanking = playerRedPenaltyRanking.get(index);
     return aPlayerRedPenaltyRanking;
   }
 
-  public int[] getPlayerRedPenaltyRanking()
+  public Integer[] getPlayerRedPenaltyRanking()
   {
-    int[] newPlayerRedPenaltyRanking = playerRedPenaltyRanking.toArray(new int[playerRedPenaltyRanking.size()]);
+    Integer[] newPlayerRedPenaltyRanking = playerRedPenaltyRanking.toArray(new Integer[playerRedPenaltyRanking.size()]);
     return newPlayerRedPenaltyRanking;
   }
 
@@ -277,21 +278,21 @@ public class League
     return has;
   }
 
-  public int indexOfPlayerRedPenaltyRanking(int aPlayerRedPenaltyRanking)
+  public int indexOfPlayerRedPenaltyRanking(Integer aPlayerRedPenaltyRanking)
   {
     int index = playerRedPenaltyRanking.indexOf(aPlayerRedPenaltyRanking);
     return index;
   }
 
-  public int getPlayerYellowPenaltyRanking(int index)
+  public Integer getPlayerYellowPenaltyRanking(int index)
   {
-    int aPlayerYellowPenaltyRanking = playerYellowPenaltyRanking.get(index);
+    Integer aPlayerYellowPenaltyRanking = playerYellowPenaltyRanking.get(index);
     return aPlayerYellowPenaltyRanking;
   }
 
-  public int[] getPlayerYellowPenaltyRanking()
+  public Integer[] getPlayerYellowPenaltyRanking()
   {
-    int[] newPlayerYellowPenaltyRanking = playerYellowPenaltyRanking.toArray(new int[playerYellowPenaltyRanking.size()]);
+    Integer[] newPlayerYellowPenaltyRanking = playerYellowPenaltyRanking.toArray(new Integer[playerYellowPenaltyRanking.size()]);
     return newPlayerYellowPenaltyRanking;
   }
 
@@ -307,21 +308,21 @@ public class League
     return has;
   }
 
-  public int indexOfPlayerYellowPenaltyRanking(int aPlayerYellowPenaltyRanking)
+  public int indexOfPlayerYellowPenaltyRanking(Integer aPlayerYellowPenaltyRanking)
   {
     int index = playerYellowPenaltyRanking.indexOf(aPlayerYellowPenaltyRanking);
     return index;
   }
 
-  public int getTeamPointRanking(int index)
+  public Integer getTeamPointRanking(int index)
   {
-    int aTeamPointRanking = teamPointRanking.get(index);
+    Integer aTeamPointRanking = teamPointRanking.get(index);
     return aTeamPointRanking;
   }
 
-  public int[] getTeamPointRanking()
+  public Integer[] getTeamPointRanking()
   {
-    int[] newTeamPointRanking = teamPointRanking.toArray(new int[teamPointRanking.size()]);
+    Integer[] newTeamPointRanking = teamPointRanking.toArray(new Integer[teamPointRanking.size()]);
     return newTeamPointRanking;
   }
 
@@ -337,21 +338,21 @@ public class League
     return has;
   }
 
-  public int indexOfTeamPointRanking(int aTeamPointRanking)
+  public int indexOfTeamPointRanking(Integer aTeamPointRanking)
   {
     int index = teamPointRanking.indexOf(aTeamPointRanking);
     return index;
   }
 
-  public int getTeamGoalsRanking(int index)
+  public Integer getTeamGoalsRanking(int index)
   {
-    int aTeamGoalsRanking = teamGoalsRanking.get(index);
+    Integer aTeamGoalsRanking = teamGoalsRanking.get(index);
     return aTeamGoalsRanking;
   }
 
-  public int[] getTeamGoalsRanking()
+  public Integer[] getTeamGoalsRanking()
   {
-    int[] newTeamGoalsRanking = teamGoalsRanking.toArray(new int[teamGoalsRanking.size()]);
+    Integer[] newTeamGoalsRanking = teamGoalsRanking.toArray(new Integer[teamGoalsRanking.size()]);
     return newTeamGoalsRanking;
   }
 
@@ -367,21 +368,21 @@ public class League
     return has;
   }
 
-  public int indexOfTeamGoalsRanking(int aTeamGoalsRanking)
+  public int indexOfTeamGoalsRanking(Integer aTeamGoalsRanking)
   {
     int index = teamGoalsRanking.indexOf(aTeamGoalsRanking);
     return index;
   }
 
-  public int getTeamCombinedPenaltyRanking(int index)
+  public Integer getTeamCombinedPenaltyRanking(int index)
   {
-    int aTeamCombinedPenaltyRanking = teamCombinedPenaltyRanking.get(index);
+    Integer aTeamCombinedPenaltyRanking = teamCombinedPenaltyRanking.get(index);
     return aTeamCombinedPenaltyRanking;
   }
 
-  public int[] getTeamCombinedPenaltyRanking()
+  public Integer[] getTeamCombinedPenaltyRanking()
   {
-    int[] newTeamCombinedPenaltyRanking = teamCombinedPenaltyRanking.toArray(new int[teamCombinedPenaltyRanking.size()]);
+    Integer[] newTeamCombinedPenaltyRanking = teamCombinedPenaltyRanking.toArray(new Integer[teamCombinedPenaltyRanking.size()]);
     return newTeamCombinedPenaltyRanking;
   }
 
@@ -397,21 +398,21 @@ public class League
     return has;
   }
 
-  public int indexOfTeamCombinedPenaltyRanking(int aTeamCombinedPenaltyRanking)
+  public int indexOfTeamCombinedPenaltyRanking(Integer aTeamCombinedPenaltyRanking)
   {
     int index = teamCombinedPenaltyRanking.indexOf(aTeamCombinedPenaltyRanking);
     return index;
   }
 
-  public int getTeamRedPenaltyRanking(int index)
+  public Integer getTeamRedPenaltyRanking(int index)
   {
-    int aTeamRedPenaltyRanking = teamRedPenaltyRanking.get(index);
+    Integer aTeamRedPenaltyRanking = teamRedPenaltyRanking.get(index);
     return aTeamRedPenaltyRanking;
   }
 
-  public int[] getTeamRedPenaltyRanking()
+  public Integer[] getTeamRedPenaltyRanking()
   {
-    int[] newTeamRedPenaltyRanking = teamRedPenaltyRanking.toArray(new int[teamRedPenaltyRanking.size()]);
+    Integer[] newTeamRedPenaltyRanking = teamRedPenaltyRanking.toArray(new Integer[teamRedPenaltyRanking.size()]);
     return newTeamRedPenaltyRanking;
   }
 
@@ -427,21 +428,21 @@ public class League
     return has;
   }
 
-  public int indexOfTeamRedPenaltyRanking(int aTeamRedPenaltyRanking)
+  public int indexOfTeamRedPenaltyRanking(Integer aTeamRedPenaltyRanking)
   {
     int index = teamRedPenaltyRanking.indexOf(aTeamRedPenaltyRanking);
     return index;
   }
 
-  public int getTeamYellowPenaltyRanking(int index)
+  public Integer getTeamYellowPenaltyRanking(int index)
   {
-    int aTeamYellowPenaltyRanking = teamYellowPenaltyRanking.get(index);
+    Integer aTeamYellowPenaltyRanking = teamYellowPenaltyRanking.get(index);
     return aTeamYellowPenaltyRanking;
   }
 
-  public int[] getTeamYellowPenaltyRanking()
+  public Integer[] getTeamYellowPenaltyRanking()
   {
-    int[] newTeamYellowPenaltyRanking = teamYellowPenaltyRanking.toArray(new int[teamYellowPenaltyRanking.size()]);
+    Integer[] newTeamYellowPenaltyRanking = teamYellowPenaltyRanking.toArray(new Integer[teamYellowPenaltyRanking.size()]);
     return newTeamYellowPenaltyRanking;
   }
 
@@ -457,278 +458,278 @@ public class League
     return has;
   }
 
-  public int indexOfTeamYellowPenaltyRanking(int aTeamYellowPenaltyRanking)
+  public int indexOfTeamYellowPenaltyRanking(Integer aTeamYellowPenaltyRanking)
   {
     int index = teamYellowPenaltyRanking.indexOf(aTeamYellowPenaltyRanking);
     return index;
   }
 
-  public Team getTracks-t(int index)
+  public Team getTeam(int index)
   {
-    Team aTracks-t = tracks-t.get(index);
-    return aTracks-t;
+    Team aTeam = teams.get(index);
+    return aTeam;
   }
 
-  public List<Team> getTracks-t()
+  public List<Team> getTeams()
   {
-    List<Team> newTracks-t = Collections.unmodifiableList(tracks-t);
-    return newTracks-t;
+    List<Team> newTeams = Collections.unmodifiableList(teams);
+    return newTeams;
   }
 
-  public int numberOfTracks-t()
+  public int numberOfTeams()
   {
-    int number = tracks-t.size();
+    int number = teams.size();
     return number;
   }
 
-  public boolean hasTracks-t()
+  public boolean hasTeams()
   {
-    boolean has = tracks-t.size() > 0;
+    boolean has = teams.size() > 0;
     return has;
   }
 
-  public int indexOfTracks-t(Team aTracks-t)
+  public int indexOfTeam(Team aTeam)
   {
-    int index = tracks-t.indexOf(aTracks-t);
+    int index = teams.indexOf(aTeam);
     return index;
   }
 
-  public Game getTracks-g(int index)
+  public Game getGame(int index)
   {
-    Game aTracks-g = tracks-g.get(index);
-    return aTracks-g;
+    Game aGame = games.get(index);
+    return aGame;
   }
 
-  public List<Game> getTracks-g()
+  public List<Game> getGames()
   {
-    List<Game> newTracks-g = Collections.unmodifiableList(tracks-g);
-    return newTracks-g;
+    List<Game> newGames = Collections.unmodifiableList(games);
+    return newGames;
   }
 
-  public int numberOfTracks-g()
+  public int numberOfGames()
   {
-    int number = tracks-g.size();
+    int number = games.size();
     return number;
   }
 
-  public boolean hasTracks-g()
+  public boolean hasGames()
   {
-    boolean has = tracks-g.size() > 0;
+    boolean has = games.size() > 0;
     return has;
   }
 
-  public int indexOfTracks-g(Game aTracks-g)
+  public int indexOfGame(Game aGame)
   {
-    int index = tracks-g.indexOf(aTracks-g);
+    int index = games.indexOf(aGame);
     return index;
   }
 
-  public Player getTracks-p(int index)
+  public Player getPlayer(int index)
   {
-    Player aTracks-p = tracks-p.get(index);
-    return aTracks-p;
+    Player aPlayer = players.get(index);
+    return aPlayer;
   }
 
-  public List<Player> getTracks-p()
+  public List<Player> getPlayers()
   {
-    List<Player> newTracks-p = Collections.unmodifiableList(tracks-p);
-    return newTracks-p;
+    List<Player> newPlayers = Collections.unmodifiableList(players);
+    return newPlayers;
   }
 
-  public int numberOfTracks-p()
+  public int numberOfPlayers()
   {
-    int number = tracks-p.size();
+    int number = players.size();
     return number;
   }
 
-  public boolean hasTracks-p()
+  public boolean hasPlayers()
   {
-    boolean has = tracks-p.size() > 0;
+    boolean has = players.size() > 0;
     return has;
   }
 
-  public int indexOfTracks-p(Player aTracks-p)
+  public int indexOfPlayer(Player aPlayer)
   {
-    int index = tracks-p.indexOf(aTracks-p);
+    int index = players.indexOf(aPlayer);
     return index;
   }
 
-  public static int minimumNumberOfTracks-t()
+  public static int minimumNumberOfTeams()
   {
     return 0;
   }
 
-  public boolean addTracks-t(Team aTracks-t)
+  public boolean addTeam(Team aTeam)
   {
     boolean wasAdded = false;
-    if (tracks-t.contains(aTracks-t)) { return false; }
-    tracks-t.add(aTracks-t);
+    if (teams.contains(aTeam)) { return false; }
+    teams.add(aTeam);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeTracks-t(Team aTracks-t)
+  public boolean removeTeam(Team aTeam)
   {
     boolean wasRemoved = false;
-    if (tracks-t.contains(aTracks-t))
+    if (teams.contains(aTeam))
     {
-      tracks-t.remove(aTracks-t);
+      teams.remove(aTeam);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addTracks-tAt(Team aTracks-t, int index)
+  public boolean addTeamAt(Team aTeam, int index)
   {  
     boolean wasAdded = false;
-    if(addTracks-t(aTracks-t))
+    if(addTeam(aTeam))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-t()) { index = numberOfTracks-t() - 1; }
-      tracks-t.remove(aTracks-t);
-      tracks-t.add(index, aTracks-t);
+      if(index > numberOfTeams()) { index = numberOfTeams() - 1; }
+      teams.remove(aTeam);
+      teams.add(index, aTeam);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveTracks-tAt(Team aTracks-t, int index)
+  public boolean addOrMoveTeamAt(Team aTeam, int index)
   {
     boolean wasAdded = false;
-    if(tracks-t.contains(aTracks-t))
+    if(teams.contains(aTeam))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-t()) { index = numberOfTracks-t() - 1; }
-      tracks-t.remove(aTracks-t);
-      tracks-t.add(index, aTracks-t);
+      if(index > numberOfTeams()) { index = numberOfTeams() - 1; }
+      teams.remove(aTeam);
+      teams.add(index, aTeam);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addTracks-tAt(aTracks-t, index);
+      wasAdded = addTeamAt(aTeam, index);
     }
     return wasAdded;
   }
 
-  public static int minimumNumberOfTracks-g()
+  public static int minimumNumberOfGames()
   {
     return 0;
   }
 
-  public boolean addTracks-g(Game aTracks-g)
+  public boolean addGame(Game aGame)
   {
     boolean wasAdded = false;
-    if (tracks-g.contains(aTracks-g)) { return false; }
-    tracks-g.add(aTracks-g);
+    if (games.contains(aGame)) { return false; }
+    games.add(aGame);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeTracks-g(Game aTracks-g)
+  public boolean removeGame(Game aGame)
   {
     boolean wasRemoved = false;
-    if (tracks-g.contains(aTracks-g))
+    if (games.contains(aGame))
     {
-      tracks-g.remove(aTracks-g);
+      games.remove(aGame);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addTracks-gAt(Game aTracks-g, int index)
+  public boolean addGameAt(Game aGame, int index)
   {  
     boolean wasAdded = false;
-    if(addTracks-g(aTracks-g))
+    if(addGame(aGame))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-g()) { index = numberOfTracks-g() - 1; }
-      tracks-g.remove(aTracks-g);
-      tracks-g.add(index, aTracks-g);
+      if(index > numberOfGames()) { index = numberOfGames() - 1; }
+      games.remove(aGame);
+      games.add(index, aGame);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveTracks-gAt(Game aTracks-g, int index)
+  public boolean addOrMoveGameAt(Game aGame, int index)
   {
     boolean wasAdded = false;
-    if(tracks-g.contains(aTracks-g))
+    if(games.contains(aGame))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-g()) { index = numberOfTracks-g() - 1; }
-      tracks-g.remove(aTracks-g);
-      tracks-g.add(index, aTracks-g);
+      if(index > numberOfGames()) { index = numberOfGames() - 1; }
+      games.remove(aGame);
+      games.add(index, aGame);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addTracks-gAt(aTracks-g, index);
+      wasAdded = addGameAt(aGame, index);
     }
     return wasAdded;
   }
 
-  public static int minimumNumberOfTracks-p()
+  public static int minimumNumberOfPlayers()
   {
     return 0;
   }
 
-  public boolean addTracks-p(Player aTracks-p)
+  public boolean addPlayer(Player aPlayer)
   {
     boolean wasAdded = false;
-    if (tracks-p.contains(aTracks-p)) { return false; }
-    tracks-p.add(aTracks-p);
+    if (players.contains(aPlayer)) { return false; }
+    players.add(aPlayer);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeTracks-p(Player aTracks-p)
+  public boolean removePlayer(Player aPlayer)
   {
     boolean wasRemoved = false;
-    if (tracks-p.contains(aTracks-p))
+    if (players.contains(aPlayer))
     {
-      tracks-p.remove(aTracks-p);
+      players.remove(aPlayer);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addTracks-pAt(Player aTracks-p, int index)
+  public boolean addPlayerAt(Player aPlayer, int index)
   {  
     boolean wasAdded = false;
-    if(addTracks-p(aTracks-p))
+    if(addPlayer(aPlayer))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-p()) { index = numberOfTracks-p() - 1; }
-      tracks-p.remove(aTracks-p);
-      tracks-p.add(index, aTracks-p);
+      if(index > numberOfPlayers()) { index = numberOfPlayers() - 1; }
+      players.remove(aPlayer);
+      players.add(index, aPlayer);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveTracks-pAt(Player aTracks-p, int index)
+  public boolean addOrMovePlayerAt(Player aPlayer, int index)
   {
     boolean wasAdded = false;
-    if(tracks-p.contains(aTracks-p))
+    if(players.contains(aPlayer))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfTracks-p()) { index = numberOfTracks-p() - 1; }
-      tracks-p.remove(aTracks-p);
-      tracks-p.add(index, aTracks-p);
+      if(index > numberOfPlayers()) { index = numberOfPlayers() - 1; }
+      players.remove(aPlayer);
+      players.add(index, aPlayer);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addTracks-pAt(aTracks-p, index);
+      wasAdded = addPlayerAt(aPlayer, index);
     }
     return wasAdded;
   }
 
   public void delete()
   {
-    tracks-t.clear();
-    tracks-g.clear();
-    tracks-p.clear();
+    teams.clear();
+    games.clear();
+    players.clear();
   }
 
 

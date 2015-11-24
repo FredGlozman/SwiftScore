@@ -4,7 +4,8 @@
 
 import java.util.*;
 
-// line 22 "ScoreKeeper.ump"
+// line 15 "ScoreKeeper.ump"
+// line 80 "ScoreKeeper.ump"
 public class Team
 {
 
@@ -18,36 +19,22 @@ public class Team
   private int wins;
   private int losses;
   private int ties;
-  private int successfulShots;
-  private int failedShots;
-  private int redCards;
-  private int yellowCards;
-  private int penaltyKicksCaused;
-  private int successfulSaves;
-  private int failedSaves;
 
   //Team Associations
-  private List<Player> contains;
+  private List<Player> players;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Team(String aName, int aPoints, int aWins, int aLosses, int aTies, int aSuccessfulShots, int aFailedShots, int aRedCards, int aYellowCards, int aPenaltyKicksCaused, int aSuccessfulSaves, int aFailedSaves)
+  public Team(String aName, int aPoints, int aWins, int aLosses, int aTies)
   {
     name = aName;
     points = aPoints;
     wins = aWins;
     losses = aLosses;
     ties = aTies;
-    successfulShots = aSuccessfulShots;
-    failedShots = aFailedShots;
-    redCards = aRedCards;
-    yellowCards = aYellowCards;
-    penaltyKicksCaused = aPenaltyKicksCaused;
-    successfulSaves = aSuccessfulSaves;
-    failedSaves = aFailedSaves;
-    contains = new ArrayList<Player>();
+    players = new ArrayList<Player>();
   }
 
   //------------------------
@@ -94,62 +81,6 @@ public class Team
     return wasSet;
   }
 
-  public boolean setSuccessfulShots(int aSuccessfulShots)
-  {
-    boolean wasSet = false;
-    successfulShots = aSuccessfulShots;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setFailedShots(int aFailedShots)
-  {
-    boolean wasSet = false;
-    failedShots = aFailedShots;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setRedCards(int aRedCards)
-  {
-    boolean wasSet = false;
-    redCards = aRedCards;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setYellowCards(int aYellowCards)
-  {
-    boolean wasSet = false;
-    yellowCards = aYellowCards;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setPenaltyKicksCaused(int aPenaltyKicksCaused)
-  {
-    boolean wasSet = false;
-    penaltyKicksCaused = aPenaltyKicksCaused;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setSuccessfulSaves(int aSuccessfulSaves)
-  {
-    boolean wasSet = false;
-    successfulSaves = aSuccessfulSaves;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setFailedSaves(int aFailedSaves)
-  {
-    boolean wasSet = false;
-    failedSaves = aFailedSaves;
-    wasSet = true;
-    return wasSet;
-  }
-
   public String getName()
   {
     return name;
@@ -175,131 +106,96 @@ public class Team
     return ties;
   }
 
-  public int getSuccessfulShots()
+  public Player getPlayer(int index)
   {
-    return successfulShots;
+    Player aPlayer = players.get(index);
+    return aPlayer;
   }
 
-  public int getFailedShots()
+  public List<Player> getPlayers()
   {
-    return failedShots;
+    List<Player> newPlayers = Collections.unmodifiableList(players);
+    return newPlayers;
   }
 
-  public int getRedCards()
+  public int numberOfPlayers()
   {
-    return redCards;
-  }
-
-  public int getYellowCards()
-  {
-    return yellowCards;
-  }
-
-  public int getPenaltyKicksCaused()
-  {
-    return penaltyKicksCaused;
-  }
-
-  public int getSuccessfulSaves()
-  {
-    return successfulSaves;
-  }
-
-  public int getFailedSaves()
-  {
-    return failedSaves;
-  }
-
-  public Player getContain(int index)
-  {
-    Player aContain = contains.get(index);
-    return aContain;
-  }
-
-  public List<Player> getContains()
-  {
-    List<Player> newContains = Collections.unmodifiableList(contains);
-    return newContains;
-  }
-
-  public int numberOfContains()
-  {
-    int number = contains.size();
+    int number = players.size();
     return number;
   }
 
-  public boolean hasContains()
+  public boolean hasPlayers()
   {
-    boolean has = contains.size() > 0;
+    boolean has = players.size() > 0;
     return has;
   }
 
-  public int indexOfContain(Player aContain)
+  public int indexOfPlayer(Player aPlayer)
   {
-    int index = contains.indexOf(aContain);
+    int index = players.indexOf(aPlayer);
     return index;
   }
 
-  public static int minimumNumberOfContains()
+  public static int minimumNumberOfPlayers()
   {
     return 0;
   }
 
-  public boolean addContain(Player aContain)
+  public boolean addPlayer(Player aPlayer)
   {
     boolean wasAdded = false;
-    if (contains.contains(aContain)) { return false; }
-    contains.add(aContain);
+    if (players.contains(aPlayer)) { return false; }
+    players.add(aPlayer);
     wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeContain(Player aContain)
+  public boolean removePlayer(Player aPlayer)
   {
     boolean wasRemoved = false;
-    if (contains.contains(aContain))
+    if (players.contains(aPlayer))
     {
-      contains.remove(aContain);
+      players.remove(aPlayer);
       wasRemoved = true;
     }
     return wasRemoved;
   }
 
-  public boolean addContainAt(Player aContain, int index)
+  public boolean addPlayerAt(Player aPlayer, int index)
   {  
     boolean wasAdded = false;
-    if(addContain(aContain))
+    if(addPlayer(aPlayer))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfContains()) { index = numberOfContains() - 1; }
-      contains.remove(aContain);
-      contains.add(index, aContain);
+      if(index > numberOfPlayers()) { index = numberOfPlayers() - 1; }
+      players.remove(aPlayer);
+      players.add(index, aPlayer);
       wasAdded = true;
     }
     return wasAdded;
   }
 
-  public boolean addOrMoveContainAt(Player aContain, int index)
+  public boolean addOrMovePlayerAt(Player aPlayer, int index)
   {
     boolean wasAdded = false;
-    if(contains.contains(aContain))
+    if(players.contains(aPlayer))
     {
       if(index < 0 ) { index = 0; }
-      if(index > numberOfContains()) { index = numberOfContains() - 1; }
-      contains.remove(aContain);
-      contains.add(index, aContain);
+      if(index > numberOfPlayers()) { index = numberOfPlayers() - 1; }
+      players.remove(aPlayer);
+      players.add(index, aPlayer);
       wasAdded = true;
     } 
     else 
     {
-      wasAdded = addContainAt(aContain, index);
+      wasAdded = addPlayerAt(aPlayer, index);
     }
     return wasAdded;
   }
 
   public void delete()
   {
-    contains.clear();
+    players.clear();
   }
 
 
@@ -311,14 +207,7 @@ public class Team
             "points" + ":" + getPoints()+ "," +
             "wins" + ":" + getWins()+ "," +
             "losses" + ":" + getLosses()+ "," +
-            "ties" + ":" + getTies()+ "," +
-            "successfulShots" + ":" + getSuccessfulShots()+ "," +
-            "failedShots" + ":" + getFailedShots()+ "," +
-            "redCards" + ":" + getRedCards()+ "," +
-            "yellowCards" + ":" + getYellowCards()+ "," +
-            "penaltyKicksCaused" + ":" + getPenaltyKicksCaused()+ "," +
-            "successfulSaves" + ":" + getSuccessfulSaves()+ "," +
-            "failedSaves" + ":" + getFailedSaves()+ "]"
+            "ties" + ":" + getTies()+ "]"
      + outputString;
   }
 }
