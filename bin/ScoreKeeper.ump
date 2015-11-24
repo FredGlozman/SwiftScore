@@ -1,0 +1,77 @@
+class Player
+{
+  1 -> * Shot takes;
+  1 -> * Infraction commits;
+  String name;
+  int jerseyNumber;
+  int successfulShots;
+  int failedShots;
+  int redCards;
+  int yellowCards;
+  int penaltyKicksCaused;
+}
+
+class Goalie
+{
+  isA Player;
+  1 -> * Shot saves;
+  int successfulSaves;
+  int failedSaves;
+}
+
+class Team
+{
+  1 -> * Player contains;
+  String name;
+  int points;
+  int wins;
+  int losses;
+  int ties;
+  int successfulShots;
+  int failedShots;
+  int redCards;
+  int yellowCards;
+  int penaltyKicksCaused;
+  int successfulSaves;
+  int failedSaves;
+}
+
+class Game
+{
+  1 -> 2 Team matches;
+  int startTime;
+  int endTime;
+  String location;
+  int[] score;
+  boolean[] isVictor;
+}
+
+class Shot
+{
+  boolean isGoal;
+  int shotTime;
+}
+
+class Infraction
+{
+  String infractionType;
+  boolean penaltyShot;
+  int infractionTime;
+}
+
+class League
+{
+  singleton;
+  1 -> * Team tracks-t;
+  1 -> * Game tracks-g;
+  1 -> * Player tracks-p;
+  int[] playerScoreRanking;
+  int[] playerCombinedPenaltyRanking;
+  int[] playerRedPenaltyRanking;
+  int[] playerYellowPenaltyRanking;
+  int[] teamPointRanking;
+  int[] teamGoalsRanking;
+  int[] teamCombinedPenaltyRanking;
+  int[] teamRedPenaltyRanking;
+  int[] teamYellowPenaltyRanking;
+}
