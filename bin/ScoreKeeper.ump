@@ -4,13 +4,13 @@ class Player
   1 -> * Infraction infractions;
   String name;
   int jerseyNumber;
-  }
+}
 
 class Goalie
 {
   isA Player;
   1 -> * Shot saves;
-  }
+}
 
 class Team
 {
@@ -20,7 +20,7 @@ class Team
   int wins;
   int losses;
   int ties;
-  }
+}
 
 class Game
 {
@@ -29,7 +29,7 @@ class Game
   int endTime;
   String location;
   Integer[] score;
-    Team victor;
+  Team victor;
 }
 
 class Shot
@@ -51,15 +51,6 @@ class League
   1 -> * Team teams;
   1 -> * Game games;
   1 -> * Player players;
-  Integer[] playerScoreRanking;
-  Integer[] playerCombinedPenaltyRanking;
-  Integer[] playerRedPenaltyRanking;
-  Integer[] playerYellowPenaltyRanking;
-  Integer[] teamPointRanking;
-  Integer[] teamGoalsRanking;
-  Integer[] teamCombinedPenaltyRanking;
-  Integer[] teamRedPenaltyRanking;
-  Integer[] teamYellowPenaltyRanking;
 }
 //$?[End_of_model]$?
 

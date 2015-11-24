@@ -5,7 +5,7 @@
 import java.util.*;
 
 // line 9 "ScoreKeeper.ump"
-// line 73 "ScoreKeeper.ump"
+// line 64 "ScoreKeeper.ump"
 public class Goalie extends Player
 {
 

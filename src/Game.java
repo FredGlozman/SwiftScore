@@ -5,7 +5,7 @@
 import java.util.*;
 
 // line 25 "ScoreKeeper.ump"
-// line 86 "ScoreKeeper.ump"
+// line 77 "ScoreKeeper.ump"
 public class Game
 {
 
