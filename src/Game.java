@@ -4,7 +4,8 @@
 
 import java.util.*;
 
-// line 39 "ScoreKeeper.ump"
+// line 25 "ScoreKeeper.ump"
+// line 77 "ScoreKeeper.ump"
 public class Game
 {
 
@@ -16,28 +17,28 @@ public class Game
   private int startTime;
   private int endTime;
   private String location;
-  private List<int> score;
-  private List<boolean> isVictor;
+  private List<Integer> score;
+  private Team victor;
 
   //Game Associations
-  private List<Team> matches;
+  private List<Team> games;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Game(int aStartTime, int aEndTime, String aLocation, Team... allMatches)
+  public Game(int aStartTime, int aEndTime, String aLocation, Team aVictor, Team... allGames)
   {
     startTime = aStartTime;
     endTime = aEndTime;
     location = aLocation;
-    score = new ArrayList<int>();
-    isVictor = new ArrayList<boolean>();
-    matches = new ArrayList<Team>();
-    boolean didAddMatches = setMatches(allMatches);
-    if (!didAddMatches)
+    score = new ArrayList<Integer>();
+    victor = aVictor;
+    games = new ArrayList<Team>();
+    boolean didAddGames = setGames(allGames);
+    if (!didAddGames)
     {
-      throw new RuntimeException("Unable to create Game, must have 2 matches");
+      throw new RuntimeException("Unable to create Game, must have 2 games");
     }
   }
 
@@ -69,32 +70,26 @@ public class Game
     return wasSet;
   }
 
-  public boolean addScore(int aScore)
+  public boolean addScore(Integer aScore)
   {
     boolean wasAdded = false;
     wasAdded = score.add(aScore);
     return wasAdded;
   }
 
-  public boolean removeScore(int aScore)
+  public boolean removeScore(Integer aScore)
   {
     boolean wasRemoved = false;
     wasRemoved = score.remove(aScore);
     return wasRemoved;
   }
 
-  public boolean addIsVictor(boolean aIsVictor)
+  public boolean setVictor(Team aVictor)
   {
-    boolean wasAdded = false;
-    wasAdded = isVictor.add(aIsVictor);
-    return wasAdded;
-  }
-
-  public boolean removeIsVictor(boolean aIsVictor)
-  {
-    boolean wasRemoved = false;
-    wasRemoved = isVictor.remove(aIsVictor);
-    return wasRemoved;
+    boolean wasSet = false;
+    victor = aVictor;
+    wasSet = true;
+    return wasSet;
   }
 
   public int getStartTime()
@@ -112,15 +107,15 @@ public class Game
     return location;
   }
 
-  public int getScore(int index)
+  public Integer getScore(int index)
   {
-    int aScore = score.get(index);
+    Integer aScore = score.get(index);
     return aScore;
   }
 
-  public int[] getScore()
+  public Integer[] getScore()
   {
-    int[] newScore = score.toArray(new int[score.size()]);
+    Integer[] newScore = score.toArray(new Integer[score.size()]);
     return newScore;
   }
 
@@ -136,114 +131,89 @@ public class Game
     return has;
   }
 
-  public int indexOfScore(int aScore)
+  public int indexOfScore(Integer aScore)
   {
     int index = score.indexOf(aScore);
     return index;
   }
 
-  public boolean getIsVictor(int index)
+  public Team getVictor()
   {
-    boolean aIsVictor = isVictor.get(index);
-    return aIsVictor;
+    return victor;
   }
 
-  public boolean[] getIsVictor()
+  public Team getGame(int index)
   {
-    boolean[] newIsVictor = isVictor.toArray(new boolean[isVictor.size()]);
-    return newIsVictor;
+    Team aGame = games.get(index);
+    return aGame;
   }
 
-  public int numberOfIsVictor()
+  public List<Team> getGames()
   {
-    int number = isVictor.size();
+    List<Team> newGames = Collections.unmodifiableList(games);
+    return newGames;
+  }
+
+  public int numberOfGames()
+  {
+    int number = games.size();
     return number;
   }
 
-  public boolean hasIsVictor()
+  public boolean hasGames()
   {
-    boolean has = isVictor.size() > 0;
+    boolean has = games.size() > 0;
     return has;
   }
 
-  public int indexOfIsVictor(boolean aIsVictor)
+  public int indexOfGame(Team aGame)
   {
-    int index = isVictor.indexOf(aIsVictor);
+    int index = games.indexOf(aGame);
     return index;
   }
 
-  public Team getMatche(int index)
-  {
-    Team aMatche = matches.get(index);
-    return aMatche;
-  }
-
-  public List<Team> getMatches()
-  {
-    List<Team> newMatches = Collections.unmodifiableList(matches);
-    return newMatches;
-  }
-
-  public int numberOfMatches()
-  {
-    int number = matches.size();
-    return number;
-  }
-
-  public boolean hasMatches()
-  {
-    boolean has = matches.size() > 0;
-    return has;
-  }
-
-  public int indexOfMatche(Team aMatche)
-  {
-    int index = matches.indexOf(aMatche);
-    return index;
-  }
-
-  public static int requiredNumberOfMatches()
+  public static int requiredNumberOfGames()
   {
     return 2;
   }
 
-  public static int minimumNumberOfMatches()
+  public static int minimumNumberOfGames()
   {
     return 2;
   }
 
-  public static int maximumNumberOfMatches()
+  public static int maximumNumberOfGames()
   {
     return 2;
   }
 
-  public boolean setMatches(Team... newMatches)
+  public boolean setGames(Team... newGames)
   {
     boolean wasSet = false;
-    ArrayList<Team> verifiedMatches = new ArrayList<Team>();
-    for (Team aMatche : newMatches)
+    ArrayList<Team> verifiedGames = new ArrayList<Team>();
+    for (Team aGame : newGames)
     {
-      if (verifiedMatches.contains(aMatche))
+      if (verifiedGames.contains(aGame))
       {
         continue;
       }
-      verifiedMatches.add(aMatche);
+      verifiedGames.add(aGame);
     }
 
-    if (verifiedMatches.size() != newMatches.length || verifiedMatches.size() != requiredNumberOfMatches())
+    if (verifiedGames.size() != newGames.length || verifiedGames.size() != requiredNumberOfGames())
     {
       return wasSet;
     }
 
-    matches.clear();
-    matches.addAll(verifiedMatches);
+    games.clear();
+    games.addAll(verifiedGames);
     wasSet = true;
     return wasSet;
   }
 
   public void delete()
   {
-    matches.clear();
+    games.clear();
   }
 
 
@@ -253,7 +223,8 @@ public class Game
     return super.toString() + "["+
             "startTime" + ":" + getStartTime()+ "," +
             "endTime" + ":" + getEndTime()+ "," +
-            "location" + ":" + getLocation()+ "]"
+            "location" + ":" + getLocation()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "victor" + "=" + (getVictor() != null ? !getVictor().equals(this)  ? getVictor().toString().replaceAll("  ","    ") : "this" : "null")
      + outputString;
   }
 }

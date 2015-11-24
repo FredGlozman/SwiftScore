@@ -1,49 +1,35 @@
 class Player
 {
-  1 -> * Shot takes;
-  1 -> * Infraction commits;
+  1 -> * Shot shots;
+  1 -> * Infraction infractions;
   String name;
   int jerseyNumber;
-  int successfulShots;
-  int failedShots;
-  int redCards;
-  int yellowCards;
-  int penaltyKicksCaused;
 }
 
 class Goalie
 {
   isA Player;
   1 -> * Shot saves;
-  int successfulSaves;
-  int failedSaves;
 }
 
 class Team
 {
-  1 -> * Player contains;
+  1 -> * Player players;
   String name;
   int points;
   int wins;
   int losses;
   int ties;
-  int successfulShots;
-  int failedShots;
-  int redCards;
-  int yellowCards;
-  int penaltyKicksCaused;
-  int successfulSaves;
-  int failedSaves;
 }
 
 class Game
 {
-  1 -> 2 Team matches;
+  1 -> 2 Team games;
   int startTime;
   int endTime;
   String location;
-  int[] score;
-  boolean[] isVictor;
+  Integer[] score;
+  Team victor;
 }
 
 class Shot
@@ -62,16 +48,52 @@ class Infraction
 class League
 {
   singleton;
-  1 -> * Team tracks-t;
-  1 -> * Game tracks-g;
-  1 -> * Player tracks-p;
-  int[] playerScoreRanking;
-  int[] playerCombinedPenaltyRanking;
-  int[] playerRedPenaltyRanking;
-  int[] playerYellowPenaltyRanking;
-  int[] teamPointRanking;
-  int[] teamGoalsRanking;
-  int[] teamCombinedPenaltyRanking;
-  int[] teamRedPenaltyRanking;
-  int[] teamYellowPenaltyRanking;
+  1 -> * Team teams;
+  1 -> * Game games;
+  1 -> * Player players;
+}
+//$?[End_of_model]$?
+
+class Player
+{
+  position 528 302 124 79;
+  position.association Player__Shot:shots 34,152 93,0;
+  position.association Infraction:infractions__Player 163,126 0,14;
+}
+
+class Goalie
+{
+  position 700 462 109 45;
+  position.association Goalie__Shot:shots 0,32 102,72;
+  position.association Goalie__Shot:saves 0,30 112,7;
+}
+
+class Team
+{
+  position 252 240 109 130;
+  position.association Player:players__Team 163,65 0,2;
+}
+
+class Game
+{
+  position 66 190 109 113;
+  position.association Game__Team:games 129,110 0,62;
+}
+
+class Shot
+{
+  position 513 505 112 72;
+}
+
+class Infraction
+{
+  position 753 322 144 72;
+}
+
+class League
+{
+  position 427 22 236 184;
+  position.association League__Team:teams 0,10 122,0;
+  position.association Game:games__League 0,10 118,0;
+  position.association League__Player:players 35,184 161,0;
 }

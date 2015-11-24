@@ -4,17 +4,14 @@
 
 import java.util.*;
 
-// line 14 "ScoreKeeper.ump"
+// line 9 "ScoreKeeper.ump"
+// line 64 "ScoreKeeper.ump"
 public class Goalie extends Player
 {
 
   //------------------------
   // MEMBER VARIABLES
   //------------------------
-
-  //Goalie Attributes
-  private int successfulSaves;
-  private int failedSaves;
 
   //Goalie Associations
   private List<Shot> saves;
@@ -23,43 +20,15 @@ public class Goalie extends Player
   // CONSTRUCTOR
   //------------------------
 
-  public Goalie(String aName, int aJerseyNumber, int aSuccessfulShots, int aFailedShots, int aRedCards, int aYellowCards, int aPenaltyKicksCaused, int aSuccessfulSaves, int aFailedSaves)
+  public Goalie(String aName, int aJerseyNumber)
   {
-    super(aName, aJerseyNumber, aSuccessfulShots, aFailedShots, aRedCards, aYellowCards, aPenaltyKicksCaused);
-    successfulSaves = aSuccessfulSaves;
-    failedSaves = aFailedSaves;
+    super(aName, aJerseyNumber);
     saves = new ArrayList<Shot>();
   }
 
   //------------------------
   // INTERFACE
   //------------------------
-
-  public boolean setSuccessfulSaves(int aSuccessfulSaves)
-  {
-    boolean wasSet = false;
-    successfulSaves = aSuccessfulSaves;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setFailedSaves(int aFailedSaves)
-  {
-    boolean wasSet = false;
-    failedSaves = aFailedSaves;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public int getSuccessfulSaves()
-  {
-    return successfulSaves;
-  }
-
-  public int getFailedSaves()
-  {
-    return failedSaves;
-  }
 
   public Shot getSave(int index)
   {
@@ -154,13 +123,4 @@ public class Goalie extends Player
     super.delete();
   }
 
-
-  public String toString()
-  {
-	  String outputString = "";
-    return super.toString() + "["+
-            "successfulSaves" + ":" + getSuccessfulSaves()+ "," +
-            "failedSaves" + ":" + getFailedSaves()+ "]"
-     + outputString;
-  }
 }
