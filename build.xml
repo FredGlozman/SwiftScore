@@ -47,4 +47,6 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
+    <target depends="build" description="dummy test target" name="test">
+    </target>
 </project>
