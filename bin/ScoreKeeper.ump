@@ -34,15 +34,15 @@ class Game
 
 class Shot
 {
-  boolean isGoal;
-  int shotTime;
+  boolean goal;
+  int time;
 }
 
 class Infraction
 {
-  String infractionType;
+  String type;
   boolean penaltyShot;
-  int infractionTime;
+  int time;
 }
 
 class League

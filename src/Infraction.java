@@ -13,27 +13,29 @@ public class Infraction
   //------------------------
 
   //Infraction Attributes
-  private String infractionType;
+  private String type;
   private boolean penaltyShot;
+  private int time;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Infraction(String aInfractionType, boolean aPenaltyShot)
+  public Infraction(String aType, boolean aPenaltyShot, int aTime)
   {
-    infractionType = aInfractionType;
+    type = aType;
     penaltyShot = aPenaltyShot;
+    time = aTime;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
 
-  public boolean setInfractionType(String aInfractionType)
+  public boolean setType(String aType)
   {
     boolean wasSet = false;
-    infractionType = aInfractionType;
+    type = aType;
     wasSet = true;
     return wasSet;
   }
@@ -46,14 +48,27 @@ public class Infraction
     return wasSet;
   }
 
-  public String getInfractionType()
+  public boolean setTime(int aTime)
   {
-    return infractionType;
+    boolean wasSet = false;
+    time = aTime;
+    wasSet = true;
+    return wasSet;
+  }
+
+  public String getType()
+  {
+    return type;
   }
 
   public boolean getPenaltyShot()
   {
     return penaltyShot;
+  }
+
+  public int getTime()
+  {
+    return time;
   }
 
   public void delete()
@@ -64,8 +79,9 @@ public class Infraction
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "infractionType" + ":" + getInfractionType()+ "," +
-            "penaltyShot" + ":" + getPenaltyShot()+ "]"
+            "type" + ":" + getType()+ "," +
+            "penaltyShot" + ":" + getPenaltyShot()+ "," +
+            "time" + ":" + getTime()+ "]"
      + outputString;
   }
 }

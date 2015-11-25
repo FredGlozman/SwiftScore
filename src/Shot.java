@@ -13,47 +13,47 @@ public class Shot
   //------------------------
 
   //Shot Attributes
-  private boolean isGoal;
-  private int shotTime;
+  private boolean goal;
+  private int time;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Shot(boolean aIsGoal, int aShotTime)
+  public Shot(boolean aGoal, int aTime)
   {
-    isGoal = aIsGoal;
-    shotTime = aShotTime;
+    goal = aGoal;
+    time = aTime;
   }
 
   //------------------------
   // INTERFACE
   //------------------------
 
-  public boolean setIsGoal(boolean aIsGoal)
+  public boolean setGoal(boolean aGoal)
   {
     boolean wasSet = false;
-    isGoal = aIsGoal;
+    goal = aGoal;
     wasSet = true;
     return wasSet;
   }
 
-  public boolean setShotTime(int aShotTime)
+  public boolean setTime(int aTime)
   {
     boolean wasSet = false;
-    shotTime = aShotTime;
+    time = aTime;
     wasSet = true;
     return wasSet;
   }
 
-  public boolean getIsGoal()
+  public boolean getGoal()
   {
-    return isGoal;
+    return goal;
   }
 
-  public int getShotTime()
+  public int getTime()
   {
-    return shotTime;
+    return time;
   }
 
   public void delete()
@@ -64,8 +64,8 @@ public class Shot
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "isGoal" + ":" + getIsGoal()+ "," +
-            "shotTime" + ":" + getShotTime()+ "]"
+            "goal" + ":" + getGoal()+ "," +
+            "time" + ":" + getTime()+ "]"
      + outputString;
   }
 }
