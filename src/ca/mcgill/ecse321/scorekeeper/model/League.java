@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
+package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 48 "ScoreKeeper.ump"
-// line 93 "ScoreKeeper.ump"
+// line 50 "../../../../../ScoreKeeper.ump"
+// line 95 "../../../../../ScoreKeeper.ump"
 public class League
 {
 
@@ -143,11 +143,25 @@ public class League
     return 0;
   }
 
+  public Team addTeam(String aName, int aPoints, int aWins, int aLosses, int aTies, Game aGame)
+  {
+    return new Team(aName, aPoints, aWins, aLosses, aTies, aGame, this);
+  }
+
   public boolean addTeam(Team aTeam)
   {
     boolean wasAdded = false;
     if (teams.contains(aTeam)) { return false; }
-    teams.add(aTeam);
+    League existingLeague = aTeam.getLeague();
+    boolean isNewLeague = existingLeague != null && !this.equals(existingLeague);
+    if (isNewLeague)
+    {
+      aTeam.setLeague(this);
+    }
+    else
+    {
+      teams.add(aTeam);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -155,7 +169,8 @@ public class League
   public boolean removeTeam(Team aTeam)
   {
     boolean wasRemoved = false;
-    if (teams.contains(aTeam))
+    //Unable to remove aTeam, as it must always have a league
+    if (!this.equals(aTeam.getLeague()))
     {
       teams.remove(aTeam);
       wasRemoved = true;
@@ -200,11 +215,25 @@ public class League
     return 0;
   }
 
+  public Game addGame(int aStartTime, int aEndTime, String aLocation, Team aVictor)
+  {
+    return new Game(aStartTime, aEndTime, aLocation, aVictor, this);
+  }
+
   public boolean addGame(Game aGame)
   {
     boolean wasAdded = false;
     if (games.contains(aGame)) { return false; }
-    games.add(aGame);
+    League existingLeague = aGame.getLeague();
+    boolean isNewLeague = existingLeague != null && !this.equals(existingLeague);
+    if (isNewLeague)
+    {
+      aGame.setLeague(this);
+    }
+    else
+    {
+      games.add(aGame);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -212,7 +241,8 @@ public class League
   public boolean removeGame(Game aGame)
   {
     boolean wasRemoved = false;
-    if (games.contains(aGame))
+    //Unable to remove aGame, as it must always have a league
+    if (!this.equals(aGame.getLeague()))
     {
       games.remove(aGame);
       wasRemoved = true;
@@ -257,11 +287,25 @@ public class League
     return 0;
   }
 
+  public Player addPlayer(String aName, int aJerseyNumber, Team aTeam)
+  {
+    return new Player(aName, aJerseyNumber, aTeam, this);
+  }
+
   public boolean addPlayer(Player aPlayer)
   {
     boolean wasAdded = false;
     if (players.contains(aPlayer)) { return false; }
-    players.add(aPlayer);
+    League existingLeague = aPlayer.getLeague();
+    boolean isNewLeague = existingLeague != null && !this.equals(existingLeague);
+    if (isNewLeague)
+    {
+      aPlayer.setLeague(this);
+    }
+    else
+    {
+      players.add(aPlayer);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -269,7 +313,8 @@ public class League
   public boolean removePlayer(Player aPlayer)
   {
     boolean wasRemoved = false;
-    if (players.contains(aPlayer))
+    //Unable to remove aPlayer, as it must always have a league
+    if (!this.equals(aPlayer.getLeague()))
     {
       players.remove(aPlayer);
       wasRemoved = true;
@@ -311,9 +356,21 @@ public class League
 
   public void delete()
   {
-    teams.clear();
-    games.clear();
-    players.clear();
+    for(int i=teams.size(); i > 0; i--)
+    {
+      Team aTeam = teams.get(i - 1);
+      aTeam.delete();
+    }
+    for(int i=games.size(); i > 0; i--)
+    {
+      Game aGame = games.get(i - 1);
+      aGame.delete();
+    }
+    for(int i=players.size(); i > 0; i--)
+    {
+      Player aPlayer = players.get(i - 1);
+      aPlayer.delete();
+    }
   }
 
 }

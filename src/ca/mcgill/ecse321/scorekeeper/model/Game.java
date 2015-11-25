@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
+package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 25 "ScoreKeeper.ump"
-// line 77 "ScoreKeeper.ump"
+// line 27 "../../../../../ScoreKeeper.ump"
+// line 79 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
@@ -22,12 +22,13 @@ public class Game
 
   //Game Associations
   private List<Team> games;
+  private League league;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Game(int aStartTime, int aEndTime, String aLocation, Team aVictor, Team... allGames)
+  public Game(int aStartTime, int aEndTime, String aLocation, Team aVictor, League aLeague)
   {
     startTime = aStartTime;
     endTime = aEndTime;
@@ -35,10 +36,10 @@ public class Game
     score = new ArrayList<Integer>();
     victor = aVictor;
     games = new ArrayList<Team>();
-    boolean didAddGames = setGames(allGames);
-    if (!didAddGames)
+    boolean didAddLeague = setLeague(aLeague);
+    if (!didAddLeague)
     {
-      throw new RuntimeException("Unable to create Game, must have 2 games");
+      throw new RuntimeException("Unable to create game due to league");
     }
   }
 
@@ -172,6 +173,17 @@ public class Game
     return index;
   }
 
+  public League getLeague()
+  {
+    return league;
+  }
+
+  public boolean isNumberOfGamesValid()
+  {
+    boolean isValid = numberOfGames() >= minimumNumberOfGames() && numberOfGames() <= maximumNumberOfGames();
+    return isValid;
+  }
+
   public static int requiredNumberOfGames()
   {
     return 2;
@@ -187,33 +199,95 @@ public class Game
     return 2;
   }
 
-  public boolean setGames(Team... newGames)
+  public Team addGame(String aName, int aPoints, int aWins, int aLosses, int aTies, League aLeague)
   {
-    boolean wasSet = false;
-    ArrayList<Team> verifiedGames = new ArrayList<Team>();
-    for (Team aGame : newGames)
+    if (numberOfGames() >= maximumNumberOfGames())
     {
-      if (verifiedGames.contains(aGame))
-      {
-        continue;
-      }
-      verifiedGames.add(aGame);
+      return null;
+    }
+    else
+    {
+      return new Team(aName, aPoints, aWins, aLosses, aTies, this, aLeague);
+    }
+  }
+
+  public boolean addGame(Team aGame)
+  {
+    boolean wasAdded = false;
+    if (games.contains(aGame)) { return false; }
+    if (numberOfGames() >= maximumNumberOfGames())
+    {
+      return wasAdded;
     }
 
-    if (verifiedGames.size() != newGames.length || verifiedGames.size() != requiredNumberOfGames())
+    Game existingGame = aGame.getGame();
+    boolean isNewGame = existingGame != null && !this.equals(existingGame);
+
+    if (isNewGame && existingGame.numberOfGames() <= minimumNumberOfGames())
+    {
+      return wasAdded;
+    }
+
+    if (isNewGame)
+    {
+      aGame.setGame(this);
+    }
+    else
+    {
+      games.add(aGame);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeGame(Team aGame)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aGame, as it must always have a game
+    if (this.equals(aGame.getGame()))
+    {
+      return wasRemoved;
+    }
+
+    //game already at minimum (2)
+    if (numberOfGames() <= minimumNumberOfGames())
+    {
+      return wasRemoved;
+    }
+    games.remove(aGame);
+    wasRemoved = true;
+    return wasRemoved;
+  }
+
+  public boolean setLeague(League aLeague)
+  {
+    boolean wasSet = false;
+    if (aLeague == null)
     {
       return wasSet;
     }
 
-    games.clear();
-    games.addAll(verifiedGames);
+    League existingLeague = league;
+    league = aLeague;
+    if (existingLeague != null && !existingLeague.equals(aLeague))
+    {
+      existingLeague.removeGame(this);
+    }
+    league.addGame(this);
     wasSet = true;
     return wasSet;
   }
 
   public void delete()
   {
-    games.clear();
+    for(int i=games.size(); i > 0; i--)
+    {
+      Team aGame = games.get(i - 1);
+      aGame.delete();
+    }
+    League placeholderLeague = league;
+    this.league = null;
+    placeholderLeague.removeGame(this);
   }
 
 
@@ -224,7 +298,8 @@ public class Game
             "startTime" + ":" + getStartTime()+ "," +
             "endTime" + ":" + getEndTime()+ "," +
             "location" + ":" + getLocation()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "victor" + "=" + (getVictor() != null ? !getVictor().equals(this)  ? getVictor().toString().replaceAll("  ","    ") : "this" : "null")
+            "  " + "victor" + "=" + (getVictor() != null ? !getVictor().equals(this)  ? getVictor().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
   }
 }

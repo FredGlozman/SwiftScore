@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
+package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 9 "ScoreKeeper.ump"
-// line 64 "ScoreKeeper.ump"
+// line 11 "../../../../../ScoreKeeper.ump"
+// line 66 "../../../../../ScoreKeeper.ump"
 public class Goalie extends Player
 {
 
@@ -20,9 +20,9 @@ public class Goalie extends Player
   // CONSTRUCTOR
   //------------------------
 
-  public Goalie(String aName, int aJerseyNumber)
+  public Goalie(String aName, int aJerseyNumber, Team aTeam, League aLeague)
   {
-    super(aName, aJerseyNumber);
+    super(aName, aJerseyNumber, aTeam, aLeague);
     saves = new ArrayList<Shot>();
   }
 
@@ -65,11 +65,25 @@ public class Goalie extends Player
     return 0;
   }
 
+  public Shot addSave(boolean aGoal, int aTime, Player aPlayer)
+  {
+    return new Shot(aGoal, aTime, aPlayer, this);
+  }
+
   public boolean addSave(Shot aSave)
   {
     boolean wasAdded = false;
     if (saves.contains(aSave)) { return false; }
-    saves.add(aSave);
+    Goalie existingGoalie = aSave.getGoalie();
+    boolean isNewGoalie = existingGoalie != null && !this.equals(existingGoalie);
+    if (isNewGoalie)
+    {
+      aSave.setGoalie(this);
+    }
+    else
+    {
+      saves.add(aSave);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -77,7 +91,8 @@ public class Goalie extends Player
   public boolean removeSave(Shot aSave)
   {
     boolean wasRemoved = false;
-    if (saves.contains(aSave))
+    //Unable to remove aSave, as it must always have a goalie
+    if (!this.equals(aSave.getGoalie()))
     {
       saves.remove(aSave);
       wasRemoved = true;
@@ -119,7 +134,11 @@ public class Goalie extends Player
 
   public void delete()
   {
-    saves.clear();
+    for(int i=saves.size(); i > 0; i--)
+    {
+      Shot aSave = saves.get(i - 1);
+      aSave.delete();
+    }
     super.delete();
   }
 

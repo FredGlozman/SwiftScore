@@ -1,11 +1,11 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
-
+package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 1 "ScoreKeeper.ump"
-// line 57 "ScoreKeeper.ump"
+// line 3 "../../../../../ScoreKeeper.ump"
+// line 59 "../../../../../ScoreKeeper.ump"
 public class Player
 {
 
@@ -20,17 +20,29 @@ public class Player
   //Player Associations
   private List<Shot> shots;
   private List<Infraction> infractions;
+  private Team team;
+  private League league;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Player(String aName, int aJerseyNumber)
+  public Player(String aName, int aJerseyNumber, Team aTeam, League aLeague)
   {
     name = aName;
     jerseyNumber = aJerseyNumber;
     shots = new ArrayList<Shot>();
     infractions = new ArrayList<Infraction>();
+    boolean didAddTeam = setTeam(aTeam);
+    if (!didAddTeam)
+    {
+      throw new RuntimeException("Unable to create player due to team");
+    }
+    boolean didAddLeague = setLeague(aLeague);
+    if (!didAddLeague)
+    {
+      throw new RuntimeException("Unable to create player due to league");
+    }
   }
 
   //------------------------
@@ -123,9 +135,24 @@ public class Player
     return index;
   }
 
+  public Team getTeam()
+  {
+    return team;
+  }
+
+  public League getLeague()
+  {
+    return league;
+  }
+
   public static int minimumNumberOfShots()
   {
     return 0;
+  }
+
+  public Shot addShot(boolean aGoal, int aTime, Goalie aGoalie)
+  {
+    return new Shot(aGoal, aTime, this, aGoalie);
   }
 
   public boolean addShot(Shot aShot)
@@ -133,7 +160,16 @@ public class Player
     boolean wasAdded = false;
     if (shots.contains(aShot)) { return false; }
     if (shots.contains(aShot)) { return false; }
-    shots.add(aShot);
+    Player existingPlayer = aShot.getPlayer();
+    boolean isNewPlayer = existingPlayer != null && !this.equals(existingPlayer);
+    if (isNewPlayer)
+    {
+      aShot.setPlayer(this);
+    }
+    else
+    {
+      shots.add(aShot);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -141,7 +177,8 @@ public class Player
   public boolean removeShot(Shot aShot)
   {
     boolean wasRemoved = false;
-    if (shots.contains(aShot))
+    //Unable to remove aShot, as it must always have a player
+    if (!this.equals(aShot.getPlayer()))
     {
       shots.remove(aShot);
       wasRemoved = true;
@@ -186,12 +223,26 @@ public class Player
     return 0;
   }
 
+  public Infraction addInfraction(String aType, boolean aPenaltyShot, int aTime)
+  {
+    return new Infraction(aType, aPenaltyShot, aTime, this);
+  }
+
   public boolean addInfraction(Infraction aInfraction)
   {
     boolean wasAdded = false;
     if (infractions.contains(aInfraction)) { return false; }
     if (infractions.contains(aInfraction)) { return false; }
-    infractions.add(aInfraction);
+    Player existingPlayer = aInfraction.getPlayer();
+    boolean isNewPlayer = existingPlayer != null && !this.equals(existingPlayer);
+    if (isNewPlayer)
+    {
+      aInfraction.setPlayer(this);
+    }
+    else
+    {
+      infractions.add(aInfraction);
+    }
     wasAdded = true;
     return wasAdded;
   }
@@ -199,7 +250,8 @@ public class Player
   public boolean removeInfraction(Infraction aInfraction)
   {
     boolean wasRemoved = false;
-    if (infractions.contains(aInfraction))
+    //Unable to remove aInfraction, as it must always have a player
+    if (!this.equals(aInfraction.getPlayer()))
     {
       infractions.remove(aInfraction);
       wasRemoved = true;
@@ -239,10 +291,62 @@ public class Player
     return wasAdded;
   }
 
+  public boolean setTeam(Team aTeam)
+  {
+    boolean wasSet = false;
+    if (aTeam == null)
+    {
+      return wasSet;
+    }
+
+    Team existingTeam = team;
+    team = aTeam;
+    if (existingTeam != null && !existingTeam.equals(aTeam))
+    {
+      existingTeam.removePlayer(this);
+    }
+    team.addPlayer(this);
+    wasSet = true;
+    return wasSet;
+  }
+
+  public boolean setLeague(League aLeague)
+  {
+    boolean wasSet = false;
+    if (aLeague == null)
+    {
+      return wasSet;
+    }
+
+    League existingLeague = league;
+    league = aLeague;
+    if (existingLeague != null && !existingLeague.equals(aLeague))
+    {
+      existingLeague.removePlayer(this);
+    }
+    league.addPlayer(this);
+    wasSet = true;
+    return wasSet;
+  }
+
   public void delete()
   {
-    shots.clear();
-    infractions.clear();
+    for(int i=shots.size(); i > 0; i--)
+    {
+      Shot aShot = shots.get(i - 1);
+      aShot.delete();
+    }
+    for(int i=infractions.size(); i > 0; i--)
+    {
+      Infraction aInfraction = infractions.get(i - 1);
+      aInfraction.delete();
+    }
+    Team placeholderTeam = team;
+    this.team = null;
+    placeholderTeam.removePlayer(this);
+    League placeholderLeague = league;
+    this.league = null;
+    placeholderLeague.removePlayer(this);
   }
 
 
@@ -251,7 +355,9 @@ public class Player
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "," +
-            "jerseyNumber" + ":" + getJerseyNumber()+ "]"
+            "jerseyNumber" + ":" + getJerseyNumber()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "team = "+(getTeam()!=null?Integer.toHexString(System.identityHashCode(getTeam())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
   }
 }

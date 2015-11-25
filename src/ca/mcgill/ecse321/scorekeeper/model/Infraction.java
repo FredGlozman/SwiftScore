@@ -1,10 +1,10 @@
 /*PLEASE DO NOT EDIT THIS CODE*/
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
+package ca.mcgill.ecse321.scorekeeper.model;
 
-
-// line 41 "ScoreKeeper.ump"
-// line 88 "ScoreKeeper.ump"
+// line 43 "../../../../../ScoreKeeper.ump"
+// line 90 "../../../../../ScoreKeeper.ump"
 public class Infraction
 {
 
@@ -17,15 +17,23 @@ public class Infraction
   private boolean penaltyShot;
   private int time;
 
+  //Infraction Associations
+  private Player player;
+
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Infraction(String aType, boolean aPenaltyShot, int aTime)
+  public Infraction(String aType, boolean aPenaltyShot, int aTime, Player aPlayer)
   {
     type = aType;
     penaltyShot = aPenaltyShot;
     time = aTime;
+    boolean didAddPlayer = setPlayer(aPlayer);
+    if (!didAddPlayer)
+    {
+      throw new RuntimeException("Unable to create infraction due to player");
+    }
   }
 
   //------------------------
@@ -71,8 +79,36 @@ public class Infraction
     return time;
   }
 
+  public Player getPlayer()
+  {
+    return player;
+  }
+
+  public boolean setPlayer(Player aPlayer)
+  {
+    boolean wasSet = false;
+    if (aPlayer == null)
+    {
+      return wasSet;
+    }
+
+    Player existingPlayer = player;
+    player = aPlayer;
+    if (existingPlayer != null && !existingPlayer.equals(aPlayer))
+    {
+      existingPlayer.removeInfraction(this);
+    }
+    player.addInfraction(this);
+    wasSet = true;
+    return wasSet;
+  }
+
   public void delete()
-  {}
+  {
+    Player placeholderPlayer = player;
+    this.player = null;
+    placeholderPlayer.removeInfraction(this);
+  }
 
 
   public String toString()
@@ -81,7 +117,8 @@ public class Infraction
     return super.toString() + "["+
             "type" + ":" + getType()+ "," +
             "penaltyShot" + ":" + getPenaltyShot()+ "," +
-            "time" + ":" + getTime()+ "]"
+            "time" + ":" + getTime()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "player = "+(getPlayer()!=null?Integer.toHexString(System.identityHashCode(getPlayer())):"null")
      + outputString;
   }
 }
