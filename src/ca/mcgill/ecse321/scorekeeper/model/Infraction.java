@@ -3,8 +3,17 @@
 
 package ca.mcgill.ecse321.scorekeeper.model;
 
-// line 43 "../../../../../ScoreKeeper.ump"
-// line 90 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to an Infraction.
+ * Infractions are commited by Players.
+ * 
+ * @param color        indicates whether the infraction resulted in a red or yellow card
+ * @param penaltyShot  indicates whether the infraction resulted in a penalty shot
+ * @param time         time of the infraction in milliseconds since the start of the game
+ */
+// line 253 "../../../../../ScoreKeeper.ump"
+// line 309 "../../../../../ScoreKeeper.ump"
 public class Infraction
 {
 
@@ -13,7 +22,7 @@ public class Infraction
   //------------------------
 
   //Infraction Attributes
-  private String type;
+  private Color color;
   private boolean penaltyShot;
   private int time;
 
@@ -24,9 +33,9 @@ public class Infraction
   // CONSTRUCTOR
   //------------------------
 
-  public Infraction(String aType, boolean aPenaltyShot, int aTime, Player aPlayer)
+  public Infraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer)
   {
-    type = aType;
+    color = aColor;
     penaltyShot = aPenaltyShot;
     time = aTime;
     boolean didAddPlayer = setPlayer(aPlayer);
@@ -40,10 +49,10 @@ public class Infraction
   // INTERFACE
   //------------------------
 
-  public boolean setType(String aType)
+  public boolean setColor(Color aColor)
   {
     boolean wasSet = false;
-    type = aType;
+    color = aColor;
     wasSet = true;
     return wasSet;
   }
@@ -64,9 +73,9 @@ public class Infraction
     return wasSet;
   }
 
-  public String getType()
+  public Color getColor()
   {
-    return type;
+    return color;
   }
 
   public boolean getPenaltyShot()
@@ -115,9 +124,9 @@ public class Infraction
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "type" + ":" + getType()+ "," +
             "penaltyShot" + ":" + getPenaltyShot()+ "," +
             "time" + ":" + getTime()+ "]" + System.getProperties().getProperty("line.separator") +
+            "  " + "color" + "=" + (getColor() != null ? !getColor().equals(this)  ? getColor().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
             "  " + "player = "+(getPlayer()!=null?Integer.toHexString(System.identityHashCode(getPlayer())):"null")
      + outputString;
   }

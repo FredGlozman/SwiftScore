@@ -4,8 +4,21 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 11 "../../../../../ScoreKeeper.ump"
-// line 66 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to Goalies (extends Player).
+ * Players shoot on goal but goalies can also save goals (in addition to
+ * doing everything else a Player can do). This is reflected in the
+ * inheritance structure.
+ * 
+ * @see Player
+ * @see Team
+ * @see Shot
+ * @see Infraction 
+ * @see League
+ */
+// line 157 "../../../../../ScoreKeeper.ump"
+// line 285 "../../../../../ScoreKeeper.ump"
 public class Goalie extends Player
 {
 

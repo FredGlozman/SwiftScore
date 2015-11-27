@@ -4,8 +4,23 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 27 "../../../../../ScoreKeeper.ump"
-// line 79 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating a Game.
+ * Two teams play a Game. Each Game takes place in a League.
+ * 
+ * @param statTime  start time of the game in seconds since the Unix epoch 
+ * @param endTime   start time of the game in seconds since the Unix epoch
+ * @param location  location of the game
+ * @param score     two dimensional array containing the game's score 
+ * (uses indices from the Game's Team array)
+ * @param victor    array index of the game's victor
+ * 
+ * @see Team 
+ * @see League
+ */
+// line 219 "../../../../../ScoreKeeper.ump"
+// line 298 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
@@ -18,7 +33,7 @@ public class Game
   private int endTime;
   private String location;
   private List<Integer> score;
-  private Team victor;
+  private int victor;
 
   //Game Associations
   private List<Team> games;
@@ -28,7 +43,7 @@ public class Game
   // CONSTRUCTOR
   //------------------------
 
-  public Game(int aStartTime, int aEndTime, String aLocation, Team aVictor, League aLeague)
+  public Game(int aStartTime, int aEndTime, String aLocation, int aVictor, League aLeague)
   {
     startTime = aStartTime;
     endTime = aEndTime;
@@ -85,7 +100,7 @@ public class Game
     return wasRemoved;
   }
 
-  public boolean setVictor(Team aVictor)
+  public boolean setVictor(int aVictor)
   {
     boolean wasSet = false;
     victor = aVictor;
@@ -138,7 +153,7 @@ public class Game
     return index;
   }
 
-  public Team getVictor()
+  public int getVictor()
   {
     return victor;
   }
@@ -199,7 +214,7 @@ public class Game
     return 2;
   }
 
-  public Team addGame(String aName, int aPoints, int aWins, int aLosses, int aTies, League aLeague)
+  public Team addGame(String aName, League aLeague)
   {
     if (numberOfGames() >= maximumNumberOfGames())
     {
@@ -207,7 +222,7 @@ public class Game
     }
     else
     {
-      return new Team(aName, aPoints, aWins, aLosses, aTies, this, aLeague);
+      return new Team(aName, this, aLeague);
     }
   }
 
@@ -297,8 +312,8 @@ public class Game
     return super.toString() + "["+
             "startTime" + ":" + getStartTime()+ "," +
             "endTime" + ":" + getEndTime()+ "," +
-            "location" + ":" + getLocation()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "victor" + "=" + (getVictor() != null ? !getVictor().equals(this)  ? getVictor().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
+            "location" + ":" + getLocation()+ "," +
+            "victor" + ":" + getVictor()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
   }

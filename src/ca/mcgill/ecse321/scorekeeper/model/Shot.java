@@ -3,8 +3,19 @@
 
 package ca.mcgill.ecse321.scorekeeper.model;
 
-// line 37 "../../../../../ScoreKeeper.ump"
-// line 85 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to a Shot.
+ * Shots are taken by Players and saved by Goalies.
+ * 
+ * @param goal  indicates whether the goal was successful
+ * @param time  time of the goal in milliseconds since the start of the Game
+ * 
+ * @see Player
+ * @see Goalie
+ */
+// line 239 "../../../../../ScoreKeeper.ump"
+// line 304 "../../../../../ScoreKeeper.ump"
 public class Shot
 {
 

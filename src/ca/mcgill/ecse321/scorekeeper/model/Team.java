@@ -4,8 +4,21 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 17 "../../../../../ScoreKeeper.ump"
-// line 73 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to Teams.
+ * Teams contain Players, and two Teams play a Game.
+ * Teams also belong to a League
+ * 
+ * @param name  the name of the Team
+ * 
+ * @see Players
+ * @see Game
+ * @see League 
+ * 
+ */
+// line 175 "../../../../../ScoreKeeper.ump"
+// line 292 "../../../../../ScoreKeeper.ump"
 public class Team
 {
 
@@ -15,10 +28,6 @@ public class Team
 
   //Team Attributes
   private String name;
-  private int points;
-  private int wins;
-  private int losses;
-  private int ties;
 
   //Team Associations
   private List<Player> players;
@@ -29,13 +38,9 @@ public class Team
   // CONSTRUCTOR
   //------------------------
 
-  public Team(String aName, int aPoints, int aWins, int aLosses, int aTies, Game aGame, League aLeague)
+  public Team(String aName, Game aGame, League aLeague)
   {
     name = aName;
-    points = aPoints;
-    wins = aWins;
-    losses = aLosses;
-    ties = aTies;
     players = new ArrayList<Player>();
     boolean didAddGame = setGame(aGame);
     if (!didAddGame)
@@ -61,61 +66,9 @@ public class Team
     return wasSet;
   }
 
-  public boolean setPoints(int aPoints)
-  {
-    boolean wasSet = false;
-    points = aPoints;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setWins(int aWins)
-  {
-    boolean wasSet = false;
-    wins = aWins;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setLosses(int aLosses)
-  {
-    boolean wasSet = false;
-    losses = aLosses;
-    wasSet = true;
-    return wasSet;
-  }
-
-  public boolean setTies(int aTies)
-  {
-    boolean wasSet = false;
-    ties = aTies;
-    wasSet = true;
-    return wasSet;
-  }
-
   public String getName()
   {
     return name;
-  }
-
-  public int getPoints()
-  {
-    return points;
-  }
-
-  public int getWins()
-  {
-    return wins;
-  }
-
-  public int getLosses()
-  {
-    return losses;
-  }
-
-  public int getTies()
-  {
-    return ties;
   }
 
   public Player getPlayer(int index)
@@ -124,6 +77,9 @@ public class Team
     return aPlayer;
   }
 
+  /**
+   * Umple Code//
+   */
   public List<Player> getPlayers()
   {
     List<Player> newPlayers = Collections.unmodifiableList(players);
@@ -300,13 +256,20 @@ public class Team
   {
 	  String outputString = "";
     return super.toString() + "["+
-            "name" + ":" + getName()+ "," +
-            "points" + ":" + getPoints()+ "," +
-            "wins" + ":" + getWins()+ "," +
-            "losses" + ":" + getLosses()+ "," +
-            "ties" + ":" + getTies()+ "]" + System.getProperties().getProperty("line.separator") +
+            "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "game = "+(getGame()!=null?Integer.toHexString(System.identityHashCode(getGame())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
-  }
+  }  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 189 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_NAME = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+  		return one.name.compareTo(other.name);
+  	}};
+
+  
 }

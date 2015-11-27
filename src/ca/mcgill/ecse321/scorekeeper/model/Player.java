@@ -4,8 +4,27 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 3 "../../../../../ScoreKeeper.ump"
-// line 59 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to players.
+ * Each Player has multiple Shots an Infractions.
+ * Each Player also belongs to a Team and a League.
+ * This object is also able to calculate statistics
+ * about the players in the team (e.g. their total
+ * number of successful goals). Note that a Goalie
+ * is also a kind of Player.
+ * 
+ * @param name          the name of the Player
+ * @param jerseyNumber  the Player's jersey number
+ * 
+ * @see Team
+ * @see Shot
+ * @see Infraction
+ * @see Goalie
+ * @see League
+ */
+// line 21 "../../../../../ScoreKeeper.ump"
+// line 278 "../../../../../ScoreKeeper.ump"
 public class Player
 {
 
@@ -81,6 +100,9 @@ public class Player
     return aShot;
   }
 
+  /**
+   * Umple Code//
+   */
   public List<Shot> getShots()
   {
     List<Shot> newShots = Collections.unmodifiableList(shots);
@@ -223,9 +245,9 @@ public class Player
     return 0;
   }
 
-  public Infraction addInfraction(String aType, boolean aPenaltyShot, int aTime)
+  public Infraction addInfraction(Color aColor, boolean aPenaltyShot, int aTime)
   {
-    return new Infraction(aType, aPenaltyShot, aTime, this);
+    return new Infraction(aColor, aPenaltyShot, aTime, this);
   }
 
   public boolean addInfraction(Infraction aInfraction)
@@ -350,6 +372,103 @@ public class Player
   }
 
 
+  /**
+   * Java Code //
+   * 
+   * Method returning the total number of successful Shots.
+   * 
+   * @return total number of successful Shots
+   * 
+   * @see Shot
+   */
+  // line 41 "../../../../../ScoreKeeper.ump"
+   public int getSuccessfulShotCount(){
+    int res = 0;
+    for(Shot shot : this.getShots())
+    {
+      if(shot.getGoal())
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+
+  /**
+   * 
+   * Method returning the total number of Infractions resulting in penalty kicks
+   * 
+   * @return total number of Infractions resulting in penalty kicks
+   * 
+   * @see Infraction
+   */
+  // line 61 "../../../../../ScoreKeeper.ump"
+   public int getPenaltyShotCount(){
+    int res = 0;
+    for(Infraction inf : this.getInfractions())
+    {
+      if(inf.getPenaltyShot())
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+
+  /**
+   * 
+   * Method returning the total number of Infractions resulting in red cards
+   * 
+   * @return total number of Infractions resulting in red cards
+   * 
+   * @see Infraction
+   */
+  // line 81 "../../../../../ScoreKeeper.ump"
+   public int getRedInfractionCount(){
+    return this.getColorInfractionCount(Color.RED);
+  }
+
+
+  /**
+   * 
+   * Method returning the total number of Infractions resulting in yellow cards
+   * 
+   * @return total number of Infractions resulting in yellow cards
+   * 
+   * @see Infraction
+   */
+  // line 93 "../../../../../ScoreKeeper.ump"
+   public int getYellowInfractionCount(){
+    return this.getColorInfractionCount(Color.YELLOW);
+  }
+
+
+  /**
+   * 
+   * Method returning the total number of Infractions resulting in a specified color of card 
+   * 
+   * @param color color of the card to count infractions for
+   * 
+   * @return total number of Infractions resulting in a specified color of card
+   * 
+   * @see Infraction
+   */
+  // line 107 "../../../../../ScoreKeeper.ump"
+   private int getColorInfractionCount(Color color){
+    int res = 0;
+    for(Infraction inf : this.getInfractions())
+    {
+      if(inf.getColor() == color)
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+
   public String toString()
   {
 	  String outputString = "";
@@ -359,5 +478,21 @@ public class Player
             "  " + "team = "+(getTeam()!=null?Integer.toHexString(System.identityHashCode(getTeam())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
-  }
+  }  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 123 ../../../../../ScoreKeeper.ump
+  public static Comparator<Player> COMPARE_BY_NAME = new Comparator<Player>() {public int compare(Player one, Player other)
+  	{
+  		return one.name.compareTo(other.name);
+  	}};
+// line 136 ../../../../../ScoreKeeper.ump
+  public static Comparator<Player> COMPARE_BY_JERSEY = new Comparator<Player>() {public int compare(Player one, Player other)
+  	{
+  		return one.jerseyNumber - other.jerseyNumber;
+  	}};
+
+  
 }

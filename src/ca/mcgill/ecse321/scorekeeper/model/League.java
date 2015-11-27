@@ -4,8 +4,18 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 import java.util.*;
 
-// line 50 "../../../../../ScoreKeeper.ump"
-// line 95 "../../../../../ScoreKeeper.ump"
+/**
+ * 
+ * Domain object that stores data relating to the League.
+ * Teams, Games, and Players are all tracked by the Leage.
+ * Their statistics are amalgamated by the League.
+ * 
+ * @see Team
+ * @see Game
+ * @see Player
+ */
+// line 269 "../../../../../ScoreKeeper.ump"
+// line 314 "../../../../../ScoreKeeper.ump"
 public class League
 {
 
@@ -143,9 +153,9 @@ public class League
     return 0;
   }
 
-  public Team addTeam(String aName, int aPoints, int aWins, int aLosses, int aTies, Game aGame)
+  public Team addTeam(String aName, Game aGame)
   {
-    return new Team(aName, aPoints, aWins, aLosses, aTies, aGame, this);
+    return new Team(aName, aGame, this);
   }
 
   public boolean addTeam(Team aTeam)
@@ -215,7 +225,7 @@ public class League
     return 0;
   }
 
-  public Game addGame(int aStartTime, int aEndTime, String aLocation, Team aVictor)
+  public Game addGame(int aStartTime, int aEndTime, String aLocation, int aVictor)
   {
     return new Game(aStartTime, aEndTime, aLocation, aVictor, this);
   }
