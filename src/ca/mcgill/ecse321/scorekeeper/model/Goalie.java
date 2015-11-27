@@ -18,7 +18,7 @@ import java.util.*;
  * @see League
  */
 // line 157 "../../../../../ScoreKeeper.ump"
-// line 285 "../../../../../ScoreKeeper.ump"
+// line 364 "../../../../../ScoreKeeper.ump"
 public class Goalie extends Player
 {
 
@@ -153,6 +153,29 @@ public class Goalie extends Player
       aSave.delete();
     }
     super.delete();
+  }
+
+
+  /**
+   * Java Code //
+   * 
+   * Method returning the total number of successful Saves.
+   * 
+   * @return total number of successful Saves
+   * 
+   * @see Shot
+   */
+  // line 175 "../../../../../ScoreKeeper.ump"
+   public int getSuccessfulSaveCount(){
+    int res = 0;
+    for(Shot save : this.getShots())
+    {
+      if(!save.getGoal())
+      {
+        res++;
+      }
+    }
+    return res;
   }
 
 }

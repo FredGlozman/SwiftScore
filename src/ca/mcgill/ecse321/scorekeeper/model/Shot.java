@@ -14,8 +14,8 @@ package ca.mcgill.ecse321.scorekeeper.model;
  * @see Player
  * @see Goalie
  */
-// line 239 "../../../../../ScoreKeeper.ump"
-// line 304 "../../../../../ScoreKeeper.ump"
+// line 318 "../../../../../ScoreKeeper.ump"
+// line 383 "../../../../../ScoreKeeper.ump"
 public class Shot
 {
 

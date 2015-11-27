@@ -24,7 +24,7 @@ import java.util.*;
  * @see League
  */
 // line 21 "../../../../../ScoreKeeper.ump"
-// line 278 "../../../../../ScoreKeeper.ump"
+// line 357 "../../../../../ScoreKeeper.ump"
 public class Player
 {
 
@@ -397,7 +397,7 @@ public class Player
 
   /**
    * 
-   * Method returning the total number of Infractions resulting in penalty kicks
+   * Method returning the total number of Infractions resulting in penalty kicks.
    * 
    * @return total number of Infractions resulting in penalty kicks
    * 
@@ -419,7 +419,7 @@ public class Player
 
   /**
    * 
-   * Method returning the total number of Infractions resulting in red cards
+   * Method returning the total number of Infractions resulting in red cards.
    * 
    * @return total number of Infractions resulting in red cards
    * 
@@ -433,7 +433,7 @@ public class Player
 
   /**
    * 
-   * Method returning the total number of Infractions resulting in yellow cards
+   * Method returning the total number of Infractions resulting in yellow cards.
    * 
    * @return total number of Infractions resulting in yellow cards
    * 
@@ -447,7 +447,7 @@ public class Player
 
   /**
    * 
-   * Method returning the total number of Infractions resulting in a specified color of card 
+   * Method returning the total number of Infractions resulting in a specified color of card .
    * 
    * @param color color of the card to count infractions for
    * 
