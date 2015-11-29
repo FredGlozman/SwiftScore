@@ -24,7 +24,7 @@ import java.util.*;
  * @see League
  */
 // line 21 "../../../../../ScoreKeeper.ump"
-// line 614 "../../../../../ScoreKeeper.ump"
+// line 615 "../../../../../ScoreKeeper.ump"
 public class Player
 {
 
