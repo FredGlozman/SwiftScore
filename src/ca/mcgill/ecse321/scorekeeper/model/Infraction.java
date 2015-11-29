@@ -12,9 +12,9 @@ package ca.mcgill.ecse321.scorekeeper.model;
  * @param penaltyShot  indicates whether the infraction resulted in a penalty shot
  * @param time         time of the infraction in milliseconds since the start of the game
  */
-// line 332 "../../../../../ScoreKeeper.ump"
-// line 388 "../../../../../ScoreKeeper.ump"
-// line 401 "../../../../../ScoreKeeper.ump"
+// line 589 "../../../../../ScoreKeeper.ump"
+// line 645 "../../../../../ScoreKeeper.ump"
+// line 658 "../../../../../ScoreKeeper.ump"
 public class Infraction
 {
 

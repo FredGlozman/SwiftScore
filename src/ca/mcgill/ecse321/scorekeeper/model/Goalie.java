@@ -17,8 +17,8 @@ import java.util.*;
  * @see Infraction 
  * @see League
  */
-// line 157 "../../../../../ScoreKeeper.ump"
-// line 364 "../../../../../ScoreKeeper.ump"
+// line 241 "../../../../../ScoreKeeper.ump"
+// line 621 "../../../../../ScoreKeeper.ump"
 public class Goalie extends Player
 {
 
@@ -165,7 +165,7 @@ public class Goalie extends Player
    * 
    * @see Shot
    */
-  // line 175 "../../../../../ScoreKeeper.ump"
+  // line 259 "../../../../../ScoreKeeper.ump"
    public int getSuccessfulSaveCount(){
     int res = 0;
     for(Shot save : this.getShots())
@@ -177,5 +177,21 @@ public class Goalie extends Player
     }
     return res;
   }
+  
+  //------------------------
+  // DEVELOPER CODE - PROVIDED AS-IS
+  //------------------------
+  
+  // line 276 ../../../../../ScoreKeeper.ump
+  public static Comparator<Goalie> COMPARE_BY_SAVES = new Comparator<Goalie>() {public int compare(Goalie one, Goalie other)
+    {
+      return one.numberOfSaves() - other.numberOfSaves();
+    }};
+// line 290 ../../../../../ScoreKeeper.ump
+  public static Comparator<Goalie> COMPARE_BY_SUCCESSFUL_SAVES = new Comparator<Goalie>() {public int compare(Goalie one, Goalie other)
+    {
+      return one.getSuccessfulSaveCount() - other.getSuccessfulSaveCount();
+    }};
 
+  
 }

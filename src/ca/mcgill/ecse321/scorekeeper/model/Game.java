@@ -19,8 +19,8 @@ import java.util.*;
  * @see Team 
  * @see League
  */
-// line 298 "../../../../../ScoreKeeper.ump"
-// line 377 "../../../../../ScoreKeeper.ump"
+// line 555 "../../../../../ScoreKeeper.ump"
+// line 634 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
@@ -36,21 +36,26 @@ public class Game
   private int victor;
 
   //Game Associations
-  private List<Team> games;
+  private List<Team> competitors;
   private League league;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Game(int aStartTime, int aEndTime, String aLocation, int aVictor, League aLeague)
+  public Game(int aStartTime, int aEndTime, String aLocation, int aVictor, League aLeague, Team... allCompetitors)
   {
     startTime = aStartTime;
     endTime = aEndTime;
     location = aLocation;
     score = new ArrayList<Integer>();
     victor = aVictor;
-    games = new ArrayList<Team>();
+    competitors = new ArrayList<Team>();
+    boolean didAddCompetitors = setCompetitors(allCompetitors);
+    if (!didAddCompetitors)
+    {
+      throw new RuntimeException("Unable to create Game, must have 2 competitors");
+    }
     boolean didAddLeague = setLeague(aLeague);
     if (!didAddLeague)
     {
@@ -158,33 +163,33 @@ public class Game
     return victor;
   }
 
-  public Team getGame(int index)
+  public Team getCompetitor(int index)
   {
-    Team aGame = games.get(index);
-    return aGame;
+    Team aCompetitor = competitors.get(index);
+    return aCompetitor;
   }
 
-  public List<Team> getGames()
+  public List<Team> getCompetitors()
   {
-    List<Team> newGames = Collections.unmodifiableList(games);
-    return newGames;
+    List<Team> newCompetitors = Collections.unmodifiableList(competitors);
+    return newCompetitors;
   }
 
-  public int numberOfGames()
+  public int numberOfCompetitors()
   {
-    int number = games.size();
+    int number = competitors.size();
     return number;
   }
 
-  public boolean hasGames()
+  public boolean hasCompetitors()
   {
-    boolean has = games.size() > 0;
+    boolean has = competitors.size() > 0;
     return has;
   }
 
-  public int indexOfGame(Team aGame)
+  public int indexOfCompetitor(Team aCompetitor)
   {
-    int index = games.indexOf(aGame);
+    int index = competitors.indexOf(aCompetitor);
     return index;
   }
 
@@ -193,85 +198,121 @@ public class Game
     return league;
   }
 
-  public boolean isNumberOfGamesValid()
+  public boolean isNumberOfCompetitorsValid()
   {
-    boolean isValid = numberOfGames() >= minimumNumberOfGames() && numberOfGames() <= maximumNumberOfGames();
+    boolean isValid = numberOfCompetitors() >= minimumNumberOfCompetitors() && numberOfCompetitors() <= maximumNumberOfCompetitors();
     return isValid;
   }
 
-  public static int requiredNumberOfGames()
+  public static int requiredNumberOfCompetitors()
   {
     return 2;
   }
 
-  public static int minimumNumberOfGames()
+  public static int minimumNumberOfCompetitors()
   {
     return 2;
   }
 
-  public static int maximumNumberOfGames()
+  public static int maximumNumberOfCompetitors()
   {
     return 2;
   }
 
-  public Team addGame(String aName, League aLeague)
-  {
-    if (numberOfGames() >= maximumNumberOfGames())
-    {
-      return null;
-    }
-    else
-    {
-      return new Team(aName, this, aLeague);
-    }
-  }
-
-  public boolean addGame(Team aGame)
+  public boolean addCompetitor(Team aCompetitor)
   {
     boolean wasAdded = false;
-    if (games.contains(aGame)) { return false; }
-    if (numberOfGames() >= maximumNumberOfGames())
+    if (competitors.contains(aCompetitor)) { return false; }
+    if (numberOfCompetitors() >= maximumNumberOfCompetitors())
     {
       return wasAdded;
     }
 
-    Game existingGame = aGame.getGame();
-    boolean isNewGame = existingGame != null && !this.equals(existingGame);
-
-    if (isNewGame && existingGame.numberOfGames() <= minimumNumberOfGames())
+    competitors.add(aCompetitor);
+    if (aCompetitor.indexOfGame(this) != -1)
     {
-      return wasAdded;
-    }
-
-    if (isNewGame)
-    {
-      aGame.setGame(this);
+      wasAdded = true;
     }
     else
     {
-      games.add(aGame);
+      wasAdded = aCompetitor.addGame(this);
+      if (!wasAdded)
+      {
+        competitors.remove(aCompetitor);
+      }
     }
-    wasAdded = true;
     return wasAdded;
   }
 
-  public boolean removeGame(Team aGame)
+  public boolean removeCompetitor(Team aCompetitor)
   {
     boolean wasRemoved = false;
-    //Unable to remove aGame, as it must always have a game
-    if (this.equals(aGame.getGame()))
+    if (!competitors.contains(aCompetitor))
     {
       return wasRemoved;
     }
 
-    //game already at minimum (2)
-    if (numberOfGames() <= minimumNumberOfGames())
+    if (numberOfCompetitors() <= minimumNumberOfCompetitors())
     {
       return wasRemoved;
     }
-    games.remove(aGame);
-    wasRemoved = true;
+
+    int oldIndex = competitors.indexOf(aCompetitor);
+    competitors.remove(oldIndex);
+    if (aCompetitor.indexOfGame(this) == -1)
+    {
+      wasRemoved = true;
+    }
+    else
+    {
+      wasRemoved = aCompetitor.removeGame(this);
+      if (!wasRemoved)
+      {
+        competitors.add(oldIndex,aCompetitor);
+      }
+    }
     return wasRemoved;
+  }
+
+  public boolean setCompetitors(Team... newCompetitors)
+  {
+    boolean wasSet = false;
+    ArrayList<Team> verifiedCompetitors = new ArrayList<Team>();
+    for (Team aCompetitor : newCompetitors)
+    {
+      if (verifiedCompetitors.contains(aCompetitor))
+      {
+        continue;
+      }
+      verifiedCompetitors.add(aCompetitor);
+    }
+
+    if (verifiedCompetitors.size() != newCompetitors.length || verifiedCompetitors.size() < minimumNumberOfCompetitors() || verifiedCompetitors.size() > maximumNumberOfCompetitors())
+    {
+      return wasSet;
+    }
+
+    ArrayList<Team> oldCompetitors = new ArrayList<Team>(competitors);
+    competitors.clear();
+    for (Team aNewCompetitor : verifiedCompetitors)
+    {
+      competitors.add(aNewCompetitor);
+      if (oldCompetitors.contains(aNewCompetitor))
+      {
+        oldCompetitors.remove(aNewCompetitor);
+      }
+      else
+      {
+        aNewCompetitor.addGame(this);
+      }
+    }
+
+    for (Team anOldCompetitor : oldCompetitors)
+    {
+      anOldCompetitor.removeGame(this);
+    }
+    wasSet = true;
+    return wasSet;
   }
 
   public boolean setLeague(League aLeague)
@@ -295,10 +336,11 @@ public class Game
 
   public void delete()
   {
-    for(int i=games.size(); i > 0; i--)
+    ArrayList<Team> copyOfCompetitors = new ArrayList<Team>(competitors);
+    competitors.clear();
+    for(Team aCompetitor : copyOfCompetitors)
     {
-      Team aGame = games.get(i - 1);
-      aGame.delete();
+      aCompetitor.removeGame(this);
     }
     League placeholderLeague = league;
     this.league = null;

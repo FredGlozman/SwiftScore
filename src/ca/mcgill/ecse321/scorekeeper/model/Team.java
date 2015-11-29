@@ -17,8 +17,8 @@ import java.util.*;
  * @see League 
  * 
  */
-// line 199 "../../../../../ScoreKeeper.ump"
-// line 371 "../../../../../ScoreKeeper.ump"
+// line 311 "../../../../../ScoreKeeper.ump"
+// line 628 "../../../../../ScoreKeeper.ump"
 public class Team
 {
 
@@ -31,22 +31,18 @@ public class Team
 
   //Team Associations
   private List<Player> players;
-  private Game game;
+  private List<Game> games;
   private League league;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Team(String aName, Game aGame, League aLeague)
+  public Team(String aName, League aLeague)
   {
     name = aName;
     players = new ArrayList<Player>();
-    boolean didAddGame = setGame(aGame);
-    if (!didAddGame)
-    {
-      throw new RuntimeException("Unable to create game due to game");
-    }
+    games = new ArrayList<Game>();
     boolean didAddLeague = setLeague(aLeague);
     if (!didAddLeague)
     {
@@ -104,9 +100,34 @@ public class Team
     return index;
   }
 
-  public Game getGame()
+  public Game getGame(int index)
   {
-    return game;
+    Game aGame = games.get(index);
+    return aGame;
+  }
+
+  public List<Game> getGames()
+  {
+    List<Game> newGames = Collections.unmodifiableList(games);
+    return newGames;
+  }
+
+  public int numberOfGames()
+  {
+    int number = games.size();
+    return number;
+  }
+
+  public boolean hasGames()
+  {
+    boolean has = games.size() > 0;
+    return has;
+  }
+
+  public int indexOfGame(Game aGame)
+  {
+    int index = games.indexOf(aGame);
+    return index;
   }
 
   public League getLeague()
@@ -186,35 +207,86 @@ public class Team
     return wasAdded;
   }
 
-  public boolean setGame(Game aGame)
+  public static int minimumNumberOfGames()
   {
-    boolean wasSet = false;
-    //Must provide game to game
-    if (aGame == null)
-    {
-      return wasSet;
-    }
+    return 0;
+  }
 
-    //game already at maximum (2)
-    if (aGame.numberOfGames() >= Game.maximumNumberOfGames())
+  public boolean addGame(Game aGame)
+  {
+    boolean wasAdded = false;
+    if (games.contains(aGame)) { return false; }
+    games.add(aGame);
+    if (aGame.indexOfCompetitor(this) != -1)
     {
-      return wasSet;
+      wasAdded = true;
     }
-    
-    Game existingGame = game;
-    game = aGame;
-    if (existingGame != null && !existingGame.equals(aGame))
+    else
     {
-      boolean didRemove = existingGame.removeGame(this);
-      if (!didRemove)
+      wasAdded = aGame.addCompetitor(this);
+      if (!wasAdded)
       {
-        game = existingGame;
-        return wasSet;
+        games.remove(aGame);
       }
     }
-    game.addGame(this);
-    wasSet = true;
-    return wasSet;
+    return wasAdded;
+  }
+
+  public boolean removeGame(Game aGame)
+  {
+    boolean wasRemoved = false;
+    if (!games.contains(aGame))
+    {
+      return wasRemoved;
+    }
+
+    int oldIndex = games.indexOf(aGame);
+    games.remove(oldIndex);
+    if (aGame.indexOfCompetitor(this) == -1)
+    {
+      wasRemoved = true;
+    }
+    else
+    {
+      wasRemoved = aGame.removeCompetitor(this);
+      if (!wasRemoved)
+      {
+        games.add(oldIndex,aGame);
+      }
+    }
+    return wasRemoved;
+  }
+
+  public boolean addGameAt(Game aGame, int index)
+  {  
+    boolean wasAdded = false;
+    if(addGame(aGame))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfGames()) { index = numberOfGames() - 1; }
+      games.remove(aGame);
+      games.add(index, aGame);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveGameAt(Game aGame, int index)
+  {
+    boolean wasAdded = false;
+    if(games.contains(aGame))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfGames()) { index = numberOfGames() - 1; }
+      games.remove(aGame);
+      games.add(index, aGame);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addGameAt(aGame, index);
+    }
+    return wasAdded;
   }
 
   public boolean setLeague(League aLeague)
@@ -243,9 +315,19 @@ public class Team
       Player aPlayer = players.get(i - 1);
       aPlayer.delete();
     }
-    Game placeholderGame = game;
-    this.game = null;
-    placeholderGame.removeGame(this);
+    ArrayList<Game> copyOfGames = new ArrayList<Game>(games);
+    games.clear();
+    for(Game aGame : copyOfGames)
+    {
+      if (aGame.numberOfCompetitors() <= Game.minimumNumberOfCompetitors())
+      {
+        aGame.delete();
+      }
+      else
+      {
+        aGame.removeCompetitor(this);
+      }
+    }
     League placeholderLeague = league;
     this.league = null;
     placeholderLeague.removeTeam(this);
@@ -255,6 +337,26 @@ public class Team
   /**
    * Java Code //
    * 
+   * Method returning the total number of Shots made by Players in the Team.
+   * 
+   * @return total number of Shots
+   * 
+   * @see Shot
+   * @see Player
+   */
+  // line 330 "../../../../../ScoreKeeper.ump"
+   public int getTotalShotCount(){
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfShots();
+    }
+    return res;
+  }
+
+
+  /**
+   * 
    * Method returning the total number of successful Shots made by Players in the Team.
    * 
    * @return total number of successful shots
@@ -262,12 +364,7 @@ public class Team
    * @see Shot
    * @see Player
    */
-  // line 219 "../../../../../ScoreKeeper.ump"
-   public int getTotalShotCount(){
-    return 0;
-  }
-
-  // line 224 "../../../../../ScoreKeeper.ump"
+  // line 348 "../../../../../ScoreKeeper.ump"
    public int getSuccessfulShotCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -280,9 +377,34 @@ public class Team
 
   /**
    * 
-   * Method returning the total number of penalty shots caused by Players in the Team.
+   * Method returning the total number of Infractions made by Players in the Team.
+   * 
+   * @return total number of Infractions
+   * 
+   * @see Infraction
+   * @see Player
    */
-  // line 237 "../../../../../ScoreKeeper.ump"
+  // line 366 "../../../../../ScoreKeeper.ump"
+   public int getTotalInfractionCount(){
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfInfractions();
+    }
+    return res;
+  }
+
+
+  /**
+   * 
+   * Method returning the total number of penalty shots caused by Players in the Team.
+   * 
+   * @return total number of penalty shots caused by Players in the Team
+   * 
+   * @see Infraction
+   * @see Player
+   */
+  // line 384 "../../../../../ScoreKeeper.ump"
    public int getPenaltyShotCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -292,12 +414,17 @@ public class Team
     return res;
   }
 
-  // line 247 "../../../../../ScoreKeeper.ump"
-   public int getTotalInfractionCount(){
-    return this.getRedInfractionCount() + this.getYellowInfractionCount();
-  }
 
-  // line 252 "../../../../../ScoreKeeper.ump"
+  /**
+   * 
+   * Method returning the total number of red cards caused by Players in the Team.
+   * 
+   * @return total number of red cards caused by Players in the Team
+   * 
+   * @see Infraction
+   * @see Player
+   */
+  // line 402 "../../../../../ScoreKeeper.ump"
    public int getRedInfractionCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -307,7 +434,17 @@ public class Team
     return res;
   }
 
-  // line 262 "../../../../../ScoreKeeper.ump"
+
+  /**
+   * 
+   * Method returning the total number of yellow cards caused by Players in the Team.
+   * 
+   * @return total number of yellow cards caused by Players in the Team
+   * 
+   * @see Infraction
+   * @see Player
+   */
+  // line 421 "../../../../../ScoreKeeper.ump"
    public int getYellowInfractionCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -323,7 +460,6 @@ public class Team
 	  String outputString = "";
     return super.toString() + "["+
             "name" + ":" + getName()+ "]" + System.getProperties().getProperty("line.separator") +
-            "  " + "game = "+(getGame()!=null?Integer.toHexString(System.identityHashCode(getGame())):"null") + System.getProperties().getProperty("line.separator") +
             "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
   }  
@@ -331,11 +467,46 @@ public class Team
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 275 ../../../../../ScoreKeeper.ump
+  // line 434 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_NAME = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
   		return one.name.compareTo(other.name);
   	}};
+// line 448 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getTotalShotCount() - other.getTotalShotCount();
+    }};
+// line 462 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
+    }};
+// line 476 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_POINTS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      //TODO IMPLEMENT
+    }};
+// line 490 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getTotalInfractionCount() - other.getTotalInfractionCount();
+    }};
+// line 504 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_PENALTY_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getPenaltyShotCount() - other.getPenaltyShotCount();
+    }};
+// line 518 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_RED_CARDS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getRedInfractionCount() - other.getRedInfractionCount();
+    }};
+// line 532 ../../../../../ScoreKeeper.ump
+  public static Comparator<Team> COMPARE_BY_YELLOW_CARDS = new Comparator<Team>() {public int compare(Team one, Team other)
+  	{
+      return one.getYellowInfractionCount() - other.getYellowInfractionCount();
+    }};
 
   
 }

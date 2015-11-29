@@ -116,7 +116,7 @@ class Player
   }
 
   /**
-   * Inner class to allow League to sort players by name.
+   * Inner class to allow League to sort Players by name.
    *
    * @see League
    */
@@ -129,7 +129,7 @@ class Player
   };
   
   /**
-   * Inner class to allow League to sort players by their jersey number.
+   * Inner class to allow League to sort Players by their jersey number.
    *
    * @see League
    */
@@ -139,6 +139,90 @@ class Player
   	{
   		return one.jerseyNumber - other.jerseyNumber;
   	}
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of Shots
+   *
+   * @see League
+   * @see Shot
+   */
+   public static Comparator<Player> COMPARE_BY_SHOTS = new Comparator<Player>()
+   {
+     public int compare(Player one, Player other)
+     {
+       return one.numberOfShots() - other.numberOfShots();
+     }
+   };
+
+  /**
+   * Inner class to allow League to sort Players by their number of successful Shots.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Player> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of Infractions.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.numberOfShots() - other.numberOfShots();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of penalty kicks caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_PENALTY_SHOTS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getPenaltyShotCount() - other.getPenaltyShotCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of red cards caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_RED_CARDS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getRedInfractionCount() - other.getRedInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of yellow cards caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_YELLOW_CARDS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getYellowInfractionCount() - other.getYellowInfractionCount();
+    }
   };
 }
 
@@ -182,6 +266,34 @@ class Goalie
     }
     return res;
   }
+
+  /**
+   * Inner class to allow League to sort Goalies by their total number of saves
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Goalie> COMPARE_BY_SAVES = new Comparator<Goalie>()
+  {
+    public int compare(Goalie one, Goalie other)
+    {
+      return one.numberOfSaves() - other.numberOfSaves();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Goalies by their total number of successful Saves.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Goalie> COMPARE_BY_SUCCESSFUL_SAVES = new Comparator<Goalie>()
+  {
+    public int compare(Goalie one, Goalie other)
+    {
+      return one.getSuccessfulSaveCount() - other.getSuccessfulSaveCount();
+    }
+  };
 }
 
 /**
@@ -206,6 +318,24 @@ class Team
   // Java Code //
  
   /**
+   * Method returning the total number of Shots made by Players in the Team.
+   *
+   * @return total number of Shots
+   *
+   * @see Shot
+   * @see Player
+   */
+  public int getTotalShotCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfShots();
+    }
+    return res;
+  }
+
+  /**
    * Method returning the total number of successful Shots made by Players in the Team.
    *
    * @return total number of successful shots
@@ -213,12 +343,6 @@ class Team
    * @see Shot
    * @see Player
    */
-
-  public int getTotalShotCount()
-  {
-    return 0;
-  }
-
   public int getSuccessfulShotCount()
   {
     int res = 0;
@@ -228,9 +352,32 @@ class Team
     }
     return res;
   }
+  
+  /**
+   * Method returning the total number of Infractions made by Players in the Team.
+   * 
+   * @return total number of Infractions
+   *
+   * @see Infraction
+   * @see Player
+   */
+  public int getTotalInfractionCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfInfractions();
+    }
+    return res;
+  }
 
   /**
    * Method returning the total number of penalty shots caused by Players in the Team.
+   *
+   * @return total number of penalty shots caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
    */
   public int getPenaltyShotCount()
   {
@@ -241,12 +388,15 @@ class Team
     }
     return res;
   }
-
-  public int getTotalInfractionCount()
-  {
-    return this.getRedInfractionCount() + this.getYellowInfractionCount();
-  }
-
+  
+  /**
+   * Method returning the total number of red cards caused by Players in the Team.
+   *
+   * @return total number of red cards caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
+   */
   public int getRedInfractionCount()
   {
     int res = 0;
@@ -256,7 +406,16 @@ class Team
     }
     return res;
   }
+  
 
+  /**
+   * Method returning the total number of yellow cards caused by Players in the Team.
+   *
+   * @return total number of yellow cards caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
+   */
   public int getYellowInfractionCount()
   {
     int res = 0;
@@ -279,6 +438,104 @@ class Team
   		return one.name.compareTo(other.name);
   	}
   };
+  
+  /**
+   * Inner class allowing League to sort Teams by Shots taken.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Team> COMPARE_BY_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getTotalShotCount() - other.getTotalShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by successful Shots.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Team> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by points.
+   *
+   * @see League
+   * @see Game 
+   */
+  public static Comparator<Team> COMPARE_BY_POINTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      //TODO IMPLEMENT
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of Infractions.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getTotalInfractionCount() - other.getTotalInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of penalty shots.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_PENALTY_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getPenaltyShotCount() - other.getPenaltyShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of red cards.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_RED_CARDS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getRedInfractionCount() - other.getRedInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of yellow cards.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_YELLOW_CARDS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getYellowInfractionCount() - other.getYellowInfractionCount();
+    }
+  };
 }
 
 /**
@@ -297,7 +554,7 @@ class Team
  */
 class Game
 {
-  1 -- 2 Team games;
+  * -- 2 Team competitors;
   int startTime;
   int endTime;
   String location;

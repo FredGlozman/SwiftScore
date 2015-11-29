@@ -14,9 +14,9 @@ import java.util.*;
  * @see Game
  * @see Player
  */
-// line 348 "../../../../../ScoreKeeper.ump"
-// line 393 "../../../../../ScoreKeeper.ump"
-// line 406 "../../../../../ScoreKeeper.ump"
+// line 605 "../../../../../ScoreKeeper.ump"
+// line 650 "../../../../../ScoreKeeper.ump"
+// line 663 "../../../../../ScoreKeeper.ump"
 public class League
 {
 
@@ -154,9 +154,9 @@ public class League
     return 0;
   }
 
-  public Team addTeam(String aName, Game aGame)
+  public Team addTeam(String aName)
   {
-    return new Team(aName, aGame, this);
+    return new Team(aName, this);
   }
 
   public boolean addTeam(Team aTeam)
@@ -226,9 +226,9 @@ public class League
     return 0;
   }
 
-  public Game addGame(int aStartTime, int aEndTime, String aLocation, int aVictor)
+  public Game addGame(int aStartTime, int aEndTime, String aLocation, int aVictor, Team... allCompetitors)
   {
-    return new Game(aStartTime, aEndTime, aLocation, aVictor, this);
+    return new Game(aStartTime, aEndTime, aLocation, aVictor, this, allCompetitors);
   }
 
   public boolean addGame(Game aGame)
