@@ -1,52 +1,634 @@
 namespace ca.mcgill.ecse321.scorekeeper.model;
 
+/**
+ * Domain object that stores data relating to players.
+ * Each Player has multiple Shots an Infractions.
+ * Each Player also belongs to a Team and a League.
+ * This object is also able to calculate statistics
+ * about the players in the team (e.g. their total
+ * number of successful goals). Note that a Goalie
+ * is also a kind of Player.
+ *
+ * @param name          the name of the Player
+ * @param jerseyNumber  the Player's jersey number
+ *
+ * @see Team
+ * @see Shot
+ * @see Infraction
+ * @see Goalie
+ * @see League
+ */
 class Player
 {
+  // Umple Code//
+
   1 -- * Shot shots;
   1 -- * Infraction infractions;
   String name;
   int jerseyNumber;
+
+  // Java Code //
+
+  /**
+   * Method returning the total number of successful Shots.
+   *
+   * @return total number of successful Shots
+   *
+   * @see Shot
+   */
+  public int getSuccessfulShotCount()
+  {
+    int res = 0;
+    for(Shot shot : this.getShots())
+    {
+      if(shot.getGoal())
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of Infractions resulting in penalty kicks.
+   *
+   * @return total number of Infractions resulting in penalty kicks
+   *
+   * @see Infraction
+   */
+  public int getPenaltyShotCount()
+  {
+    int res = 0;
+    for(Infraction inf : this.getInfractions())
+    {
+      if(inf.getPenaltyShot())
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+  
+  /**
+   * Method returning the total number of Infractions resulting in red cards.
+   *
+   * @return total number of Infractions resulting in red cards
+   *
+   * @see Infraction
+   */
+  public int getRedInfractionCount()
+  {
+    return this.getColorInfractionCount(Color.RED);
+  }
+
+  /**
+   * Method returning the total number of Infractions resulting in yellow cards.
+   *
+   * @return total number of Infractions resulting in yellow cards
+   *
+   * @see Infraction
+   */
+  public int getYellowInfractionCount()
+  {
+    return this.getColorInfractionCount(Color.YELLOW);
+  }
+
+  /**
+   * Method returning the total number of Infractions resulting in a specified color of card .
+   *
+   * @param color color of the card to count infractions for
+   *
+   * @return total number of Infractions resulting in a specified color of card
+   *
+   * @see Infraction
+   */
+  private int getColorInfractionCount(Color color)
+  {
+    int res = 0;
+    for(Infraction inf : this.getInfractions())
+    {
+      if(inf.getColor() == color)
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Inner class to allow League to sort Players by name.
+   *
+   * @see League
+   */
+  public static Comparator<Player> COMPARE_BY_NAME = new Comparator<Player>()
+  {
+  	public int compare(Player one, Player other)
+  	{
+  		return one.name.compareTo(other.name);
+  	}
+  };
+  
+  /**
+   * Inner class to allow League to sort Players by their jersey number.
+   *
+   * @see League
+   */
+  public static Comparator<Player> COMPARE_BY_JERSEY = new Comparator<Player>()
+  {
+  	public int compare(Player one, Player other)
+  	{
+  		return one.jerseyNumber - other.jerseyNumber;
+  	}
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of Shots
+   *
+   * @see League
+   * @see Shot
+   */
+   public static Comparator<Player> COMPARE_BY_SHOTS = new Comparator<Player>()
+   {
+     public int compare(Player one, Player other)
+     {
+       return one.numberOfShots() - other.numberOfShots();
+     }
+   };
+
+  /**
+   * Inner class to allow League to sort Players by their number of successful Shots.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Player> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of Infractions.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.numberOfShots() - other.numberOfShots();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of penalty kicks caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_PENALTY_SHOTS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getPenaltyShotCount() - other.getPenaltyShotCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of red cards caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_RED_CARDS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getRedInfractionCount() - other.getRedInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Players by their total number of yellow cards caused.
+   *
+   * @see League
+   * @see Infraction
+   */
+  public static Comparator<Player> COMPARE_BY_YELLOW_CARDS = new Comparator<Player>()
+  {
+    public int compare(Player one, Player other)
+    {
+      return one.getYellowInfractionCount() - other.getYellowInfractionCount();
+    }
+  };
 }
 
+/**
+ * Domain object that stores data relating to Goalies (extends Player).
+ * Players shoot on goal but goalies can also save goals (in addition to
+ * doing everything else a Player can do). This is reflected in the
+ * inheritance structure.
+ *
+ * @see Player
+ * @see Team
+ * @see Shot
+ * @see Infraction 
+ * @see League
+ */
 class Goalie
 {
+  // Umple Code //
+
   isA Player;
   1 -- * Shot saves;
+
+  // Java Code //
+
+  /**
+   * Method returning the total number of successful Saves.
+   *
+   * @return total number of successful Saves
+   *
+   * @see Shot
+   */
+  public int getSuccessfulSaveCount()
+  {
+    int res = 0;
+    for(Shot save : this.getShots())
+    {
+      if(!save.getGoal())
+      {
+        res++;
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Inner class to allow League to sort Goalies by their total number of saves
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Goalie> COMPARE_BY_SAVES = new Comparator<Goalie>()
+  {
+    public int compare(Goalie one, Goalie other)
+    {
+      return one.numberOfSaves() - other.numberOfSaves();
+    }
+  };
+
+  /**
+   * Inner class to allow League to sort Goalies by their total number of successful Saves.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Goalie> COMPARE_BY_SUCCESSFUL_SAVES = new Comparator<Goalie>()
+  {
+    public int compare(Goalie one, Goalie other)
+    {
+      return one.getSuccessfulSaveCount() - other.getSuccessfulSaveCount();
+    }
+  };
 }
 
+/**
+ * Domain object that stores data relating to Teams.
+ * Teams contain Players, and two Teams play a Game.
+ * Teams also belong to a League
+ *
+ * @param name  the name of the Team
+ *
+ * @see Players
+ * @see Game
+ * @see League 
+ *
+ */
 class Team
 {
+  // Umple Code//
+
   1 -- * Player players;
   String name;
-  int points;
-  int wins;
-  int losses;
-  int ties;
+
+  // Java Code //
+ 
+  /**
+   * Method returning the total number of Shots made by Players in the Team.
+   *
+   * @return total number of Shots
+   *
+   * @see Shot
+   * @see Player
+   */
+  public int getTotalShotCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfShots();
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of successful Shots made by Players in the Team.
+   *
+   * @return total number of successful shots
+   *
+   * @see Shot
+   * @see Player
+   */
+  public int getSuccessfulShotCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.getSuccessfulShotCount();
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of points earned by the Team
+   *
+   * @return total number of points earned by the Team
+   *
+   * @see Game
+   */
+  public int getPoints()
+  {
+    int res = 0;
+    for(Game game : this.getGames())
+    {
+      int winIndex = game.indexOfCompetitor(this);
+      if(game.getVictor() == winIndex)
+      {
+        res += 3;
+      }
+      else if(game.getVictor() == -1)
+      {
+        res += 1;
+      }
+      else
+      {
+      }
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of Infractions made by Players in the Team.
+   * 
+   * @return total number of Infractions
+   *
+   * @see Infraction
+   * @see Player
+   */
+  public int getTotalInfractionCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.numberOfInfractions();
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of penalty shots caused by Players in the Team.
+   *
+   * @return total number of penalty shots caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
+   */
+  public int getPenaltyShotCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.getPenaltyShotCount();
+    }
+    return res;
+  }
+  
+  /**
+   * Method returning the total number of red cards caused by Players in the Team.
+   *
+   * @return total number of red cards caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
+   */
+  public int getRedInfractionCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.getRedInfractionCount();
+    }
+    return res;
+  }
+
+  /**
+   * Method returning the total number of yellow cards caused by Players in the Team.
+   *
+   * @return total number of yellow cards caused by Players in the Team
+   *
+   * @see Infraction
+   * @see Player
+   */
+  public int getYellowInfractionCount()
+  {
+    int res = 0;
+    for(Player player : this.getPlayers())
+    {
+      res += player.getYellowInfractionCount();
+    }
+    return res;
+  }
+
+  /**
+   * Inner class allowing League to sort Teams by name.
+   *
+   * @see League
+   */
+  public static Comparator<Team> COMPARE_BY_NAME = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+  		return one.name.compareTo(other.name);
+  	}
+  };
+  
+  /**
+   * Inner class allowing League to sort Teams by Shots taken.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Team> COMPARE_BY_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getTotalShotCount() - other.getTotalShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by successful Shots.
+   *
+   * @see League
+   * @see Shot
+   */
+  public static Comparator<Team> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by points.
+   *
+   * @see League
+   * @see Game 
+   */
+  public static Comparator<Team> COMPARE_BY_POINTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getPoints() - other.getPoints(); 
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of Infractions.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getTotalInfractionCount() - other.getTotalInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of penalty shots.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_PENALTY_SHOTS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getPenaltyShotCount() - other.getPenaltyShotCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of red cards.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_RED_CARDS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getRedInfractionCount() - other.getRedInfractionCount();
+    }
+  };
+
+  /**
+   * Inner class allowing League to sort Teams by total number of yellow cards.
+   *
+   * @see League
+   * @see Infraction 
+   */
+  public static Comparator<Team> COMPARE_BY_YELLOW_CARDS = new Comparator<Team>()
+  {
+  	public int compare(Team one, Team other)
+  	{
+      return one.getYellowInfractionCount() - other.getYellowInfractionCount();
+    }
+  };
 }
 
+/**
+ * Domain object that stores data relating a Game.
+ * Two teams play a Game. Each Game takes place in a League.
+ *
+ * @param statTime  start time of the game in seconds since the Unix epoch 
+ * @param endTime   start time of the game in seconds since the Unix epoch
+ * @param location  location of the game
+ * @param score     two dimensional array containing the game's score 
+ *                  (uses indices from the Game's Team array)
+ * @param victor    array index of the game's victor. -1 if there is a tie
+ *
+ * @see Team 
+ * @see League
+ */
 class Game
 {
-  1 -- 2 Team games;
+  * -- 2 Team competitors;
   int startTime;
   int endTime;
   String location;
   Integer[] score;
-  Team victor;
+  int victor;
 }
 
+/**
+ * Domain object that stores data relating to a Shot.
+ * Shots are taken by Players and saved by Goalies.
+ *
+ * @param goal  indicates whether the goal was successful
+ * @param time  time of the goal in milliseconds since the start of the Game
+ *
+ * @see Player
+ * @see Goalie
+ */
 class Shot
 {
   boolean goal;
   int time;
 }
 
+/**
+ * Domain object that stores data relating to an Infraction.
+ * Infractions are commited by Players.
+ *
+ * @param color        indicates whether the infraction resulted in a red or yellow card
+ * @param penaltyShot  indicates whether the infraction resulted in a penalty shot
+ * @param time         time of the infraction in milliseconds since the start of the game
+ */
 class Infraction
 {
-  String type;
+  Color color;
   boolean penaltyShot;
   int time;
 }
 
+/**
+ * Domain object that stores data relating to the League.
+ * Teams, Games, and Players are all tracked by the Leage.
+ * Their statistics are amalgamated by the League.
+ *
+ * @see Team
+ * @see Game
+ * @see Player
+ */
 class League
 {
   singleton;
@@ -85,6 +667,19 @@ class Game
 class Shot
 {
   position 513 505 112 72;
+}
+
+class Infraction
+{
+  position 753 322 144 72;
+}
+
+class League
+{
+  position 427 22 236 184;
+  position.association League__Team:teams 0,10 122,0;
+  position.association Game:games__League 0,10 118,0;
+  position.association League__Player:players 35,184 161,0;
 }
 
 class Infraction
