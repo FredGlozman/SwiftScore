@@ -352,7 +352,35 @@ class Team
     }
     return res;
   }
-  
+
+  /**
+   * Method returning the total number of points earned by the Team
+   *
+   * @return total number of points earned by the Team
+   *
+   * @see Game
+   */
+  public int getPoints()
+  {
+    int res = 0;
+    for(Game game : this.getGames())
+    {
+      int winIndex = game.indexOfCompetitor(this);
+      if(game.getVictor() == winIndex)
+      {
+        res += 3;
+      }
+      else if(game.getVictor() == -1)
+      {
+        res += 1;
+      }
+      else
+      {
+      }
+    }
+    return res;
+  }
+
   /**
    * Method returning the total number of Infractions made by Players in the Team.
    * 
@@ -406,7 +434,6 @@ class Team
     }
     return res;
   }
-  
 
   /**
    * Method returning the total number of yellow cards caused by Players in the Team.
@@ -477,8 +504,7 @@ class Team
   {
   	public int compare(Team one, Team other)
   	{
-      //TODO IMPLEMENT
-      return 0;
+      return one.getPoints() - other.getPoints(); 
     }
   };
 
@@ -548,7 +574,7 @@ class Team
  * @param location  location of the game
  * @param score     two dimensional array containing the game's score 
  *                  (uses indices from the Game's Team array)
- * @param victor    array index of the game's victor
+ * @param victor    array index of the game's victor. -1 if there is a tie
  *
  * @see Team 
  * @see League

@@ -14,13 +14,13 @@ import java.util.*;
  * @param location  location of the game
  * @param score     two dimensional array containing the game's score 
  * (uses indices from the Game's Team array)
- * @param victor    array index of the game's victor
+ * @param victor    array index of the game's victor. -1 if there is a tie
  * 
  * @see Team 
  * @see League
  */
-// line 556 "../../../../../ScoreKeeper.ump"
-// line 635 "../../../../../ScoreKeeper.ump"
+// line 582 "../../../../../ScoreKeeper.ump"
+// line 661 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
