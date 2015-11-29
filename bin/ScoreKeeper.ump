@@ -1,7 +1,9 @@
+namespace ca.mcgill.ecse321.scorekeeper.model;
+
 class Player
 {
-  1 -> * Shot shots;
-  1 -> * Infraction infractions;
+  1 -- * Shot shots;
+  1 -- * Infraction infractions;
   String name;
   int jerseyNumber;
 }
@@ -9,12 +11,12 @@ class Player
 class Goalie
 {
   isA Player;
-  1 -> * Shot saves;
+  1 -- * Shot saves;
 }
 
 class Team
 {
-  1 -> * Player players;
+  1 -- * Player players;
   String name;
   int points;
   int wins;
@@ -24,7 +26,7 @@ class Team
 
 class Game
 {
-  1 -> 2 Team games;
+  1 -- 2 Team games;
   int startTime;
   int endTime;
   String location;
@@ -34,23 +36,23 @@ class Game
 
 class Shot
 {
-  boolean isGoal;
-  int shotTime;
+  boolean goal;
+  int time;
 }
 
 class Infraction
 {
-  String infractionType;
+  String type;
   boolean penaltyShot;
-  int infractionTime;
+  int time;
 }
 
 class League
 {
   singleton;
-  1 -> * Team teams;
-  1 -> * Game games;
-  1 -> * Player players;
+  1 -- * Team teams;
+  1 -- * Game games;
+  1 -- * Player players;
 }
 //$?[End_of_model]$?
 
