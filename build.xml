@@ -9,8 +9,13 @@
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}dropins/jdt/plugins/org.junit_4.12.0.jar"/>
+        <pathelement location="${ECLIPSE_HOME}dropins/jdt/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
     <path id="team1.classpath">
         <pathelement location="bin"/>
+        <path refid="JUnit 4.libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
@@ -47,6 +52,6 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-    <target depends="build" description="dummy test target" name="test">
+    <target name="test" depends="build">
     </target>
 </project>
