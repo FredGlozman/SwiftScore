@@ -40,8 +40,7 @@ public class TCPServer extends HttpServlet{
 			
 			Socket connectionSocket = sSocket.accept();
 			DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
-			
-			outToClient.writeBytes(getWebpage(new HttpServletRequest, new HttpServletResponse));
+			outToClient.writeBytes(getWebpage());
 			
 			
 			
@@ -82,15 +81,15 @@ public class TCPServer extends HttpServlet{
 //        	}
         }
         
-		if(request.getParameter("LSK") == "1" || request.getParameter("BI") == "2" || request.getParameter("LC") == "3")
+		if(request.getParameter("LSK") == 1 || request.getParameter("BI") == 2 || request.getParameter("LC") == 3)
 		{
 			getAuthentication();
 		}
-		else if (request.getParameter("PA") == "4")
+		else if (request.getParameter("PA") == 4)
 		{
 			
 		}
-		else if (request.getParameter("LA") == "5")
+		else if (request.getParameter("LA") == 5)
         
         bufferedReader.close();         
 		return site;
