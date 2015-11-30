@@ -29,8 +29,30 @@ public class Server extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.sendRedirect("Website.html");
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-//		PrintWriter out = response.getWriter();
-
+		PrintWriter out = response.getWriter();
+		
+		out.println("<html>");
+		out.println("<head>");
+		out.println("<title>SwiftScore</title>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
+		out.println("<head>");
 	}
 
 	/**
