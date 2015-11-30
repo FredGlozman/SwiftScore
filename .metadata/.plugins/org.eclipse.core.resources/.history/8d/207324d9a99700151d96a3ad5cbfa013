@@ -4,7 +4,7 @@
 </head>
 <body>
 
-<form method="post" action="/TCPServer">
+
   <input type="radio" name = "LSK" value=1>Live Score Keeping
   <br>
   <input type="radio" name = "BI" value=2>Batch Input
@@ -15,8 +15,8 @@
   <br>
   <input type="radio" name = "LA" value=5>League Analysis
   <br><br>
-  <input type= "submit" value= "Go">
-</form>
+  <input type= "submit" value= "Go" onclick="TCPServer.java">
+
 	
 </body>
 </html>

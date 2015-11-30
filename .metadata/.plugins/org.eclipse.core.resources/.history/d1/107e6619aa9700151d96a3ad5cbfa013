@@ -8,8 +8,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.*;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.omg.CORBA.ServerRequest;
 
@@ -53,7 +55,7 @@ public class TCPServer extends HttpServlet{
 		}
 	}
 	
-	public String getWebpage( HttpServletRequest request, HttpServletResponse response) throws IOException{
+	public String getWebpage() throws IOException{ HttpServletRequest request, HttpServ;etResponse response
 		String fileName ="Website.html";
 		String site = "";
 		String line;
