@@ -1,0 +1,124 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.io.*;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import org.omg.CORBA.ServerRequest;
+
+import com.sun.net.httpserver.HttpServer;
+
+import jdk.nashorn.internal.ir.RuntimeNode.Request;
+
+/**
+ * Code obtained from: https://systembash.com/a-simple-java-tcp-server-and-tcp-client/
+ * @author shabbir
+ *
+ */
+public class TCPServer extends HttpServlet{
+	
+	int sPort;
+	public TCPServer(int port){
+		sPort = port;
+	}
+	
+	public void serve() throws IOException{
+		ServerSocket sSocket = new ServerSocket(sPort);
+		int count = 0;
+		double avg = 0;
+		
+		System.out.println("ServerStarted!\n\n");
+		
+		while(true){
+			
+			Socket connectionSocket = sSocket.accept();
+			DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+			HttpServletRequest request = new HttpServletRequest;
+			
+			outToClient.writeBytes(getWebpage(request, new HttpServletResponse));
+			
+			
+			
+//			PrintWriter out = new PrintWriter(connectionSocket.getOutputStream());
+//			out.flush();
+//			out.close();
+//			
+			connectionSocket.close();
+			sSocket.close();
+		}
+	}
+	
+	public String getWebpage( HttpServletRequest request, HttpServletResponse response) throws IOException{
+		String fileName ="Website.html";
+		String site = "";
+		String line;
+		
+
+		
+		
+		FileReader fileReader = 
+            new FileReader(fileName);
+
+        //Always wrap FileReader in BufferedReader.
+        BufferedReader bufferedReader = 
+            new BufferedReader(fileReader);
+
+        while((line = bufferedReader.readLine()) != null) { 
+            site += line;
+//        	if (line == "1" || line == "2" || line == "3") 
+//        	{
+//        		try {
+//        			getAuthentication();
+//        		} catch (IOException e) {
+//        			// TODO Auto-generated catch block
+//        			e.printStackTrace();
+//        		}
+//        	}
+        }
+        
+		if(request.getParameter("LSK") == "1" || request.getParameter("BI") == "2" || request.getParameter("LC") == "3")
+		{
+			getAuthentication();
+		}
+		else if (request.getParameter("PA") == "4")
+		{
+			
+		}
+		else if (request.getParameter("LA") == "5")
+        
+        bufferedReader.close();         
+		return site;
+		
+	}
+
+	public String getAuthentication() throws IOException{
+		String fileName ="Authentication.html";
+		String site = "";
+		String line;
+		
+		FileReader fileReader = 
+            new FileReader(fileName);
+
+        //Always wrap FileReader in BufferedReader.
+        BufferedReader bufferedReader = 
+            new BufferedReader(fileReader);
+
+        while((line = bufferedReader.readLine()) != null) {
+            site += line;
+        }
+        
+        bufferedReader.close();         
+		return site;
+	}
+
+	public static void main(String args[]) throws IOException{
+		new TCPServer(8520).serve();
+	}
+}

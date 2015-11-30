@@ -40,8 +40,9 @@ public class TCPServer extends HttpServlet{
 			
 			Socket connectionSocket = sSocket.accept();
 			DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+			//HttpServletRequest request = new HttpServletRequest;
 			
-			outToClient.writeBytes(getWebpage(new HttpServletRequest, new HttpServletResponse));
+			//outToClient.writeBytes(getWebpage(request, new HttpServletResponse));
 			
 			
 			
