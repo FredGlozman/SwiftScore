@@ -2,7 +2,6 @@ INDEX VERSION 1.3+/Users/danielebercovici/Documents/team1ECSE321/.metadata/.plug
 212945805.index
 3594171496.index
 973683578.index
-973683578.index
 580259190.index
 3159038742.index
 3086157897.index
