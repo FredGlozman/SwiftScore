@@ -12,9 +12,9 @@ package ca.mcgill.ecse321.scorekeeper.model;
  * @param penaltyShot  indicates whether the infraction resulted in a penalty shot
  * @param time         time of the infraction in milliseconds since the start of the game
  */
-// line 590 "../../../../../ScoreKeeper.ump"
-// line 646 "../../../../../ScoreKeeper.ump"
-// line 659 "../../../../../ScoreKeeper.ump"
+// line 661 "../../../../../ScoreKeeper.ump"
+// line 717 "../../../../../ScoreKeeper.ump"
+// line 730 "../../../../../ScoreKeeper.ump"
 public class Infraction
 {
 
@@ -29,12 +29,13 @@ public class Infraction
 
   //Infraction Associations
   private Player player;
+  private Game game;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Infraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer)
+  public Infraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer, Game aGame)
   {
     color = aColor;
     penaltyShot = aPenaltyShot;
@@ -43,6 +44,11 @@ public class Infraction
     if (!didAddPlayer)
     {
       throw new RuntimeException("Unable to create infraction due to player");
+    }
+    boolean didAddGame = setGame(aGame);
+    if (!didAddGame)
+    {
+      throw new RuntimeException("Unable to create infraction due to game");
     }
   }
 
@@ -94,6 +100,11 @@ public class Infraction
     return player;
   }
 
+  public Game getGame()
+  {
+    return game;
+  }
+
   public boolean setPlayer(Player aPlayer)
   {
     boolean wasSet = false;
@@ -113,11 +124,33 @@ public class Infraction
     return wasSet;
   }
 
+  public boolean setGame(Game aGame)
+  {
+    boolean wasSet = false;
+    if (aGame == null)
+    {
+      return wasSet;
+    }
+
+    Game existingGame = game;
+    game = aGame;
+    if (existingGame != null && !existingGame.equals(aGame))
+    {
+      existingGame.removeInfraction(this);
+    }
+    game.addInfraction(this);
+    wasSet = true;
+    return wasSet;
+  }
+
   public void delete()
   {
     Player placeholderPlayer = player;
     this.player = null;
     placeholderPlayer.removeInfraction(this);
+    Game placeholderGame = game;
+    this.game = null;
+    placeholderGame.removeInfraction(this);
   }
 
 
@@ -128,7 +161,8 @@ public class Infraction
             "penaltyShot" + ":" + getPenaltyShot()+ "," +
             "time" + ":" + getTime()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "color" + "=" + (getColor() != null ? !getColor().equals(this)  ? getColor().toString().replaceAll("  ","    ") : "this" : "null") + System.getProperties().getProperty("line.separator") +
-            "  " + "player = "+(getPlayer()!=null?Integer.toHexString(System.identityHashCode(getPlayer())):"null")
+            "  " + "player = "+(getPlayer()!=null?Integer.toHexString(System.identityHashCode(getPlayer())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "game = "+(getGame()!=null?Integer.toHexString(System.identityHashCode(getGame())):"null")
      + outputString;
   }
 }

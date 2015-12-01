@@ -18,7 +18,7 @@ import java.util.*;
  * 
  */
 // line 311 "../../../../../ScoreKeeper.ump"
-// line 629 "../../../../../ScoreKeeper.ump"
+// line 700 "../../../../../ScoreKeeper.ump"
 public class Team
 {
 
@@ -377,6 +377,35 @@ public class Team
 
   /**
    * 
+   * Method returning the total number of points earned by the Team
+   * 
+   * @return total number of points earned by the Team
+   * 
+   * @see Game
+   */
+  // line 365 "../../../../../ScoreKeeper.ump"
+   public int getPoints(){
+    int res = 0;
+    for(Game game : this.getGames())
+    {
+      if(game.getVictor() == null)
+      {
+        res += 1;
+      }
+      else if(game.getVictor() == this)
+      {
+        res += 3;
+      }
+      else
+      {
+      }
+    }
+    return res;
+  }
+
+
+  /**
+   * 
    * Method returning the total number of Infractions made by Players in the Team.
    * 
    * @return total number of Infractions
@@ -384,7 +413,7 @@ public class Team
    * @see Infraction
    * @see Player
    */
-  // line 366 "../../../../../ScoreKeeper.ump"
+  // line 393 "../../../../../ScoreKeeper.ump"
    public int getTotalInfractionCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -404,7 +433,7 @@ public class Team
    * @see Infraction
    * @see Player
    */
-  // line 384 "../../../../../ScoreKeeper.ump"
+  // line 411 "../../../../../ScoreKeeper.ump"
    public int getPenaltyShotCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -424,7 +453,7 @@ public class Team
    * @see Infraction
    * @see Player
    */
-  // line 402 "../../../../../ScoreKeeper.ump"
+  // line 429 "../../../../../ScoreKeeper.ump"
    public int getRedInfractionCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -444,7 +473,7 @@ public class Team
    * @see Infraction
    * @see Player
    */
-  // line 421 "../../../../../ScoreKeeper.ump"
+  // line 447 "../../../../../ScoreKeeper.ump"
    public int getYellowInfractionCount(){
     int res = 0;
     for(Player player : this.getPlayers())
@@ -467,43 +496,42 @@ public class Team
   // DEVELOPER CODE - PROVIDED AS-IS
   //------------------------
   
-  // line 434 ../../../../../ScoreKeeper.ump
+  // line 460 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_NAME = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
   		return one.name.compareTo(other.name);
   	}};
-// line 448 ../../../../../ScoreKeeper.ump
+// line 474 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getTotalShotCount() - other.getTotalShotCount();
     }};
-// line 462 ../../../../../ScoreKeeper.ump
+// line 488 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_SUCCESSFUL_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getSuccessfulShotCount() - other.getSuccessfulShotCount();
     }};
-// line 476 ../../../../../ScoreKeeper.ump
+// line 502 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_POINTS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
-      //TODO IMPLEMENT
-      return 0;
+      return one.getPoints() - other.getPoints(); 
     }};
-// line 491 ../../../../../ScoreKeeper.ump
+// line 516 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getTotalInfractionCount() - other.getTotalInfractionCount();
     }};
-// line 505 ../../../../../ScoreKeeper.ump
+// line 530 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_PENALTY_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getPenaltyShotCount() - other.getPenaltyShotCount();
     }};
-// line 519 ../../../../../ScoreKeeper.ump
+// line 544 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_RED_CARDS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getRedInfractionCount() - other.getRedInfractionCount();
     }};
-// line 533 ../../../../../ScoreKeeper.ump
+// line 558 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_YELLOW_CARDS = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
       return one.getYellowInfractionCount() - other.getYellowInfractionCount();

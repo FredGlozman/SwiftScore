@@ -18,7 +18,7 @@ import java.util.*;
  * @see League
  */
 // line 241 "../../../../../ScoreKeeper.ump"
-// line 622 "../../../../../ScoreKeeper.ump"
+// line 693 "../../../../../ScoreKeeper.ump"
 public class Goalie extends Player
 {
 
@@ -78,9 +78,9 @@ public class Goalie extends Player
     return 0;
   }
 
-  public Shot addSave(boolean aGoal, int aTime, Player aPlayer)
+  public Shot addSave(boolean aGoal, int aTime, Player aPlayer, Game aGame)
   {
-    return new Shot(aGoal, aTime, aPlayer, this);
+    return new Shot(aGoal, aTime, aPlayer, this, aGame);
   }
 
   public boolean addSave(Shot aSave)

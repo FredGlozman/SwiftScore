@@ -24,7 +24,7 @@ import java.util.*;
  * @see League
  */
 // line 21 "../../../../../ScoreKeeper.ump"
-// line 615 "../../../../../ScoreKeeper.ump"
+// line 686 "../../../../../ScoreKeeper.ump"
 public class Player
 {
 
@@ -172,9 +172,9 @@ public class Player
     return 0;
   }
 
-  public Shot addShot(boolean aGoal, int aTime, Goalie aGoalie)
+  public Shot addShot(boolean aGoal, int aTime, Goalie aGoalie, Game aGame)
   {
-    return new Shot(aGoal, aTime, this, aGoalie);
+    return new Shot(aGoal, aTime, this, aGoalie, aGame);
   }
 
   public boolean addShot(Shot aShot)
@@ -245,9 +245,9 @@ public class Player
     return 0;
   }
 
-  public Infraction addInfraction(Color aColor, boolean aPenaltyShot, int aTime)
+  public Infraction addInfraction(Color aColor, boolean aPenaltyShot, int aTime, Game aGame)
   {
-    return new Infraction(aColor, aPenaltyShot, aTime, this);
+    return new Infraction(aColor, aPenaltyShot, aTime, this, aGame);
   }
 
   public boolean addInfraction(Infraction aInfraction)
