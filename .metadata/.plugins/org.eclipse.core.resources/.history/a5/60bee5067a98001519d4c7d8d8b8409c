@@ -8,7 +8,7 @@ Team 1: <input type="text" name="user"><br>
 Team 2: <input type="text" name="user"><br> 
 <input type= "submit" value= "Load Players"> 
 <br><br>
-<input type= "submit" value= "Back"> 
+<input type= "submit" value= "Back"> <!-- how to go to Website.html? -->
 
 </form>
 </body>
