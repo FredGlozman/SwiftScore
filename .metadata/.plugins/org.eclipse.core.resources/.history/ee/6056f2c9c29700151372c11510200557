@@ -32,7 +32,7 @@ public class Server extends HttpServlet {
 //		PrintWriter out = response.getWriter();
 		RequestDispatcher view = request.getRequestDispatcher("Website.html");
 		view.forward(request, response);
-//		homepage(request,response);
+
 	}
 
 	/**
