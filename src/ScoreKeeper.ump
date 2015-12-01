@@ -365,14 +365,13 @@ class Team
     int res = 0;
     for(Game game : this.getGames())
     {
-      int winIndex = game.indexOfCompetitor(this);
-      if(game.getVictor() == winIndex)
-      {
-        res += 3;
-      }
-      else if(game.getVictor() == -1)
+      if(game.getVictor() == null)
       {
         res += 1;
+      }
+      else if(game.getVictor() == this)
+      {
+        res += 3;
       }
       else
       {
@@ -581,12 +580,58 @@ class Team
  */
 class Game
 {
+  // Umple Code //
+  
   * -- 2 Team competitors;
+  1 -- * Shot shots;
+  1 -- * Infraction infractions;
   int startTime;
   int endTime;
   String location;
-  Integer[] score;
-  int victor;
+
+  // Java Code //
+
+  public Team getVictor()
+  {
+    int[] score = this.getScore();
+    if(score[0] == score[1])
+    {
+      return null;
+    }
+    else if(score[0] > score[1])
+    {
+      return this.getCompetitor(0);
+    }
+    else
+    {
+      return this.getCompetitor(1);
+    }
+  }
+
+  public int[] getScore()
+  {
+    int res0 = 0;
+    int res1 = 0;
+    for(Shot shot : this.getShots())
+    {
+      if(shot.getGame() == this && shot.getGoal())
+      {
+        if(this.getCompetitor(0).getPlayers().contains(shot.getPlayer()))
+        {
+          res0++;
+        }
+        else if(this.getCompetitor(1).getPlayers().contains(shot.getPlayer()))
+        {
+          res1++;
+        }
+        else
+        {
+        }
+      }
+    }
+    int[] res = {res0, res1};
+    return res;
+  }
 }
 
 /**

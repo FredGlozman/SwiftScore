@@ -19,8 +19,8 @@ import java.util.*;
  * @see Team 
  * @see League
  */
-// line 582 "../../../../../ScoreKeeper.ump"
-// line 661 "../../../../../ScoreKeeper.ump"
+// line 581 "../../../../../ScoreKeeper.ump"
+// line 706 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
@@ -32,30 +32,30 @@ public class Game
   private int startTime;
   private int endTime;
   private String location;
-  private List<Integer> score;
-  private int victor;
 
   //Game Associations
   private List<Team> competitors;
+  private List<Shot> shots;
+  private List<Infraction> infractions;
   private League league;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Game(int aStartTime, int aEndTime, String aLocation, int aVictor, League aLeague, Team... allCompetitors)
+  public Game(int aStartTime, int aEndTime, String aLocation, League aLeague, Team... allCompetitors)
   {
     startTime = aStartTime;
     endTime = aEndTime;
     location = aLocation;
-    score = new ArrayList<Integer>();
-    victor = aVictor;
     competitors = new ArrayList<Team>();
     boolean didAddCompetitors = setCompetitors(allCompetitors);
     if (!didAddCompetitors)
     {
       throw new RuntimeException("Unable to create Game, must have 2 competitors");
     }
+    shots = new ArrayList<Shot>();
+    infractions = new ArrayList<Infraction>();
     boolean didAddLeague = setLeague(aLeague);
     if (!didAddLeague)
     {
@@ -91,28 +91,6 @@ public class Game
     return wasSet;
   }
 
-  public boolean addScore(Integer aScore)
-  {
-    boolean wasAdded = false;
-    wasAdded = score.add(aScore);
-    return wasAdded;
-  }
-
-  public boolean removeScore(Integer aScore)
-  {
-    boolean wasRemoved = false;
-    wasRemoved = score.remove(aScore);
-    return wasRemoved;
-  }
-
-  public boolean setVictor(int aVictor)
-  {
-    boolean wasSet = false;
-    victor = aVictor;
-    wasSet = true;
-    return wasSet;
-  }
-
   public int getStartTime()
   {
     return startTime;
@@ -128,47 +106,15 @@ public class Game
     return location;
   }
 
-  public Integer getScore(int index)
-  {
-    Integer aScore = score.get(index);
-    return aScore;
-  }
-
-  public Integer[] getScore()
-  {
-    Integer[] newScore = score.toArray(new Integer[score.size()]);
-    return newScore;
-  }
-
-  public int numberOfScore()
-  {
-    int number = score.size();
-    return number;
-  }
-
-  public boolean hasScore()
-  {
-    boolean has = score.size() > 0;
-    return has;
-  }
-
-  public int indexOfScore(Integer aScore)
-  {
-    int index = score.indexOf(aScore);
-    return index;
-  }
-
-  public int getVictor()
-  {
-    return victor;
-  }
-
   public Team getCompetitor(int index)
   {
     Team aCompetitor = competitors.get(index);
     return aCompetitor;
   }
 
+  /**
+   * Umple Code //
+   */
   public List<Team> getCompetitors()
   {
     List<Team> newCompetitors = Collections.unmodifiableList(competitors);
@@ -190,6 +136,66 @@ public class Game
   public int indexOfCompetitor(Team aCompetitor)
   {
     int index = competitors.indexOf(aCompetitor);
+    return index;
+  }
+
+  public Shot getShot(int index)
+  {
+    Shot aShot = shots.get(index);
+    return aShot;
+  }
+
+  public List<Shot> getShots()
+  {
+    List<Shot> newShots = Collections.unmodifiableList(shots);
+    return newShots;
+  }
+
+  public int numberOfShots()
+  {
+    int number = shots.size();
+    return number;
+  }
+
+  public boolean hasShots()
+  {
+    boolean has = shots.size() > 0;
+    return has;
+  }
+
+  public int indexOfShot(Shot aShot)
+  {
+    int index = shots.indexOf(aShot);
+    return index;
+  }
+
+  public Infraction getInfraction(int index)
+  {
+    Infraction aInfraction = infractions.get(index);
+    return aInfraction;
+  }
+
+  public List<Infraction> getInfractions()
+  {
+    List<Infraction> newInfractions = Collections.unmodifiableList(infractions);
+    return newInfractions;
+  }
+
+  public int numberOfInfractions()
+  {
+    int number = infractions.size();
+    return number;
+  }
+
+  public boolean hasInfractions()
+  {
+    boolean has = infractions.size() > 0;
+    return has;
+  }
+
+  public int indexOfInfraction(Infraction aInfraction)
+  {
+    int index = infractions.indexOf(aInfraction);
     return index;
   }
 
@@ -315,6 +321,150 @@ public class Game
     return wasSet;
   }
 
+  public static int minimumNumberOfShots()
+  {
+    return 0;
+  }
+
+  public Shot addShot(boolean aGoal, int aTime, Player aPlayer, Goalie aGoalie)
+  {
+    return new Shot(aGoal, aTime, aPlayer, aGoalie, this);
+  }
+
+  public boolean addShot(Shot aShot)
+  {
+    boolean wasAdded = false;
+    if (shots.contains(aShot)) { return false; }
+    Game existingGame = aShot.getGame();
+    boolean isNewGame = existingGame != null && !this.equals(existingGame);
+    if (isNewGame)
+    {
+      aShot.setGame(this);
+    }
+    else
+    {
+      shots.add(aShot);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeShot(Shot aShot)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aShot, as it must always have a game
+    if (!this.equals(aShot.getGame()))
+    {
+      shots.remove(aShot);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+
+  public boolean addShotAt(Shot aShot, int index)
+  {  
+    boolean wasAdded = false;
+    if(addShot(aShot))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfShots()) { index = numberOfShots() - 1; }
+      shots.remove(aShot);
+      shots.add(index, aShot);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveShotAt(Shot aShot, int index)
+  {
+    boolean wasAdded = false;
+    if(shots.contains(aShot))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfShots()) { index = numberOfShots() - 1; }
+      shots.remove(aShot);
+      shots.add(index, aShot);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addShotAt(aShot, index);
+    }
+    return wasAdded;
+  }
+
+  public static int minimumNumberOfInfractions()
+  {
+    return 0;
+  }
+
+  public Infraction addInfraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer)
+  {
+    return new Infraction(aColor, aPenaltyShot, aTime, aPlayer, this);
+  }
+
+  public boolean addInfraction(Infraction aInfraction)
+  {
+    boolean wasAdded = false;
+    if (infractions.contains(aInfraction)) { return false; }
+    Game existingGame = aInfraction.getGame();
+    boolean isNewGame = existingGame != null && !this.equals(existingGame);
+    if (isNewGame)
+    {
+      aInfraction.setGame(this);
+    }
+    else
+    {
+      infractions.add(aInfraction);
+    }
+    wasAdded = true;
+    return wasAdded;
+  }
+
+  public boolean removeInfraction(Infraction aInfraction)
+  {
+    boolean wasRemoved = false;
+    //Unable to remove aInfraction, as it must always have a game
+    if (!this.equals(aInfraction.getGame()))
+    {
+      infractions.remove(aInfraction);
+      wasRemoved = true;
+    }
+    return wasRemoved;
+  }
+
+  public boolean addInfractionAt(Infraction aInfraction, int index)
+  {  
+    boolean wasAdded = false;
+    if(addInfraction(aInfraction))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfInfractions()) { index = numberOfInfractions() - 1; }
+      infractions.remove(aInfraction);
+      infractions.add(index, aInfraction);
+      wasAdded = true;
+    }
+    return wasAdded;
+  }
+
+  public boolean addOrMoveInfractionAt(Infraction aInfraction, int index)
+  {
+    boolean wasAdded = false;
+    if(infractions.contains(aInfraction))
+    {
+      if(index < 0 ) { index = 0; }
+      if(index > numberOfInfractions()) { index = numberOfInfractions() - 1; }
+      infractions.remove(aInfraction);
+      infractions.add(index, aInfraction);
+      wasAdded = true;
+    } 
+    else 
+    {
+      wasAdded = addInfractionAt(aInfraction, index);
+    }
+    return wasAdded;
+  }
+
   public boolean setLeague(League aLeague)
   {
     boolean wasSet = false;
@@ -342,9 +492,65 @@ public class Game
     {
       aCompetitor.removeGame(this);
     }
+    for(int i=shots.size(); i > 0; i--)
+    {
+      Shot aShot = shots.get(i - 1);
+      aShot.delete();
+    }
+    for(int i=infractions.size(); i > 0; i--)
+    {
+      Infraction aInfraction = infractions.get(i - 1);
+      aInfraction.delete();
+    }
     League placeholderLeague = league;
     this.league = null;
     placeholderLeague.removeGame(this);
+  }
+
+
+  /**
+   * Java Code //
+   */
+  // line 596 "../../../../../ScoreKeeper.ump"
+   public Team getVictor(){
+    int[] score = this.getScore();
+    if(score[0] == score[1])
+    {
+      return null;
+    }
+    else if(score[0] > score[1])
+    {
+      return this.getCompetitor(0);
+    }
+    else
+    {
+      return this.getCompetitor(1);
+    }
+  }
+
+  // line 613 "../../../../../ScoreKeeper.ump"
+   public int[] getScore(){
+    int res0 = 0;
+    int res1 = 0;
+    for(Shot shot : this.getShots())
+    {
+      if(shot.getGame() == this && shot.getGoal())
+      {
+        if(this.getCompetitor(0).getPlayers().contains(shot.getPlayer()))
+        {
+          res0++;
+        }
+        else if(this.getCompetitor(1).getPlayers().contains(shot.getPlayer()))
+        {
+          res1++;
+        }
+        else
+        {
+        }
+      }
+    }
+    int[] res = {res0, res1};
+    return res;
   }
 
 
@@ -354,8 +560,7 @@ public class Game
     return super.toString() + "["+
             "startTime" + ":" + getStartTime()+ "," +
             "endTime" + ":" + getEndTime()+ "," +
-            "location" + ":" + getLocation()+ "," +
-            "victor" + ":" + getVictor()+ "]" + System.getProperties().getProperty("line.separator") +
+            "location" + ":" + getLocation()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "league = "+(getLeague()!=null?Integer.toHexString(System.identityHashCode(getLeague())):"null")
      + outputString;
   }

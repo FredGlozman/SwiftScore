@@ -14,8 +14,8 @@ package ca.mcgill.ecse321.scorekeeper.model;
  * @see Player
  * @see Goalie
  */
-// line 602 "../../../../../ScoreKeeper.ump"
-// line 667 "../../../../../ScoreKeeper.ump"
+// line 647 "../../../../../ScoreKeeper.ump"
+// line 712 "../../../../../ScoreKeeper.ump"
 public class Shot
 {
 
@@ -30,12 +30,13 @@ public class Shot
   //Shot Associations
   private Player player;
   private Goalie goalie;
+  private Game game;
 
   //------------------------
   // CONSTRUCTOR
   //------------------------
 
-  public Shot(boolean aGoal, int aTime, Player aPlayer, Goalie aGoalie)
+  public Shot(boolean aGoal, int aTime, Player aPlayer, Goalie aGoalie, Game aGame)
   {
     goal = aGoal;
     time = aTime;
@@ -48,6 +49,11 @@ public class Shot
     if (!didAddGoalie)
     {
       throw new RuntimeException("Unable to create save due to goalie");
+    }
+    boolean didAddGame = setGame(aGame);
+    if (!didAddGame)
+    {
+      throw new RuntimeException("Unable to create shot due to game");
     }
   }
 
@@ -91,6 +97,11 @@ public class Shot
     return goalie;
   }
 
+  public Game getGame()
+  {
+    return game;
+  }
+
   public boolean setPlayer(Player aPlayer)
   {
     boolean wasSet = false;
@@ -129,6 +140,25 @@ public class Shot
     return wasSet;
   }
 
+  public boolean setGame(Game aGame)
+  {
+    boolean wasSet = false;
+    if (aGame == null)
+    {
+      return wasSet;
+    }
+
+    Game existingGame = game;
+    game = aGame;
+    if (existingGame != null && !existingGame.equals(aGame))
+    {
+      existingGame.removeShot(this);
+    }
+    game.addShot(this);
+    wasSet = true;
+    return wasSet;
+  }
+
   public void delete()
   {
     Player placeholderPlayer = player;
@@ -137,6 +167,9 @@ public class Shot
     Goalie placeholderGoalie = goalie;
     this.goalie = null;
     placeholderGoalie.removeSave(this);
+    Game placeholderGame = game;
+    this.game = null;
+    placeholderGame.removeShot(this);
   }
 
 
@@ -147,7 +180,8 @@ public class Shot
             "goal" + ":" + getGoal()+ "," +
             "time" + ":" + getTime()+ "]" + System.getProperties().getProperty("line.separator") +
             "  " + "player = "+(getPlayer()!=null?Integer.toHexString(System.identityHashCode(getPlayer())):"null") + System.getProperties().getProperty("line.separator") +
-            "  " + "goalie = "+(getGoalie()!=null?Integer.toHexString(System.identityHashCode(getGoalie())):"null")
+            "  " + "goalie = "+(getGoalie()!=null?Integer.toHexString(System.identityHashCode(getGoalie())):"null") + System.getProperties().getProperty("line.separator") +
+            "  " + "game = "+(getGame()!=null?Integer.toHexString(System.identityHashCode(getGame())):"null")
      + outputString;
   }
 }
