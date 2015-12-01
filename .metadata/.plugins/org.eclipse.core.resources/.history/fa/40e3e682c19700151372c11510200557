@@ -29,10 +29,13 @@ public class Server extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.sendRedirect("Website.html");
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 //		PrintWriter out = response.getWriter();
-		RequestDispatcher view = request.getRequestDispatcher("Website.html");
-		view.forward(request, response);
-
+//		RequestDispatcher view = request.getRequestDispatcher("/Website.html");
+//		view.forward(request, response);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		String value = request.getParameter("LSK";
 	}
 
 	/**

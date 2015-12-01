@@ -4,7 +4,7 @@
 </head>
 <body>
 
-
+<form method="post" action="/Server">
   <input type="radio" name = "LSK" value="1">Live Score Keeping
   <br>
   <input type="radio" name = "BI" value="2">Batch Input
@@ -16,7 +16,7 @@
   <input type="radio" name = "LA" value="5">League Analysis
   <br><br>
   <input type= "submit" value= "Go">
-
+</form>
 	
 </body>
 </html>

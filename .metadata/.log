@@ -437,3 +437,8 @@ java.io.FileNotFoundException: /Users/danielebercovici/Documents/team1ECSE321/Sw
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:144)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:235)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.ui 4 0 2015-11-30 18:56:21.092
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
