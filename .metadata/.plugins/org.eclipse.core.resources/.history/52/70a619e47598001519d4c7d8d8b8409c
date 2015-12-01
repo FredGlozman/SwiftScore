@@ -1,0 +1,11 @@
+<html>
+	<head>
+		<title> SwiftScore</title>
+	</head>
+	<body>
+	<?php
+	header('Location: Website.html')
+	
+	</body>
+	?>
+</html>
