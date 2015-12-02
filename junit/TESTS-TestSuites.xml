@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="steven-N56VJ" id="0" name="ModelTest" package="ca.mcgill.ecse321.scorekeeper.model_test" skipped="0" tests="4" time="0.096" timestamp="2015-12-02T18:44:27">
+      <properties>
+          <property name="java.vendor" value="Oracle Corporation" />
+
+          <property name="env.LESSOPEN" value="|/usr/bin/lesspipe.sh %s" />
+
+          <property name="env.LESS_TERMCAP_ue" value="[0m" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="env.LOADEDMODULES" value="" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="env.COLORFGBG" value="15;default;0" />
+
+          <property name="os.name" value="Linux" />
+
+          <property name="sun.boot.class.path" value="/usr/java/jdk1.8.0_60/jre/lib/resources.jar:/usr/java/jdk1.8.0_60/jre/lib/rt.jar:/usr/java/jdk1.8.0_60/jre/lib/sunrsasign.jar:/usr/java/jdk1.8.0_60/jre/lib/jsse.jar:/usr/java/jdk1.8.0_60/jre/lib/jce.jar:/usr/java/jdk1.8.0_60/jre/lib/charsets.jar:/usr/java/jdk1.8.0_60/jre/lib/jfr.jar:/usr/java/jdk1.8.0_60/jre/classes" />
+
+          <property name="env.PWD" value="/home/steven/Workspaces/Git/team1" />
+
+          <property name="env.LANG" value="en_US.UTF-8" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="ant.home" value="/usr/share/ant" />
+
+          <property name="java.runtime.version" value="1.8.0_60-b27" />
+
+          <property name="env.HISTSIZE" value="10000" />
+
+          <property name="env.XDG_VTNR" value="2" />
+
+          <property name="env.DISPLAY" value=":0" />
+
+          <property name="env.QT_GRAPHICSSYSTEM_CHECKED" value="1" />
+
+          <property name="user.name" value="steven" />
+
+          <property name="env.USER" value="steven" />
+
+          <property name="env.HISTCONTROL" value="ignoredups" />
+
+          <property name="env.SHELL" value="/usr/bin/zsh" />
+
+          <property name="env.QTLIB" value="/usr/lib64/qt-3.3/lib" />
+
+          <property name="env.DESKTOP_SESSION" value="i3" />
+
+          <property name="env.NLSPATH" value="/usr/dt/lib/nls/msg/%L/%N.cat" />
+
+          <property name="env.PATH" value="/home/steven/.local/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/steven/bin" />
+
+          <property name="env.XDG_CURRENT_DESKTOP" value="i3" />
+
+          <property name="user.language" value="en" />
+
+          <property name="env.MODULEPATH" value="/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles" />
+
+          <property name="env.XDG_SESSION_DESKTOP" value="i3" />
+
+          <property name="sun.boot.library.path" value="/usr/java/jdk1.8.0_60/jre/lib/amd64" />
+
+          <property name="junitdir" value="junit" />
+
+          <property name="ant.project.default-target" value="test" />
+
+          <property name="srcdir" value="/home/steven/Workspaces/Git/team1/src/ca/mcgill/ecse321/scorekeeper" />
+
+          <property name="ant.project.name" value="ScoreKeeper" />
+
+          <property name="java.version" value="1.8.0_60" />
+
+          <property name="env.LESS_TERMCAP_so" value="[00;47;30m" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="env.DBUS_SESSION_BUS_ADDRESS" value="unix:abstract=/tmp/dbus-eY74PQd5Vq,guid=03f5f4cf9e35e6aa6925b091565f3b26" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="env.LESS_TERMCAP_me" value="[0m" />
+
+          <property name="env.SSH_AGENT_PID" value="3212" />
+
+          <property name="env.MATHEMATICA_HOME" value="/usr/local/Wolfram/Mathematica/10.1" />
+
+          <property name="env.LESS_TERMCAP_md" value="[01;31m" />
+
+          <property name="java.endorsed.dirs" value="/usr/java/jdk1.8.0_60/jre/lib/endorsed" />
+
+          <property name="env.LESS_TERMCAP_mb" value="[01;31m" />
+
+          <property name="sun.cpu.isalist" value="" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="env.SHLVL" value="2" />
+
+          <property name="env.LESS_TERMCAP_se" value="[0m" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="env.HOSTNAME" value="steven-N56VJ" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="env.QTDIR" value="/usr/lib64/qt-3.3" />
+
+          <property name="java.class.version" value="52.0" />
+
+          <property name="env.GDMSESSION" value="i3" />
+
+          <property name="user.country" value="US" />
+
+          <property name="java.home" value="/usr/java/jdk1.8.0_60/jre" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="env.LOGNAME" value="steven" />
+
+          <property name="ant.file" value="/home/steven/Workspaces/Git/team1/build.xml" />
+
+          <property name="os.version" value="4.2.6-201.fc22.x86_64" />
+
+          <property name="env.GREP_COLORS" value="mt=37;45" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="jardir" value="/home/steven/Workspaces/Git/team1/bin/jar" />
+
+          <property name="java.vm.version" value="25.60-b23" />
+
+          <property name="env.QTINC" value="/usr/lib64/qt-3.3/include" />
+
+          <property name="env.DESKTOP_STARTUP_ID" value="i3/urxvt256c/3166-4-steven-N56VJ_TIME38310" />
+
+          <property name="ant.library.dir" value="/usr/share/ant/lib" />
+
+          <property name="env.XDG_SESSION_TYPE" value="x11" />
+
+          <property name="env.JAVA_HOME" value="/usr/java/jdk1.8.0_60" />
+
+          <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+
+          <property name="env.TERM" value="xterm-256color" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="env.WINDOWPATH" value="2" />
+
+          <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+
+          <property name="env.GREP_COLOR" value="37;45" />
+
+          <property name="env.GDM_LANG" value="en_US.UTF-8" />
+
+          <property name="user.home" value="/home/steven" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="classdir" value="/home/steven/Workspaces/Git/team1/bin/ca/mcgill/ecse321/scorekeeper" />
+
+          <property name="env.WINDOWID" value="16777225" />
+
+          <property name="java.vendor.url" value="http://java.oracle.com/" />
+
+          <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
+
+          <property name="java.vm.vendor" value="Oracle Corporation" />
+
+          <property name="env.XDG_SEAT" value="seat0" />
+
+          <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+
+          <property name="java.class.path" value="/home/steven/Workspaces/Git/team1/bin:/home/steven/Workspaces/Git/team1/lib/org.junit_4.11.0.v201303080030/junit.jar:/home/steven/Workspaces/Git/team1/lib/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-launcher.jar:/usr/share/java/ant/ant.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-junit4.jar" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher8623957134428473138.properties propsfile=/home/steven/Workspaces/Git/team1/junit3116311291836608710.properties" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.9.4 compiled on February 4 2015" />
+
+          <property name="env.XDG_SESSION_ID" value="1" />
+
+          <property name="env.CVS_RSH" value="ssh" />
+
+          <property name="env.XFILESEARCHPATH" value="/usr/dt/app-defaults/%L/Dt" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="ant.file.type" value="file" />
+
+          <property name="ant.file.ScoreKeeper" value="/home/steven/Workspaces/Git/team1/build.xml" />
+
+          <property name="java.vm.specification.version" value="1.8" />
+
+          <property name="env.MODULESHOME" value="/usr/share/Modules" />
+
+          <property name="sun.os.patch.level" value="unknown" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="env.HOME" value="/home/steven" />
+
+          <property name="java.io.tmpdir" value="/tmp" />
+
+          <property name="env.LS_COLORS" value="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:" />
+
+          <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+
+          <property name="blddir" value="/home/steven/Workspaces/Git/team1/bin" />
+
+          <property name="env.SSH_AUTH_SOCK" value="/tmp/ssh-agent.sock" />
+
+          <property name="env.KDEDIRS" value="/usr" />
+
+          <property name="os.arch" value="amd64" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+
+          <property name="env.XDG_RUNTIME_DIR" value="/run/user/1000" />
+
+          <property name="java.ext.dirs" value="/usr/java/jdk1.8.0_60/jre/lib/ext:/usr/java/packages/lib/ext" />
+
+          <property name="ant.file.type.ScoreKeeper" value="file" />
+
+          <property name="user.dir" value="/home/steven/Workspaces/Git/team1" />
+
+          <property name="env.XAUTHORITY" value="/run/user/1000/gdm/Xauthority" />
+
+          <property name="libdir" value="lib" />
+
+          <property name="line.separator" value="&#xa;" />
+
+          <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+
+          <property name="env.COLORTERM" value="rxvt-xpm" />
+
+          <property name="basedir" value="/home/steven/Workspaces/Git/team1" />
+
+          <property name="ant.java.version" value="1.8" />
+
+          <property name="ant.core.lib" value="/usr/share/java/ant/ant.jar" />
+
+          <property name="env.USERNAME" value="steven" />
+
+          <property name="env.MAIL" value="/var/spool/mail/steven" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="env.LESS_TERMCAP_us" value="[01;32m" />
+
+          <property name="java.specification.version" value="1.8" />
+
+          <property name="ant.project.invoked-targets" value="test" />
+
+          <property name="env.SSH_ASKPASS" value="/usr/libexec/openssh/gnome-ssh-askpass" />
+
+      </properties>
+
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="infractionTest" time="0.014" />
+
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="setupTest" time="0.0" />
+
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="sortTest" time="0.001" />
+
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="goalTest" time="0.001" />
+
+      <system-out />
+
+      <system-err />
+
+  </testsuite>
+</testsuites>
