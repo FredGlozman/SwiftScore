@@ -1,0 +1,12 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+<form action="LeagueConfiguration.php" method="post">
+Team Name: <input type="text" name="teamName"> <input type= "submit" name= "Create" value= "Create">
+
+
+</form>
+</body>
+</html>

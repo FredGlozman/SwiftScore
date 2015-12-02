@@ -1,0 +1,25 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+<form action="LeagueConfiguration.php" method="post">
+Create Player
+<br><br>
+Team: <!-- implement get teams -->
+<select>
+	<option value="team1">Team1</option>
+	<option value="team2">Team1</option>
+</select>
+Player Name: <input type="text" name="PlayerName"> <input type= "submit" name= "add" value= "Add">
+<br>
+Player Number: <input type="text" name="PlayerNumber"> 
+<br>
+<input type="radio" name = "Player" value="player">Player
+<input type="radio" name = "Goalie" value="goalie">Goalie 
+<br><br>
+<input type= "submit" name= "Done" value= "Done">
+</form>
+	
+</body>
+</html>

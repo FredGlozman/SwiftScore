@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>Live Score Keeping</title>
+</head>
+<body>
+<form action="LiveScoreKeeping.php" method = "post" >
+Live Game:
+			<select>
+					<option value="team1">Team1</option>
+					<option value="team2">Team2</option>
+					<option value="team3">Team3</option>
+					<option value="team4">Team4</option>
+			</select>
+			<input type= "submit" value= "Remove"> 
+<input type= "submit" value= "Load Players"> 
+<br><br>
+<input type= "submit" value= "Back"> 
+
+</form>
+</body>
+</html>
