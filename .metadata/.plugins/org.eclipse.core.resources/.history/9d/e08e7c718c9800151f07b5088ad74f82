@@ -4,18 +4,22 @@
 </head>
 
 <form action="LeagueConfiguration.php" method="post">
-Create Team
+Create Player
 <br><br>
-Team Name: <input type="text" name="teamName"> <input type= "submit" name= "Create" value= "Create">
-<br>
+Team: <!-- implement get teams -->
+<select>
+	<option value="team1">Team1</option>
+	<option value="team2">Team2</option>
+</select>
 Player Name: <input type="text" name="PlayerName"> <input type= "submit" name= "add" value= "Add">
 <br>
 Player Number: <input type="text" name="PlayerNumber"> 
 <br>
-<input type="radio" name = "Type" value="player">Player
-<input type="radio" name = "Type" value="goalie">Goalie 
+<input type="radio" name = "Player" value="player">Player
+<input type="radio" name = "Goalie" value="goalie">Goalie 
 <br><br>
 <input type= "submit" name= "Done" value= "Done">
 </form>
+	
 </body>
 </html>

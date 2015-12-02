@@ -5,7 +5,7 @@
 <body background="soccer.jpg">
 <form action="PHP.php" method="post">
 
-   <input type="radio" name = “UseCase” value="1"><font color="white">Live Score Keeping</font>
+   <input type="radio" name = “LSK” value="1"><font color="red">Live Score Keeping</font>
   <br>
   <input type="radio" name = "UseCase" value="2"><font color="white">Batch Input</font>
   <br>
