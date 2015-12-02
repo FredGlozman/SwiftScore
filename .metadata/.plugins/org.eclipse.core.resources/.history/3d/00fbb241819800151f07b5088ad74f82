@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Live Score Keeping</title>
+</head>
+<body>
+<form action="LiveScoreKeeping.php" method = "post" >
+Live Game:
+Player:	<input type="text" name="player"><br>
+ 
+<br><br>
+<input type= "submit" value= "Back"> 
+
+</form>
+</body>
+</html>

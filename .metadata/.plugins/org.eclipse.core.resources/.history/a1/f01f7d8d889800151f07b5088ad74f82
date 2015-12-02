@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+<form action="LeagueConfiguration.php" method="post">
+Remove Team
+<br><br>
+Team: <!-- implement get teams -->
+<select>
+	<option value="team1">Team1</option>
+	<option value="team2">Team2</option>
+</select>
+</form>
+	
+</body>
+</html>

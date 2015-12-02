@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>EditMode</title>
+</head>
+<body>
+<form action="LeagueConfiguration.php" method = "post" >
+League Configuration
+<input type="radio" name = "newTeam" value="1">New Team
+  <br>
+  <input type="radio" name = "newPlayer" value="2">New Player
+  <br>
+  <input type="radio" name = "removeTeam" value="3">Remove Team
+  <br>
+  <input type="radio" name = "removePlayer" value="4">Remove Player
+  <br><br>
+  <input type= "submit" value= "Go">
+
+</form>
+</body>
+</html>
