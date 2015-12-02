@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+
+<form action="PHP.php" method="post">
+   <input type="radio" name = "UseCase" value="1">Live Score Keeping
+  <br>
+  <input type="radio" name = "UseCase" value="2">Batch Input
+  <br>
+  <input type="radio" name = "UseCase" value="3">League Configuration
+  <br>
+  <input type="radio" name = "UseCase" value="4">Player Analysis
+  <br>
+  <input type="radio" name = "UseCase" value="5">League Analysis
+  <br><br>
+  <input type= "submit" value= "Go">
+</form>
+	
+</body>
+</html>

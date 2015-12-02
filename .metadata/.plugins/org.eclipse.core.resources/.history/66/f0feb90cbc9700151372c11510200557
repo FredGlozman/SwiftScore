@@ -1,0 +1,11 @@
+<html>
+<head>
+<title>Batch Input Mode</title>
+</head>
+<body>
+<p>
+Display Batch Input???
+</p>
+<input type= "submit" value= "Back"> <!-- how to go to Website.html? -->
+</body>
+</html>

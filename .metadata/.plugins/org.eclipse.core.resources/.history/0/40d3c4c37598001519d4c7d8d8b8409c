@@ -1,0 +1,9 @@
+<html>
+	<head>
+		<title> SwiftScore</title>
+	</head>
+	<body>
+	header('Location: Website.html')
+	
+	</body>
+</html>

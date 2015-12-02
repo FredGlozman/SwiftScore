@@ -1,0 +1,11 @@
+
+public class Controller {
+	public static void main(String [ ] args)
+	{
+		int i =0;
+		for (String s : args)
+		{
+			String hello = s;
+		}
+	}
+}
