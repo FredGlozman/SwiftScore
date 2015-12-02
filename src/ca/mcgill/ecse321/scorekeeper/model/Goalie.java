@@ -168,7 +168,7 @@ public class Goalie extends Player
   // line 259 "../../../../../ScoreKeeper.ump"
    public int getSuccessfulSaveCount(){
     int res = 0;
-    for(Shot save : this.getShots())
+    for(Shot save : this.getSaves())
     {
       if(!save.getGoal())
       {

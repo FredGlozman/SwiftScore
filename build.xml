@@ -1,57 +1,72 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="team1">
-    <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../../../../usr/lib64/eclipse/"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.8"/>
-    <property name="source" value="1.8"/>
-    <path id="JUnit 4.libraryclasspath">
-        <pathelement location="${ECLIPSE_HOME}dropins/jdt/plugins/org.junit_4.12.0.jar"/>
-        <pathelement location="${ECLIPSE_HOME}dropins/jdt/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
-    </path>
-    <path id="team1.classpath">
-        <pathelement location="bin"/>
-        <path refid="JUnit 4.libraryclasspath"/>
-    </path>
-    <target name="init">
-        <mkdir dir="bin"/>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="src">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="bin"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="team1.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
-    <target name="test" depends="build">
-    </target>
+<?xml version="1.0"?>
+
+<project name="ScoreKeeper" default="test">
+
+  <!-- PROPERTIES -->
+
+  <property environment ="env" /> <!-- Needed? -->
+
+  <property name="srcdir" location="src/ca/mcgill/ecse321/scorekeeper" />
+  <property name="blddir" location="bin" />
+  <property name="classdir" location="${blddir}/ca/mcgill/ecse321/scorekeeper" />
+  <property name="jardir" location="${blddir}/jar" />
+  <property name="junitdir" value="junit" />
+  <property name="libdir" value="lib" />
+
+  <!-- PATHS -->
+
+  <path id="junitpath">
+    <pathelement location="${libdir}/org.junit_4.11.0.v201303080030/junit.jar"/>
+    <pathelement location="${libdir}/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+  </path> 
+
+   <path id="testpath">
+      <pathelement location="bin" />
+      <path refid="junitpath" />
+  </path>
+
+  <!-- TARGETS -->
+
+  <target name="init" depends="clean">
+    <mkdir dir="${blddir}" />
+    <mkdir dir="${classdir}" />
+    <mkdir dir="${jardir}" />
+  </target>
+
+  <target name="compile" depends="init">
+    <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
+  </target>
+
+  <!-- <target name="link" depends="compile">
+      <jar destfile="${jardir}/DiscountManager.jar" basedir="${classdir}">
+      <manifest>
+        <attribute name="Main-Class" value="order.Demo" />
+      </manifest>
+    </jar>
+  </target> -->
+
+  <target name="test" depends="compile">
+    <javac includeantruntime="false" srcdir="${srcdir}/model_test" destdir="${blddir}">
+      <classpath refid="testpath" />
+    </javac>
+    <mkdir dir="${junitdir}" />
+    <junit fork="yes" printsummary="withOutAndErr">
+      <formatter type="xml" />
+      <test name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" todir="${junitdir}" />
+      <classpath refid="testpath" />
+      <classpath location="${blddir}"/>
+    </junit>
+    <junitreport todir="${junitdir}">
+      <fileset dir="${junitdir}">
+        <include name="TEST-*.xml" />
+      </fileset>
+      <report format="frames" todir="${junitdir}" />
+    </junitreport>
+  </target>
+
+  <target name="clean">
+    <delete dir="${blddir}" />
+    <delete dir="${junitdir}" />
+  </target>
+
 </project>
