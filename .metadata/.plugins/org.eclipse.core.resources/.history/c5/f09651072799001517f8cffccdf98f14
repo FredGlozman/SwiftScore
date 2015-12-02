@@ -1,0 +1,40 @@
+<html>
+<style>
+p, font, th, td {
+	color: white;
+}
+</style>
+<head>
+<title>Swift Score</title>
+</head>
+<body background="soccer.jpg">
+<center>
+		<p>
+			<font>Display League analysis by Number of Shots</font>
+		</p>
+		<p>
+		<table style="width: 30%" border="1">
+			<tr>
+				<font><th>Team</th>
+					<th>Number of Shots</th></font>
+			</tr>
+			<tr>
+				<font><td>Canada</td>
+					<td>101</td></font>
+			</tr>
+			<tr>
+				<font><td>Italy</td>
+					<td>89</td></font>
+			</tr>
+			<tr>
+				<font><td>Germany</td>
+					<td>75</td></font>
+			</tr>
+
+		</table>
+
+		</p>
+		<input type="submit" value="Go">
+	</center>
+</body>
+</html>

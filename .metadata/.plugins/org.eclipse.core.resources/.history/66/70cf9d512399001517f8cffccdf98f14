@@ -1,0 +1,33 @@
+<html>
+<style>
+p.white{
+color :white;
+}
+</style>
+	<head>
+		<title>League Analysis Mode</title>
+	</head>
+		<body background="soccer.jpg">
+		<center>
+			<p>
+				Display Player analysis by Goals
+			</p>
+			<p>
+	<table style="width:30%">
+ 		<tr>
+    		<th>Player</th>
+    		<th>Jersey Number</th>
+    		<th>Goals</th>
+  		</tr>
+  		<tr>
+    		<td>Cristiano Ronaldo</td>
+    		<td>7</td>
+    		<td>9000</td>
+  		</tr>
+	</table>
+				
+			</p>
+			<input type= "submit" value= "Go">
+			</center>
+		</body>
+</html>

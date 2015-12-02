@@ -1,8 +1,3 @@
-<html>
-	<head>
-		<title> SwiftScore</title>
-	</head>
-	<body>
 	<?php
 	header('Location: Website.html')
 	$UseCase = $_POST["UseCase"]
@@ -49,5 +44,3 @@
 	}
 
 	?>
-	</body>
-</html>

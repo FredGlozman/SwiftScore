@@ -1,0 +1,16 @@
+<html>
+	<head>
+		<title>League Analysis Mode</title>
+	</head>
+		<body>
+			<p>
+				Display Player analysis by Goals
+			</p>
+			<p>
+				<b>PlayerName	JerseyNumber</b>
+				<br>
+				
+			</p>
+			<input type= "submit" value= "Go">
+		</body>
+</html>

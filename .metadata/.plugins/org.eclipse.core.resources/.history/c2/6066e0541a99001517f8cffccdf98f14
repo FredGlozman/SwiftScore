@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>League Analysis Mode</title>
+	</head>
+		<body>
+			<p>
+				Display Player analysis
+			</p>
+			<p>
+				<b>PlayerName</b><b>JerseyNumber</b>
+			</p>
+			<input type= "submit" value= "Go">
+		</body>
+</html>

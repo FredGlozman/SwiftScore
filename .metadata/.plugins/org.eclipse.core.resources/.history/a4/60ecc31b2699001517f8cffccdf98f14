@@ -1,0 +1,9 @@
+<html>
+<head>
+<title>Swift Score</title>
+</head>
+<body>
+	<p>Display league Analysis</p>
+	<input type="submit" value="Go">
+</body>
+</html>

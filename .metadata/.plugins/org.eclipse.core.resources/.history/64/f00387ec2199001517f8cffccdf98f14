@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>League Analysis Mode</title>
+	</head>
+		<body>
+			<p>
+				Display Player analysis by Goals
+			</p>
+			<p>
+	<table>
+ 		<tr>
+    		<th>Player</th>
+    		<th>Jersey Number</th>
+    		<th>Goals</th>
+  		</tr>
+  		<tr>
+    		<td>Cristiano Ronaldo</td>
+    		<td>7</td>
+    		<td>9000</td>
+  		</tr>
+	</table>
+				
+			</p>
+			<input type= "submit" value= "Go">
+		</body>
+</html>
