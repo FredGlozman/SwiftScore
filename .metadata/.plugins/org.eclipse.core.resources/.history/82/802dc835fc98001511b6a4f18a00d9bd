@@ -7,8 +7,10 @@ public class Controller {
 	{
 
 		//Live Score Keeping
-		//player submit button
-		if (args[0].equals("Select")) //&& if player is there
+		//player submit button??? 
+		
+		
+		if (args[0].equals("Select"))
 		{
 			//check player in player list and make that player??? do i need this
 			if (args[0].equals("SHOT"))
