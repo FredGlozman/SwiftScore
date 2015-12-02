@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="steven-N56VJ" name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" skipped="0" tests="4" time="0.083" timestamp="2015-12-02T19:21:02">
+<testsuite errors="0" failures="0" hostname="steven-N56VJ" name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" skipped="0" tests="4" time="0.105" timestamp="2015-12-02T19:24:26">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.LESSOPEN" value="|/usr/bin/lesspipe.sh %s" />
@@ -90,7 +90,7 @@
     <property name="env.XDG_SEAT" value="seat0" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/home/steven/Workspaces/Git/team1/bin:/home/steven/Workspaces/Git/team1/lib/org.junit_4.11.0.v201303080030/junit.jar:/home/steven/Workspaces/Git/team1/lib/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-launcher.jar:/usr/share/java/ant/ant.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-junit4.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher2701695944890513927.properties propsfile=/home/steven/Workspaces/Git/team1/junit8021122999381235824.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher1792639530635666688.properties propsfile=/home/steven/Workspaces/Git/team1/junit8790012327857145105.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.4 compiled on February 4 2015" />
     <property name="env.XDG_SESSION_ID" value="1" />
     <property name="env.CVS_RSH" value="ssh" />
@@ -131,7 +131,7 @@
     <property name="ant.project.invoked-targets" value="test" />
     <property name="env.SSH_ASKPASS" value="/usr/libexec/openssh/gnome-ssh-askpass" />
   </properties>
-  <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="infractionTest" time="0.008" />
+  <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="infractionTest" time="0.009" />
   <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="setupTest" time="0.0" />
   <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="sortTest" time="0.0" />
   <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="goalTest" time="0.001" />

@@ -34,7 +34,7 @@
   </target>
 
   <target name="compile" depends="init">
-    <javac srcdir="${srcdir}/model" destdir="${blddir}" />
+    <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
   </target>
 
   <!-- <target name="link" depends="compile">
@@ -46,7 +46,7 @@
   </target> -->
 
   <target name="test" depends="compile">
-    <javac srcdir="${srcdir}/model_test" destdir="${blddir}">
+    <javac includeantruntime="false" srcdir="${srcdir}/model_test" destdir="${blddir}">
       <classpath refid="testpath" />
     </javac>
     <mkdir dir="${junitdir}" />
