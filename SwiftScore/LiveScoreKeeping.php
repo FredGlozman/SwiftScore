@@ -6,7 +6,7 @@
 	<?php
 	$player = $_POST["player"]
 	$action = $_POST["action"]
-		exec("java -jar Controller.jar $action $player", $output);
+		exec("java -jar JARNAME.jar Controller $action $player", $output);
 	?>
 	</body>
 </html>
