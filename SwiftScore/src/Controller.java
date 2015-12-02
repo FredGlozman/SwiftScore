@@ -13,14 +13,20 @@ public class Controller {
 		{
 			Team team = new Team(args[3], League.getInstance());
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
+			Goalie goalie = new Goalie("bob", 2, team, League.getInstance());
+			Game game = new Game(40, 160, "Olimpique stadium", League.getInstance(), team);
+			
 			
 			if (args[0].equals("SHOT"))
 			{
-				
+				Shot shot = new Shot(false, 30, player, goalie, game);
+				game.addShot(shot);
+				player.addShot(shot);
 				
 			}
 			else if(args[0].equals("GOAL"))
 			{
+				Shot shot = new Shot(true, 30, player, goalie, game)
 				
 			}
 			else if(args[0].equals("YELLOWCARD"))
