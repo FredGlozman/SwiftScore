@@ -1,8 +1,5 @@
 import java.util.List;
 
-/**
- * Created by fredglozman on 2015-11-29.
- */
 public class Find {
 
     //returns a team if team1 is a team in the league, returns null otherwise
@@ -46,45 +43,45 @@ public class Find {
         return null;
     }
 
-    public static Player inferPlayer(String playerID, Team team1, Team team2)
-    {
-        Player player;
-
-        if(android.text.TextUtils.isDigitsOnly(playerID))
-        {
-            player = getPlayer(Integer.parseInt(playerID), team1);
-            if(player==null)
-            {
-                player = getPlayer(Integer.parseInt(playerID), team2);
-            }
-        }
-        else
-        {
-            player = getPlayer(playerID, team1);
-            if(player==null)
-            {
-                player = getPlayer(playerID, team2);
-            }
-        }
-
-        return player;
-    }
-
-    public static Player inferPlayer(String playerID, Team team1)
-    {
-        Player player;
-
-        if(android.text.TextUtils.isDigitsOnly(playerID))
-        {
-            player = getPlayer(Integer.parseInt(playerID), team1);
-        }
-        else
-        {
-            player = getPlayer(playerID, team1);
-        }
-
-        return player;
-    }
+//    public static Player inferPlayer(String playerID, Team team1, Team team2)
+//    {
+//        Player player;
+//
+//        if(android.text.TextUtils.isDigitsOnly(playerID))
+//        {
+//            player = getPlayer(Integer.parseInt(playerID), team1);
+//            if(player==null)
+//            {
+//                player = getPlayer(Integer.parseInt(playerID), team2);
+//            }
+//        }
+//        else
+//        {
+//            player = getPlayer(playerID, team1);
+//            if(player==null)
+//            {
+//                player = getPlayer(playerID, team2);
+//            }
+//        }
+//
+//        return player;
+//    }
+//
+//    public static Player inferPlayer(String playerID, Team team1)
+//    {
+//        Player player;
+//
+//        if(android.text.TextUtils.isDigitsOnly(playerID))
+//        {
+//            player = getPlayer(Integer.parseInt(playerID), team1);
+//        }
+//        else
+//        {
+//            player = getPlayer(playerID, team1);
+//        }
+//
+//        return player;
+//    }
 
     //returns true if team1 is a team in the league, returns false otherwise
     public static boolean teamExists(String team1)
@@ -115,3 +112,4 @@ public class Find {
         }
         return false;
     }
+}
