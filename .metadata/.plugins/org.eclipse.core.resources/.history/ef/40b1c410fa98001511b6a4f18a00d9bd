@@ -6,7 +6,6 @@ public class Controller {
 	public static void main(String [] args)
 	{
 
-		//Live Score Keeping
 		if (args[0].equals("SHOT"))
 		{
 			//Player.getInstance().addShot( false, int aTime, Goalie aGoalie, Game aGame);

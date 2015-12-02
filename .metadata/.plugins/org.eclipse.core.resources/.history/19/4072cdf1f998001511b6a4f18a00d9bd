@@ -3,10 +3,9 @@ import java.util.*;
 public class Controller {
 	//args[0] is the action
 	//args[1] is the actor (player, goalie etc)
-	public static void main(String [] args)
+	public static void main(String [ ] args)
 	{
 
-		//Live Score Keeping
 		if (args[0].equals("SHOT"))
 		{
 			//Player.getInstance().addShot( false, int aTime, Goalie aGoalie, Game aGame);
