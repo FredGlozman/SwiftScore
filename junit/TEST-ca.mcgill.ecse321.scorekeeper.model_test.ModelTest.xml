@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="steven-N56VJ" name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" skipped="0" tests="4" time="0.077" timestamp="2015-12-02T19:05:47">
+<testsuite errors="0" failures="0" hostname="steven-N56VJ" name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" skipped="0" tests="4" time="0.083" timestamp="2015-12-02T19:21:02">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.LESSOPEN" value="|/usr/bin/lesspipe.sh %s" />
@@ -69,7 +69,7 @@
     <property name="jardir" value="/home/steven/Workspaces/Git/team1/bin/jar" />
     <property name="java.vm.version" value="25.60-b23" />
     <property name="env.QTINC" value="/usr/lib64/qt-3.3/include" />
-    <property name="env.DESKTOP_STARTUP_ID" value="i3/urxvt256c/3166-4-steven-N56VJ_TIME38310" />
+    <property name="env.DESKTOP_STARTUP_ID" value="i3/urxvt256c/3166-7-steven-N56VJ_TIME2239757" />
     <property name="ant.library.dir" value="/usr/share/ant/lib" />
     <property name="env.XDG_SESSION_TYPE" value="x11" />
     <property name="env.JAVA_HOME" value="/usr/java/jdk1.8.0_60" />
@@ -83,14 +83,14 @@
     <property name="user.home" value="/home/steven" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
     <property name="classdir" value="/home/steven/Workspaces/Git/team1/bin/ca/mcgill/ecse321/scorekeeper" />
-    <property name="env.WINDOWID" value="16777225" />
+    <property name="env.WINDOWID" value="25165833" />
     <property name="java.vendor.url" value="http://java.oracle.com/" />
     <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="env.XDG_SEAT" value="seat0" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/home/steven/Workspaces/Git/team1/bin:/home/steven/Workspaces/Git/team1/lib/org.junit_4.11.0.v201303080030/junit.jar:/home/steven/Workspaces/Git/team1/lib/org.hamcrest.core_1.3.0.v201303031735.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-launcher.jar:/usr/share/java/ant/ant.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-junit4.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher5803782935099303621.properties propsfile=/home/steven/Workspaces/Git/team1/junit3742404867311472865.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher2701695944890513927.properties propsfile=/home/steven/Workspaces/Git/team1/junit8021122999381235824.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.4 compiled on February 4 2015" />
     <property name="env.XDG_SESSION_ID" value="1" />
     <property name="env.CVS_RSH" value="ssh" />

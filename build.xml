@@ -27,7 +27,7 @@
 
   <!-- TARGETS -->
 
-  <target name="init">
+  <target name="init" depends="clean">
     <mkdir dir="${blddir}" />
     <mkdir dir="${classdir}" />
     <mkdir dir="${jardir}" />
@@ -46,13 +46,14 @@
   </target> -->
 
   <target name="test" depends="compile">
-    <classpath refid="testpath" />
-    <javac srcdir="${srcdir}/model_test" destdir="${blddir}" />
+    <javac srcdir="${srcdir}/model_test" destdir="${blddir}">
+      <classpath refid="testpath" />
+    </javac>
     <mkdir dir="${junitdir}" />
     <junit fork="yes" printsummary="withOutAndErr">
       <formatter type="xml" />
       <test name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" todir="${junitdir}" />
-      <!--classpath refid="testpath" /-->
+      <classpath refid="testpath" />
       <classpath location="${blddir}"/>
     </junit>
     <junitreport todir="${junitdir}">
