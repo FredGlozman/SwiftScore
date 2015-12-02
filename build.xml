@@ -34,7 +34,7 @@
   </target>
 
   <target name="compile" depends="init">
-    <javac includeantruntime="true" srcdir="${srcdir}/model" destdir="${blddir}" />
+    <javac srcdir="${srcdir}/model" destdir="${blddir}" />
   </target>
 
   <!-- <target name="link" depends="compile">
@@ -46,12 +46,13 @@
   </target> -->
 
   <target name="test" depends="compile">
-    <javac includeantruntime="true" srcdir="${srcdir}/model_test" destdir="${blddir}" />
+    <classpath refid="testpath" />
+    <javac srcdir="${srcdir}/model_test" destdir="${blddir}" />
     <mkdir dir="${junitdir}" />
     <junit fork="yes" printsummary="withOutAndErr">
       <formatter type="xml" />
       <test name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" todir="${junitdir}" />
-      <classpath refid="testpath" />
+      <!--classpath refid="testpath" /-->
       <classpath location="${blddir}"/>
     </junit>
     <junitreport todir="${junitdir}">
