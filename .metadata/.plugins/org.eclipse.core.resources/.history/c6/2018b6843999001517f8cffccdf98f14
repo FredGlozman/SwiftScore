@@ -5,7 +5,7 @@
 <body background="soccer.jpg">
 <center>
 <form action="PHP.php" method = "post" >
-Username: <input type="text" name="user"><br>
+Username: <input type="text" name="user"><font color="white"></font><br>
 Password: <input type="password" name="password">
 <br><br>
 <input type= "submit" value= "Go">

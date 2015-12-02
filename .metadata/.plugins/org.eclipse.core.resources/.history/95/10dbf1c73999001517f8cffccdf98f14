@@ -10,7 +10,7 @@ p, font, th, td {
 <body background="soccer.jpg">
 <center>
 		<p>
-			Display League analysis by Number of Shots
+			<font color="white"</font> Display League analysis by Number of Shots</font>
 		</p>
 		<p>
 		<table style="width: 30%" border="1">

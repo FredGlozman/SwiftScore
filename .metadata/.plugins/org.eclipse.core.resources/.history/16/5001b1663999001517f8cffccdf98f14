@@ -3,13 +3,11 @@
 <title>Authentication</title>
 </head>
 <body background="soccer.jpg">
-<center>
 <form action="PHP.php" method = "post" >
 Username: <input type="text" name="user"><br>
 Password: <input type="password" name="password">
 <br><br>
 <input type= "submit" value= "Go">
 </form>
-</center>
 </body>
 </html>

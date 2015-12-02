@@ -1,14 +1,14 @@
 	<?php
 	header('Location: Website.html')
-	$UseCase = $_POST["UseCase"]
+	$UseCase = $_GET["UseCase"]
 	if($UseCase == 1 || $UseCase == 2 ||$UseCase == 3)
 	{
 		header('Location: Authentication.html')
 				$array = array(
 			"user" => "password",
 			);
-		$username = $_POST["user"]
-		$password = $_POST["password"]
+		$username = $_GET["user"]
+		$password = $_GET["password"]
 		if($array[0] != $username)
 		{
 			echo Authentication failed

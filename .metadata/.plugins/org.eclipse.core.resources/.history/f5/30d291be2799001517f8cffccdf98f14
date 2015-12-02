@@ -3,7 +3,7 @@
 	<title>SwiftScore</title>
 </head>
 <body background="soccer.jpg">
-<form action="PHP.php" method="get">
+<form action="PHP.php">
 <center>
 
    <input type="radio" name = “UseCase” value="1"><font color="white">Live Score Keeping</font>
