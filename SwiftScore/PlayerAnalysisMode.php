@@ -1,6 +1,6 @@
 	<?php
 	$type = "PA";
-	$teamName = $_POST["teamName"];
+	$sortType = $_POST["sort"];
 
-	exec("java -jar PlayerAnalysisMode.jar Controller $type $teamName", $output);
+	exec("java -jar PlayerAnalysisMode.jar Controller $type $sortType", $output);
 	?>
