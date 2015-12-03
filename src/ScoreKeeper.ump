@@ -124,7 +124,7 @@ class Player
   {
   	public int compare(Player one, Player other)
   	{
-  		return one.name.compareTo(other.name);
+  		return other.name.compareTo(one.name);
   	}
   };
   
@@ -179,7 +179,7 @@ class Player
   {
     public int compare(Player one, Player other)
     {
-      return one.numberOfShots() - other.numberOfShots();
+      return one.numberOfInfractions() - other.numberOfInfractions();
     }
   };
 
@@ -461,7 +461,7 @@ class Team
   {
   	public int compare(Team one, Team other)
   	{
-  		return one.name.compareTo(other.name);
+  		return other.name.compareTo(one.name);
   	}
   };
   

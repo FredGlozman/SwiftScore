@@ -5,6 +5,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Collections;
+import java.util.ArrayList;
+
 import ca.mcgill.ecse321.scorekeeper.model.*;
 
 /**
@@ -172,60 +175,99 @@ public class ModelTest
 		assertTrue(g1.getCompetitors().contains(quarks));
 		assertTrue(g1.getCompetitors().contains(leptons));
 		
-	    new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
-	    new Infraction(Color.RED, true, 1449002076+3219, muon, g1);
-	    new Infraction(Color.YELLOW, false, 1449002076+3199, electron, g1);
+	  new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
+	  new Infraction(Color.RED, true, 1449002076+3219, muon, g1);
+	  new Infraction(Color.YELLOW, false, 1449002076+3199, electron, g1);
 		
-	    // Test game data
-	    assertEquals(g1.numberOfInfractions(), 3);
-	    
-	    //Test player data
-	    assertEquals(electron.numberOfInfractions(), 2);
-	    assertEquals(electron.getRedInfractionCount(), 1);
-	    assertEquals(electron.getYellowInfractionCount(), 1);
-	    assertEquals(electron.getPenaltyShotCount(), 0);
-	    assertEquals(muon.numberOfInfractions(), 1);
-	    assertEquals(muon.getRedInfractionCount(), 1);
-	    assertEquals(muon.getYellowInfractionCount(), 0);
-	    assertEquals(muon.getPenaltyShotCount(), 1);
-	    
-	    //Test team data
-	    assertEquals(leptons.getTotalInfractionCount(), 3);
-	    assertEquals(leptons.getRedInfractionCount(), 2);
-	    assertEquals(leptons.getYellowInfractionCount(), 1);
-	    assertEquals(leptons.getPenaltyShotCount(), 1);
+	  // Test game data
+	  assertEquals(g1.numberOfInfractions(), 3);
+	  
+	  //Test player data
+	  assertEquals(electron.numberOfInfractions(), 2);
+	  assertEquals(electron.getRedInfractionCount(), 1);
+	  assertEquals(electron.getYellowInfractionCount(), 1);
+	  assertEquals(electron.getPenaltyShotCount(), 0);
+	  assertEquals(muon.numberOfInfractions(), 1);
+	  assertEquals(muon.getRedInfractionCount(), 1);
+	  assertEquals(muon.getYellowInfractionCount(), 0);
+	  assertEquals(muon.getPenaltyShotCount(), 1);
+	  
+	  //Test team data
+	  assertEquals(leptons.getTotalInfractionCount(), 3);
+	  assertEquals(leptons.getRedInfractionCount(), 2);
+	  assertEquals(leptons.getYellowInfractionCount(), 1);
+	  assertEquals(leptons.getPenaltyShotCount(), 1);
 	    
 		Game g2 = new Game(1429002076, 1429002076 + 10000, "Pluto", league, leptons, bosons);
 		assertTrue(g2.getCompetitors().contains(leptons));
 		assertTrue(g2.getCompetitors().contains(bosons));
 		
 		new Infraction(Color.RED, false, 1449002076+3599, electron, g2);
-	    new Infraction(Color.RED, true, 1449002076+3219, muon, g2);
-	    new Infraction(Color.YELLOW, true, 1449002076+3199, muon, g2);
-	    
-	    // Test game data
-	    assertEquals(g2.numberOfInfractions(), 3);
-	    
-	    //Test player data
-	    assertEquals(electron.numberOfInfractions(), 2+1);
-	    assertEquals(electron.getRedInfractionCount(), 1+1);
-	    assertEquals(electron.getYellowInfractionCount(), 1);
-	    assertEquals(electron.getPenaltyShotCount(), 0);
-	    assertEquals(muon.numberOfInfractions(), 1+2);
-	    assertEquals(muon.getRedInfractionCount(), 1+1);
-	    assertEquals(muon.getYellowInfractionCount(), 0+1);
-	    assertEquals(muon.getPenaltyShotCount(), 1+2);
-	    
-	    //Test team data
-	    assertEquals(leptons.getTotalInfractionCount(), 6);
-	    assertEquals(leptons.getRedInfractionCount(), 2+2);
-	    assertEquals(leptons.getYellowInfractionCount(), 1+1);
-	    assertEquals(leptons.getPenaltyShotCount(), 1+2);
+	  new Infraction(Color.RED, true, 1449002076+3219, muon, g2);
+	  new Infraction(Color.YELLOW, true, 1449002076+3199, muon, g2);
+	  
+	  // Test game data
+	  assertEquals(g2.numberOfInfractions(), 3);
+	  
+	  //Test player data
+	  assertEquals(electron.numberOfInfractions(), 2+1);
+	  assertEquals(electron.getRedInfractionCount(), 1+1);
+	  assertEquals(electron.getYellowInfractionCount(), 1);
+	  assertEquals(electron.getPenaltyShotCount(), 0);
+	  assertEquals(muon.numberOfInfractions(), 1+2);
+	  assertEquals(muon.getRedInfractionCount(), 1+1);
+	  assertEquals(muon.getYellowInfractionCount(), 0+1);
+	  assertEquals(muon.getPenaltyShotCount(), 1+2);
+	  
+	  //Test team data
+	  assertEquals(leptons.getTotalInfractionCount(), 6);
+	  assertEquals(leptons.getRedInfractionCount(), 2+2);
+	  assertEquals(leptons.getYellowInfractionCount(), 1+1);
+	  assertEquals(leptons.getPenaltyShotCount(), 1+2);
 	}
 	
 	@Test
 	public void sortTest()
 	{
+		Game g1 = new Game(1449002076, 1449002076+3600, "Venus", league, quarks, leptons);
+
+	  new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
+	  new Infraction(Color.RED, true, 1449002076+3219, top, g1);
+	  new Infraction(Color.YELLOW, false, 1449002076+3199, electron, g1);
+		new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
+	  new Infraction(Color.RED, true, 1449002076+3219, muon, g1);
+	  new Infraction(Color.YELLOW, true, 1449002076+3199, muon, g1);
+		new Shot(true, 1449002076 + 1000, charm, tauNeutrino, g1);
+		new Shot(true, 1449002076 + 1001, charm, tauNeutrino, g1);
+		new Shot(false, 1449002076 + 1140, top, tauNeutrino, g1);
+		new Shot(true, 1449002076 + 1500, up, tauNeutrino, g1);
+		new Shot(false, 1449002076 + 1040, top, tauNeutrino, g1);
+		new Shot(true, 1429002076 + 1000, charm, higgsBoson, g1);
+		new Shot(true, 1429002076 + 1001, charm, higgsBoson, g1);
+		new Shot(false, 1429002076 + 1140, top, higgsBoson, g1);
+		new Shot(true, 1429002076 + 1500, zBoson, strange, g1);
+		new Shot(true, 1429002076 + 1040, zBoson, strange, g1);
+
+    ArrayList<Player> infSort = new ArrayList<Player>(league.getPlayers());
+    Collections.sort(infSort, Player.COMPARE_BY_TOTAL_INFRACTIONS);
+    Collections.reverse(infSort);
+    assertEquals(infSort.get(0), electron);
+    assertEquals(infSort.get(1), muon);
+    assertEquals(infSort.get(2), top);
+
+    ArrayList<Player> shotSort = new ArrayList<Player>(league.getPlayers());
+    Collections.sort(shotSort, Player.COMPARE_BY_SUCCESSFUL_SHOTS);
+    Collections.reverse(shotSort);
+    assertEquals(shotSort.get(0), charm);
+    assertEquals(shotSort.get(1), zBoson);
+    assertEquals(shotSort.get(2), up);
+
+    ArrayList<Player> nameSort = new ArrayList<Player>(league.getPlayers());
+    Collections.sort(nameSort, Player.COMPARE_BY_NAME);
+    Collections.reverse(nameSort);
+    assertEquals(nameSort.get(0), bottom);
+    assertEquals(nameSort.get(1), charm);
+    assertEquals(nameSort.get(2), down);
 	}
 
 }

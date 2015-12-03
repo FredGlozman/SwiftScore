@@ -486,7 +486,7 @@ public class Player
   // line 123 ../../../../../ScoreKeeper.ump
   public static Comparator<Player> COMPARE_BY_NAME = new Comparator<Player>() {public int compare(Player one, Player other)
   	{
-  		return one.name.compareTo(other.name);
+  		return other.name.compareTo(one.name);
   	}};
 // line 136 ../../../../../ScoreKeeper.ump
   public static Comparator<Player> COMPARE_BY_JERSEY = new Comparator<Player>() {public int compare(Player one, Player other)
@@ -506,7 +506,7 @@ public class Player
 // line 178 ../../../../../ScoreKeeper.ump
   public static Comparator<Player> COMPARE_BY_TOTAL_INFRACTIONS = new Comparator<Player>() {public int compare(Player one, Player other)
     {
-      return one.numberOfShots() - other.numberOfShots();
+      return one.numberOfInfractions() - other.numberOfInfractions();
     }};
 // line 192 ../../../../../ScoreKeeper.ump
   public static Comparator<Player> COMPARE_BY_PENALTY_SHOTS = new Comparator<Player>() {public int compare(Player one, Player other)
