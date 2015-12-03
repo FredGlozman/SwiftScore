@@ -7,5 +7,5 @@
 	$typePlayer = $_POST["Type"];
 
 
-	exec("java -jar CreateTeam.jar Controller $type $teamName $playerName $playerNumber $typePlayer", $output);
+	exec("java -jar CreatePlayer.jar Controller $type $teamName $playerName $playerNumber $typePlayer", $output);
 	?>

@@ -5,5 +5,5 @@
 	$playerName = $_POST["PlayerName"];
 	$playerNumber = $_POST["PlayerNumber"];
 
-	exec("java -jar CreateTeam.jar Controller $type $teamName $playerName $playerNumber", $output);
+	exec("java -jar RemovePlayer.jar Controller $type $teamName $playerName $playerNumber", $output);
 	?>

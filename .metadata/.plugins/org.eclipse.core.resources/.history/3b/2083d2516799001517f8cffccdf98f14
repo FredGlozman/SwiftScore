@@ -146,6 +146,7 @@ public class Controller {
 	{
 		//sorts via number of goals
 		List<Player> players = new ArrayList<Player>(League.getInstance().getPlayers());
+
 		Collections.sort(players, Player.COMPARE_BY_SUCCESSFUL_SHOTS);
 		
 	}

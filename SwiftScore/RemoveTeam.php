@@ -3,5 +3,5 @@
 	$type = "RT";
 	$teamName = $_POST["teamName"];
 
-	exec("java -jar CreateTeam.jar Controller $type $teamName", $output);
+	exec("java -jar RemoveTeam.jar Controller $type $teamName", $output);
 	?>

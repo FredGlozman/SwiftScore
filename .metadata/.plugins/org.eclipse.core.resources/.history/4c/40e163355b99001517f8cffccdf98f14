@@ -2,6 +2,7 @@
 <style>
 p, font, th, td {
 	color: white;
+	font-size: 30x;
 }
 </style>
 <head>
@@ -10,7 +11,7 @@ p, font, th, td {
 <body background="soccer.jpg">
 	<center>
 		<p>
-			<font>Display Player Analysis by Goals</font> <!-- implement get -->
+			<font>Display Player analysis by Goals</font>
 		</p>
 		<p>
 		<table style="width: 30%" border="1">

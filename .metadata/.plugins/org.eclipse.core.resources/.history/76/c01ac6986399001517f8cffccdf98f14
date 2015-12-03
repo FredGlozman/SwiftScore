@@ -1,7 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 //import ca.mcgill.ecse321.scorekeeper.model;
 
 public class Controller {
@@ -9,15 +5,13 @@ public class Controller {
 	//args[1]..args[n] is different for each view
 	public static void main(String [] args)
 	{
-		//Live score keeping:
+		//Live score keeping
 		if (args[0].equals("LSK"))
 		{
 			String[] array = {args[1], args[2],args[3],args[4]};
 			liveScoreKeeping(array);
 		}
 		//TODO:missing batch
-		
-		//League Configuration:
 		//Create team
 		if (args[0].equals("CT"))
 		{
@@ -41,12 +35,6 @@ public class Controller {
 		{
 			String[] array = {args[1], args[2], args[3]};
 			RemovePlayer(array);
-		}
-		
-		//Player Analysis Mode
-		if(args[0].equals("PA")) //how to choose way of sorting??
-		{
-			PlayerAnalysisMode();
 		}
 
 	}
@@ -142,11 +130,5 @@ public class Controller {
 			League.getInstance().removePlayer(player);
 		}
 	}
-	public static void PlayerAnalysisMode()
-	{
-		//sorts via number of goals
-		List<Player> players = new ArrayList<Player>(League.getInstance().getPlayers());
-		Collections.sort(players, Player.COMPARE_BY_SUCCESSFUL_SHOTS);
-		
-	}
+	
 }
