@@ -14,5 +14,8 @@
 			<br> <input type="submit" value="Go">
 		</center>
 	</form>
+	<?php
+		echo "hello world";
+	?>
 </body>
 </html>

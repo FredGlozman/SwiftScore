@@ -6,7 +6,8 @@
 	<form action="PHP.php" method="get">
 		<center>
 
-			<input type="radio" name="UseCase" value="1"><font color="white" size = 10x >Live Score Keeping</font> <br> 
+			<input type="radio" name=“UseCase” value="1">
+			<font color="white" size = 10x >Live Score Keeping</font> <br> 
 			<input type="radio" name="UseCase" value="2"><font color="white" size = 10x >Batch Input</font> <br> 
 			<input type="radio" name="UseCase" value="3"><font color="white" size = 10x >League Configuration</font> <br> 
 			<input type="radio" name="UseCase" value="4"><font color="white" size = 10x >Player Analysis</font> <br> 
@@ -14,5 +15,6 @@
 			<br> <input type="submit" value="Go">
 		</center>
 	</form>
+
 </body>
 </html>

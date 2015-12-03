@@ -2539,3 +2539,19 @@ org.eclipse.wst.xml.core.internal.document.StructuredDocumentRegionManagementExc
 !MESSAGE Unhandled event loop exception
 !STACK 0
 java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2015-12-03 09:09:48.416
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-12-03 09:10:32.000
+!MESSAGE The Tomcat server configuration at /Servers/Tomcat v6.0 Server at localhost-config is missing. Check the server for errors.
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-12-03 09:10:35.486
+!MESSAGE The Tomcat server configuration at /Servers/Tomcat v6.0 Server at localhost-config is missing. Check the server for errors.
+
+!ENTRY org.eclipse.ui 4 0 2015-12-03 09:20:39.396
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException

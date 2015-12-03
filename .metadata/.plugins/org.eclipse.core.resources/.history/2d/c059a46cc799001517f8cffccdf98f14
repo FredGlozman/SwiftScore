@@ -15,7 +15,7 @@ public class Controller {
 			String[] array = {args[1], args[2],args[3],args[4]};
 			liveScoreKeeping(array);
 		}
-		//batch input
+		//TODO:missing batch
 		if (args[0].equals("BATCH"))
 		{
 			String[] array = {args[1], args[2],args[3],args[4],args[5]};
