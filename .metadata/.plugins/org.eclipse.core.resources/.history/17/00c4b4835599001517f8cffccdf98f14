@@ -25,15 +25,9 @@ public class Controller {
 			CreatePlayer(array);
 		}
 		//Remove Team
-		if (args[0].equals("RT"))
-		{
-			
-		}
+		
 		//Remove Player
-		if (args[0].equals("RP"))
-		{
-			
-		}
+		
 
 	}
 	//(action,player,number,team)
@@ -95,17 +89,7 @@ public class Controller {
 		if(Find.getTeam(args[0]) == null)//team in list already
 		{
 			Team team = new Team(args[0],League.getInstance());
-			if (args[3].equals("player"))
-			{
-				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
-				team.addPlayer(args[1], Integer.parseInt(args[2]), League.getInstance());
-				
-			}
-			else if (args[3].equals("goalie"))
-			{
-				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
-				team.addPlayer(new Goalie(args[1], Integer.parseInt(args[2]), team, League.getInstance()));
-			}
+			League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 		}
 	}
 	

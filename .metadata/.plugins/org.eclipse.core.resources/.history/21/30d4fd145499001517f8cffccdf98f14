@@ -11,7 +11,7 @@ Team: <!-- implement get teams -->
 	<option name= team value="team1">Team1</option>
 	<option name= team value="team2">Team2</option>
 </select>
-Player Name: <input type="text" name="PlayerName"> 
+Player Name: <input type="text" name="PlayerName"> <input type= "submit" name= "add" value= "Add">
 <br>
 Player Number: <input type="text" name="PlayerNumber"> 
 <br>

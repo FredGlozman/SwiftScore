@@ -97,14 +97,11 @@ public class Controller {
 			Team team = new Team(args[0],League.getInstance());
 			if (args[3].equals("player"))
 			{
-				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
-				team.addPlayer(args[1], Integer.parseInt(args[2]), League.getInstance());
-				
+			League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 			}
 			else if (args[3].equals("goalie"))
 			{
-				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
-				team.addPlayer(new Goalie(args[1], Integer.parseInt(args[2]), team, League.getInstance()));
+				
 			}
 		}
 	}
