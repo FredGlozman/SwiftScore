@@ -229,17 +229,17 @@ public class Controller {
 			//Penalty shots
 			else if (args[0].equals("PS"))
 			{
-				Collections.sort(teams, Team.COMPARE_BY_PENALTY_SHOTS);
+				Collections.sort(players, Player.COMPARE_BY_PENALTY_SHOTS);
 			}
 			//Red Cards
 			else if (args[0].equals("RC"))
 			{
-				Collections.sort(teams, Team.COMPARE_BY_RED_CARDS);
+				Collections.sort(players, Player.COMPARE_BY_RED_CARDS);
 			}
 			//Yellow Cards
 			else if (args[0].equals("YC"))
 			{
-				Collections.sort(teams, Team.COMPARE_BY_YELLOW_CARDS);
+				Collections.sort(players, Player.COMPARE_BY_YELLOW_CARDS);
 			}
 				
 		}

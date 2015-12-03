@@ -44,16 +44,16 @@ public class Controller {
 		}
 		
 		//Player Analysis Mode
-		if(args[0].equals("PA")) 
+		if(args[0].equals("PA")) //how to choose way of sorting??
 		{
 			String[] array = {args[1]};
 			PlayerAnalysisMode(array);
 		}
 		//League Analysis Mode
-		if(args[0].equals("LA")) 
+		if(args[0].equals("LA")) //how to choose way of sorting??
 		{
 			String[] array = {args[1]};
-			LeagueAnalysisMode(array);
+			//LeagueAnalysisMode(array);
 		}
 
 	}
@@ -193,54 +193,8 @@ public class Controller {
 		else if (args[0].equals("YC"))
 		{
 			Collections.sort(players, Player.COMPARE_BY_YELLOW_CARDS);
-		}	
+		}
+		
 		
 	}
-	//(type of sorting)
-		public static void LeagueAnalysisMode(String [] args)
-		{
-			List<Team> teams = new ArrayList<Team>(League.getInstance().getTeams());
-			//sorts via:
-			//Name
-			if (args[0].equals("N"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_NAME);
-			}
-			//Shots
-			else if (args[0].equals("S"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_SHOTS);
-			}
-			//successful shots
-			else if (args[0].equals("SS"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_SUCCESSFUL_SHOTS);
-			}
-			//Points
-			else if (args[0].equals("P"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_POINTS);
-			}
-			//Infractions
-			else if (args[0].equals("I"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_TOTAL_INFRACTIONS);
-			}
-			//Penalty shots
-			else if (args[0].equals("PS"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_PENALTY_SHOTS);
-			}
-			//Red Cards
-			else if (args[0].equals("RC"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_RED_CARDS);
-			}
-			//Yellow Cards
-			else if (args[0].equals("YC"))
-			{
-				Collections.sort(teams, Team.COMPARE_BY_YELLOW_CARDS);
-			}
-				
-		}
 }

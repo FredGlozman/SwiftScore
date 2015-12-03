@@ -14,9 +14,9 @@ Choose Sort:
 </p>
 <select>
 	<option name="sort" value="N">Name</option>
+	<option name="sort" value="J">Jersey</option>
 	<option name="sort" value="S">Shots</option>
 	<option name="sort" value="SS">Successful Shots</option>
-	<option name="sort" value="P">Points</option>
 	<option name="sort" value="I">Infractions</option>
 	<option name="sort" value="PS">Penalty Shots</option>
 	<option name="sort" value="RC">Red Cards</option>
