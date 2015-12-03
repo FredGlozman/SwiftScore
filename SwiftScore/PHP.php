@@ -8,38 +8,34 @@
 			);
 		$username = $_GET["user"];
 		$password = $_GET["password"];
-		if($array[0] != $username)
+		if($array[0] != $username && $array[1] != $password)
 		{
-			echo Authentication failed;
-		}
-		else if($array[1] != $password)
-		{
-			echo Authentication failed;
+			echo "Authentication failed";
 		}
 		else
 		{
 			if($UseCase == 1 )
 			{
-				header('Location: LiveScoreKeeping.html');
+				exec('LiveScoreKeeping.php');
 			}
 			if($UseCase == 2 )
 			{
-				header('Location: Batch.html');
+				exec('Batch.html');
 			}
 			if($UseCase == 3 )
 			{
-				header('Location: LeagueConfiguration.html');
+				exec('LeagueConfiguration.php');
 			}
 			
 		}
 	}
 	if($UseCase == 4)
 	{
-		header('Location: PlayerAnalysis.html');
+		exec('PlayerAnalysis.php');
 	}
 	if($UseCase == 5)
 	{
-		header('Location: LeagueAnalysis.html');
+		exec('LeagueAnalysis.php');
 	}
 
 	?>

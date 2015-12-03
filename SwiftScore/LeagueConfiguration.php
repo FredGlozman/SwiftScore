@@ -1,4 +1,26 @@
-	<?php
+<html>
+<style>
+p, form {
+	color: white;
+}
+</style>
+<head>
+<title>SwiftScore</title>
+</head>
+<center>
+	<body background="soccer.jpg">
+		<form action="" method="post">
+			<font size = 30x >League Configuration</font> <br> <br> 
+			<input type="radio" name="action" value="1"><font size = 30x >New Team</font> <br> 
+			<input type="radio" name="action" value="2"><font size = 30x >New Player</font> <br>
+			<input type="radio" name="action" value="3"><font size = 30x >Remove Team</font> <br>
+			<input type="radio" name="action" value="4"><font size = 30x >RemovePlayer</font> 
+			<br> <br> 
+			<input type="submit" value="Go">
+
+		</form>
+</center>
+<?php
 	$action = $_POST["action"]
 	if($action == "1")
 	{
@@ -16,5 +38,6 @@
 	{
 		header('Location: RemovePlayer.html')
 	}
-
 	?>
+</body>
+</html>
