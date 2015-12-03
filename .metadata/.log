@@ -2332,3 +2332,18 @@ org.eclipse.wst.xml.core.internal.document.StructuredDocumentRegionManagementExc
 !MESSAGE Unhandled event loop exception
 !STACK 0
 java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2015-12-02 18:49:21.168
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2015-12-02 18:52:10.977
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException
+
+!ENTRY org.eclipse.ui 4 0 2015-12-02 18:52:22.955
+!MESSAGE Unhandled event loop exception
+!STACK 0
+java.lang.NullPointerException

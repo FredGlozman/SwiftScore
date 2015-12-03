@@ -12,13 +12,11 @@ public class Controller {
 			liveScoreKeeping(array);
 		}
 		//TODO:missing batch
-		//Create team
 		if (args[0].equals("CT"))
 		{
 			String[] array = {args[1], args[2],args[3],args[4]};
 			CreateTeam(array);
 		}
-		//Create Player
 		
 		
 

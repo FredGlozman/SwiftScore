@@ -1,46 +1,45 @@
 	<?php
-	header('Location: Website.html')
-	$UseCase = $_GET["UseCase"]
+	$UseCase = $_GET["UseCase"];
 	if($UseCase == 1 || $UseCase == 2 ||$UseCase == 3)
 	{
-		header('Location: Authentication.html')
+		header('Location: Authentication.html');
 				$array = array(
 			"user" => "password",
 			);
-		$username = $_GET["user"]
-		$password = $_GET["password"]
+		$username = $_GET["user"];
+		$password = $_GET["password"];
 		if($array[0] != $username)
 		{
-			echo Authentication failed
+			echo Authentication failed;
 		}
 		else if($array[1] != $password)
 		{
-			echo Authentication failed
+			echo Authentication failed;
 		}
 		else
 		{
 			if($UseCase == 1 )
 			{
-				header('Location: LiveScoreKeeping.html') 
+				header('Location: LiveScoreKeeping.html');
 			}
 			if($UseCase == 2 )
 			{
-				header('Location: Batch.html') 
+				header('Location: Batch.html');
 			}
 			if($UseCase == 3 )
 			{
-				header('Location: LeagueConfiguration.html') 
+				header('Location: LeagueConfiguration.html');
 			}
 			
 		}
 	}
 	if($UseCase == 4)
 	{
-		header('Location: PlayerAnalysis.html')
+		header('Location: PlayerAnalysis.html');
 	}
 	if($UseCase == 5)
 	{
-		header('Location: LeagueAnalysis.html')
+		header('Location: LeagueAnalysis.html');
 	}
 
 	?>

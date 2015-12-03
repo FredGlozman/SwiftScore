@@ -5,20 +5,17 @@ public class Controller {
 	//args[1]..args[n] is different for each view
 	public static void main(String [] args)
 	{
-		//Live score keeping
 		if (args[0].equals("LSK"))
 		{
 			String[] array = {args[1], args[2],args[3],args[4]};
 			liveScoreKeeping(array);
 		}
 		//TODO:missing batch
-		//Create team
-		if (args[0].equals("CT"))
+		if (args[0].equals("LC"))
 		{
-			String[] array = {args[1], args[2],args[3],args[4]};
-			CreateTeam(array);
+			String[] array = {args[1], args[2],args[3],args[4],args[5]};
+			liveScoreKeeping(array);
 		}
-		//Create Player
 		
 		
 
