@@ -16,6 +16,11 @@ public class Controller {
 			liveScoreKeeping(array);
 		}
 		//TODO:missing batch
+		if (args[0].equals("BATCH"))
+		{
+			String[] array = {args[1], args[2],args[3],args[4],args[5]};
+			Batch(array);
+		}
 		
 		//League Configuration:
 		//Create team
@@ -57,6 +62,7 @@ public class Controller {
 		}
 
 	}
+	
 	//(action,player,number,team)
 	public static void liveScoreKeeping(String [] args)
 	{
@@ -100,6 +106,19 @@ public class Controller {
 			}
 		}
 	}
+	
+	//(team1,team2,location,startTime,endTime)
+	public static void Batch(String [] args)
+	{
+		Team team1 = new Team(args[0], League.getInstance());
+		Team team2 = new Team(args[1], League.getInstance());
+		League.getInstance().addGame(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], team1,team2);
+//		Game game = new Game(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], League.getInstance(), team1, team2);
+//		League.getInstance().addGame(game);
+		
+	}
+	
+	//League Configuration
 	//(team name)
 	public static void CreateTeam(String [] args)
 	{
@@ -148,6 +167,7 @@ public class Controller {
 			League.getInstance().removePlayer(player);
 		}
 	}
+	
 	//(type of sorting)
 	public static void PlayerAnalysisMode(String [] args)
 	{
@@ -192,9 +212,9 @@ public class Controller {
 		else if (args[0].equals("YC"))
 		{
 			Collections.sort(players, Player.COMPARE_BY_YELLOW_CARDS);
-		}	
-		
+		}		
 	}
+	
 	//(type of sorting)
 		public static void LeagueAnalysisMode(String [] args)
 		{
@@ -239,7 +259,8 @@ public class Controller {
 			else if (args[0].equals("YC"))
 			{
 				Collections.sort(teams, Team.COMPARE_BY_YELLOW_CARDS);
-			}
-				
+			}			
 		}
+		
+
 }

@@ -6,6 +6,26 @@
 <p>
 Display Batch Input
 </p>
-<input type= "submit" value= "Back"> 
+<form action="Batch.php" method="post">
+Team1: 
+<select>
+	<option name="team1" value="Canada">Canada</option>
+	<option name="team1" value="Germany">Germany</option>
+	<option name="team1" value="Italy">Italy</option>
+</select>
+vs. 
+Team2: 
+<select>
+	<option name="team2" value="Canada">Canada</option>
+	<option name="team2" value="Germany">Germany</option>
+	<option name="team2" value="Italy">Italy</option>
+</select>
+<br>
+Location: <input type="text" name="location"> 
+<br>
+StartTime: <input type="text" name="startTime"> EndTime: <input type="text" name="endTime"> 
+<br><br>
+<input type= "submit" value= "Done">
+</form> 
 </body>
 </html>

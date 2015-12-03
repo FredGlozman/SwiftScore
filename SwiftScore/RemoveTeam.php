@@ -1,4 +1,3 @@
-
 	<?php
 	$type = "RT";
 	$teamName = $_POST["teamName"];
