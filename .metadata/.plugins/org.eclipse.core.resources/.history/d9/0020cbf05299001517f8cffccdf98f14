@@ -70,9 +70,10 @@ public class Controller {
 	public static void CreateTeam(String [] args)
 	{
 		String teamName = args[0];
-		if(Find.getTeam(teamName) == null)//team not on list already
+		Team team = new Team(teamName,League.getInstance());
+		if(team == null)
 		{
-			League.getInstance().addTeam(teamName);
+		team.setName(teamName);
 		}
 		
 	}

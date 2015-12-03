@@ -15,7 +15,7 @@ public class Controller {
 		//Create team
 		if (args[0].equals("CT"))
 		{
-			String[] array = {args[1]};
+			String[] array = {args[1], args[2],args[3],args[4]};
 			CreateTeam(array);
 		}
 		//Create Player
@@ -66,14 +66,9 @@ public class Controller {
 			}
 		}
 	}
-	//(team name)
+	//(team name, player name, player number, type player)
 	public static void CreateTeam(String [] args)
 	{
-		String teamName = args[0];
-		if(Find.getTeam(teamName) == null)//team not on list already
-		{
-			League.getInstance().addTeam(teamName);
-		}
 		
 	}
 	
