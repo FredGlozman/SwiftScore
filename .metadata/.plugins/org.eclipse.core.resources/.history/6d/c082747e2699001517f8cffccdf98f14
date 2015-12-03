@@ -1,9 +1,0 @@
-<html>
-<head>
-<title>Swift Score</title>
-</head>
-<bodybackground="soccer.jpg">
-	<p>Display league Analysis</p>
-	<input type="submit" value="Go">
-</body>
-</html>
