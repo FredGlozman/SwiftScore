@@ -126,8 +126,7 @@ public class Controller {
 		if(Find.getPlayer(args[1], team) !=null)//player exists 
 		{
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
-			team.removePlayer(player);
-			League.getInstance().removePlayer(player);
+			team.removePlayer(aPlayer)
 		}
 	}
 	

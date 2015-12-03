@@ -33,7 +33,7 @@ public class Controller {
 		//Remove Player
 		if (args[0].equals("RP"))
 		{
-			String[] array = {args[1], args[2], args[3]};
+			String[] array = {args[1], args[2], args[3], args[4]};
 			RemovePlayer(array);
 		}
 
@@ -94,7 +94,7 @@ public class Controller {
 	//(teamName,playerName,playerNumber,typePlayer)
 	public static void CreatePlayer(String [] args)
 	{
-		if(Find.getTeam(args[0]) != null)//team exists
+		if(Find.getTeam(args[0]) != null)//team in list already
 		{
 			Team team = new Team(args[0],League.getInstance());
 			if (args[3].equals("player"))
@@ -110,24 +110,20 @@ public class Controller {
 			}
 		}
 	}
-	//(teamName)
 	public static void RemoveTeam(String [] args)
 	{
-		if(Find.getTeam(args[0]) != null)//team exists
+		if(Find.getTeam(args[0]) != null)//team in list already
 		{
 			Team team = new Team(args[0],League.getInstance());
 			League.getInstance().removeTeam(team);
 		}
 	}
-	//(teamName,playerName, playerNumber)
 	public static void RemovePlayer(String [] args)
 	{
 		Team team = new Team(args[0],League.getInstance());
-		if(Find.getPlayer(args[1], team) !=null)//player exists 
+		if(Find.getPlayer(args[1], team))
 		{
-			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
-			team.removePlayer(player);
-			League.getInstance().removePlayer(player);
+			
 		}
 	}
 	

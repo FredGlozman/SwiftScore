@@ -127,7 +127,6 @@ public class Controller {
 		{
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
 			team.removePlayer(player);
-			League.getInstance().removePlayer(player);
 		}
 	}
 	

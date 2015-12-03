@@ -4,20 +4,16 @@
 </head>
 
 <form action="LeagueConfiguration.php" method="post">
-Remove Player
+Remove Team
 <br><br>
 Team: <!-- implement get teams -->
 <select>
-	<option name = team value="team1">Team1</option>
-	<option name = team value="team2">Team2</option>
+	<option value="team1">Team1</option>
+	<option value="team2">Team2</option>
 </select>
-<br>
-Player Name: <input type="text" name="PlayerName"> 
-<br>
-Player Number: <input type="text" name="PlayerNumber"> 
-<br>
-<br><br>
 <input type= "submit" name= "remove" value= "Remove">
+<br><br>
+<input type= "submit" name= "done" value= "Done">
 </form>
 	
 </body>

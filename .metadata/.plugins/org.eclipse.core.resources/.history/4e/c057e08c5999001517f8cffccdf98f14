@@ -33,7 +33,7 @@ public class Controller {
 		//Remove Player
 		if (args[0].equals("RP"))
 		{
-			String[] array = {args[1], args[2], args[3]};
+			String[] array = {args[1], args[2], args[3], args[4]};
 			RemovePlayer(array);
 		}
 
@@ -126,8 +126,7 @@ public class Controller {
 		if(Find.getPlayer(args[1], team) !=null)//player exists 
 		{
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
-			team.removePlayer(player);
-			League.getInstance().removePlayer(player);
+			team.removePlayer(aPlayer)
 		}
 	}
 	

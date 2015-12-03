@@ -12,10 +12,12 @@ Team: <!-- implement get teams -->
 	<option name = team value="team2">Team2</option>
 </select>
 <br>
-Player Name: <input type="text" name="PlayerName"> 
-<br>
-Player Number: <input type="text" name="PlayerNumber"> 
-<br>
+Player <!-- implement get player -->
+<select>
+	<option name = player value="player1">Player1</option>
+	<option name = player value="player2">Player2</option>
+</select>
+
 <br><br>
 <input type= "submit" name= "remove" value= "Remove">
 </form>
