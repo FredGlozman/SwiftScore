@@ -9,7 +9,7 @@ p {
 </head>
 <body background="soccer.jpg">
 <center>
-
+	<form action="LiveScoreKeeping.php" method="post">
 		<p>Live Game</p>
 		<br>
 		<br> <font color="white">Player: </font> <input type="text" name="player">
@@ -21,7 +21,6 @@ p {
 		<input type="submit" name="action" value="YELLOWCARD"> 
 		<input type="submit" name="action" value="REDCARD"> 
 		<br> <br>
-	<form action="LiveScoreKeeping.php" method="post">
 		<input type="submit" name="action" value="Done">
 	</form>
 </center>

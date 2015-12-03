@@ -67,9 +67,10 @@ public class Controller {
 		Game game = new Game(0, 160, "Olimpique stadium", League.getInstance(), team);
 		double time = System.currentTimeMillis()/1000-game.getStartTime();
 		
-		//check Player is on team
-		if (args[1].equals(Find.getPlayer(args[1],team))) 
+		//player submit button and Player is on team
+		if (!args[0].equals("Done") && args[1].equals(Find.getPlayer(args[1],team))) 
 		{
+
 			if (args[0].equals("SHOT"))
 			{
 				Shot shot = new Shot(false, (int)time, player, goalie, game);
