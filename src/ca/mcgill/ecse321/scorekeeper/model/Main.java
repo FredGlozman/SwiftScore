@@ -426,13 +426,15 @@ public class Main extends Application {
 		Label title = new Label("Live Input");
 		title.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
 		GridPane.setConstraints(title, 1, 0);
-		
-		Label instructions = new Label("Please enter a team name or player name then");
+
+		Label instructions = new Label(
+				"Please enter a team name or player name then");
 		GridPane.setConstraints(instructions, 1, 1);
-		
-		Label instructions2 = new Label("increment the stats & save using the buttons.");
+
+		Label instructions2 = new Label(
+				"increment the stats & save using the buttons.");
 		GridPane.setConstraints(instructions2, 1, 2);
-		
+
 		Label playerLabel = new Label("Player:");
 		GridPane.setConstraints(playerLabel, 0, 3);
 
@@ -445,54 +447,105 @@ public class Main extends Application {
 		TextField teamInput = new TextField();
 		GridPane.setConstraints(teamInput, 1, 4);
 
+		Label warning = new Label("");
+		GridPane.setConstraints(warning, 1, 5);
+
 		Button saveButton = new Button("Save");
-		GridPane.setConstraints(saveButton, 1, 5);
+		GridPane.setConstraints(saveButton, 1, 6);
 		saveButton.setOnAction(e -> {
 			playerInput.clear();
 			teamInput.clear();
 			League.SAVE();
+			warning.setText("Save successful!");
 		});
 
 		Button backButton = new Button("Back");
-		GridPane.setConstraints(backButton, 1, 6);
+		GridPane.setConstraints(backButton, 1, 7);
 		backButton.setOnAction(e -> window.setScene(mainScene));
 
 		Button goalButton = new Button("Goal");
 		GridPane.setConstraints(goalButton, 2, 3);
 		goalButton.setOnAction(e -> {
-			// addGoals(
-			// 1,
-			// Find.getPlayer(playerInput.getText(),
-			// Find.getTeam(teamInput.getText())),
-			// Find.getTeam(teamInput.getText()));
-			});
+			if (playerInput.getText().equals("")) {
+				warning.setText("Please enter a player name first!");
+			} else {
+				warning.setText("Goal incremented!");
+				// Must implement a way to properly increment a player's goals
+				// addGoals(
+				// 1,
+				// Find.getPlayer(playerInput.getText(),
+				// Find.getTeam(teamInput.getText())),
+				// Find.getTeam(teamInput.getText()));
+			}
+		});
 
 		Button yellowButton = new Button("Yellow");
 		GridPane.setConstraints(yellowButton, 3, 3);
-		// Must increment Yellow cards with a similar method described for the
-		// goal button.
+		yellowButton.setOnAction(e -> {
+			if (playerInput.getText().equals("")) {
+				warning.setText("Please enter a player name first!");
+			} else {
+				warning.setText("Yellow Card incremented!");
+				// Must increment yellow cards with a similar method described
+				// for the
+				// goal button
+			}
+		});
 
 		Button redButton = new Button("Red");
 		GridPane.setConstraints(redButton, 4, 3);
-		// Must increment red cards
+		redButton.setOnAction(e -> {
+			if (playerInput.getText().equals("")) {
+				warning.setText("Please enter a player name first!");
+			} else {
+				warning.setText("Red Card incremented!");
+				// Must increment red cards with a similar method described for
+				// the goal button
+			}
+		});
 
 		Button winButton = new Button("Win");
 		GridPane.setConstraints(winButton, 2, 4);
-		// Must increment Win of team
+		winButton.setOnAction(e -> {
+			if (teamInput.getText().equals("")) {
+				warning.setText("Please enter a team name first!");
+			} else {
+				warning.setText("Wins incremented!");
+				// Must increment wins for a team with a similar method
+				// described for the goal button
+			}
+		});
 
 		Button lossButton = new Button("Loss");
 		GridPane.setConstraints(lossButton, 3, 4);
-		// Must increment Loss of team
+		lossButton.setOnAction(e -> {
+			if (teamInput.getText().equals("")) {
+				warning.setText("Please enter a team name first!");
+			} else {
+				warning.setText("Losses incremented!");
+				// Must increment wins for a team with a similar method
+				// described for the goal button
+			}
+		});
 
 		Button tieButton = new Button("Tie");
 		GridPane.setConstraints(tieButton, 4, 4);
-		// Must increment Tie of team
+		tieButton.setOnAction(e -> {
+			if (teamInput.getText().equals("")) {
+				warning.setText("Please enter a team name first!");
+			} else {
+				warning.setText("Ties incremented!");
+				// Must increment wins for a team with a similar method
+				// described for the goal button
+			}
+		});
 
-		grid.getChildren().addAll(title, instructions, instructions2, backButton, saveButton, playerLabel,
-				playerInput, teamLabel, teamInput, goalButton, yellowButton,
-				redButton, winButton, lossButton, tieButton);
+		grid.getChildren().addAll(title, instructions, instructions2,
+				backButton, saveButton, warning, playerLabel, playerInput,
+				teamLabel, teamInput, goalButton, yellowButton, redButton,
+				winButton, lossButton, tieButton);
 
-		liveScene = new Scene(grid, 550, 250);
+		liveScene = new Scene(grid, 550, 270);
 	}
 
 	/**
@@ -566,13 +619,13 @@ public class Main extends Application {
 
 		TextField tieInput = new TextField();
 		GridPane.setConstraints(tieInput, 7, 3);
-		
+
 		Button saveButton = new Button("Save");
 		GridPane.setConstraints(saveButton, 1, 5);
 		saveButton.setOnAction(e -> {
 			/*
-			 * Must implement a way to increment the stats
-			 * by the input int values
+			 * Must implement a way to increment the stats by the input int
+			 * values
 			 */
 			playerInput.clear();
 			teamInput.clear();
@@ -583,7 +636,6 @@ public class Main extends Application {
 			lossInput.clear();
 			League.SAVE();
 		});
-
 
 		grid.getChildren().addAll(title, instructions, backButton, saveButton,
 				playerLabel, playerInput, teamLabel, teamInput, goalLabel,
