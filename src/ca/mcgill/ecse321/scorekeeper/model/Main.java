@@ -14,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import java.util.*;
 
 /**
  * Class the runs the Desktop Application
@@ -61,7 +62,47 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
+		// Set up 
+		
 		setupData();
+		
+		List<Player> playerList = new ArrayList<Player>();
+		List<Team> teamList = new ArrayList<Team>();
+		
+		// Remove dummy instances for the purpose of this desktop application
+		
+		for (Player player : League.getInstance().getPlayers()){
+			if (player.getName().equals("Bob")){
+			//	playerList.remove(player);
+			} else 
+			playerList.add(player);
+		}
+		
+		for (Team team : League.getInstance().getTeams()){
+			if (team.getName().equals("HBU")){
+			//	playerList.remove(player);
+			} else 
+			teamList.add(team);
+		}
+		
+		// Sorting the top players and teams
+		
+		Collections.sort(playerList, Player.COMPARE_BY_SUCCESSFUL_SHOTS);
+		Collections.reverse(playerList);
+		
+		List<Player> topPlayersGoals = new ArrayList<Player>(playerList);
+		
+		Collections.sort(playerList, Player.COMPARE_BY_TOTAL_INFRACTIONS);
+		Collections.reverse(playerList);
+		
+		List<Player> topPlayersInfractions = new ArrayList<Player>(playerList);
+		
+		for (Player player : playerList){
+			System.out.println(player.getRedInfractionCount() + player.getYellowInfractionCount());
+		}
+
+		
+		// Generate the application
 		
 		window = primaryStage;
 		window.setTitle("swiftScore");
@@ -437,6 +478,7 @@ public class Main extends Application {
 	}
 
 	/**
+	 * NOT IMPLEMENTED
 	 * Creates the scene for the batch input mode page
 	 * @param grid The layout to be used
 	 */
@@ -488,7 +530,7 @@ public class Main extends Application {
         createAndAddPlayer("Yaya Toure", 37, team0);
 
 		Team team1 = new Team("Toronto FC", League.getInstance());
-		createAndAddPlayer("TheOtherGuy", 0, team1);
+		createAndAddPlayer("The Other Guy", 0, team1);
 		
 		Team team2 = new Team("New Yourk Red Bulls", League.getInstance());
 		Team team3 = new Team("FC Dallas", League.getInstance());
