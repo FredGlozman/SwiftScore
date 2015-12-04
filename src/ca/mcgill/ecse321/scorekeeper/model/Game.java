@@ -20,7 +20,7 @@ import java.util.*;
  * @see League
  */
 // line 581 "../../../../../ScoreKeeper.ump"
-// line 706 "../../../../../ScoreKeeper.ump"
+// line 729 "../../../../../ScoreKeeper.ump"
 public class Game
 {
 
