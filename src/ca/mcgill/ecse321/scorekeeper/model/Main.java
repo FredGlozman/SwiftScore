@@ -549,7 +549,7 @@ public class Main extends Application {
 	}
 
 	/**
-	 * NOT IMPLEMENTED Creates the scene for the batch input mode page
+	 * Creates the scene for the batch input mode page
 	 * 
 	 * @param grid
 	 *            The layout to be used
@@ -565,8 +565,11 @@ public class Main extends Application {
 		GridPane.setConstraints(title, 1, 0);
 
 		Label instructions = new Label(
-				"Enter the values to be updated with numbers, then Save.");
+				"Enter the increment values for each stat, then Save.");
 		GridPane.setConstraints(instructions, 1, 1);
+
+		Label warning = new Label("");
+		GridPane.setConstraints(warning, 1, 5);
 
 		Label playerLabel = new Label("Player:");
 		GridPane.setConstraints(playerLabel, 0, 2);
@@ -581,7 +584,7 @@ public class Main extends Application {
 		GridPane.setConstraints(teamInput, 1, 3);
 
 		Button backButton = new Button("Back");
-		GridPane.setConstraints(backButton, 1, 6);
+		GridPane.setConstraints(backButton, 1, 7);
 		backButton.setOnAction(e -> window.setScene(mainScene));
 
 		Label goalLabel = new Label("Goals: ");
@@ -614,35 +617,66 @@ public class Main extends Application {
 		TextField lossInput = new TextField();
 		GridPane.setConstraints(lossInput, 5, 3);
 
-		Label tieLabel = new Label("Tie: ");
+		Label tieLabel = new Label("Ties: ");
 		GridPane.setConstraints(tieLabel, 6, 3);
 
 		TextField tieInput = new TextField();
 		GridPane.setConstraints(tieInput, 7, 3);
 
 		Button saveButton = new Button("Save");
-		GridPane.setConstraints(saveButton, 1, 5);
-		saveButton.setOnAction(e -> {
-			/*
-			 * Must implement a way to increment the stats by the input int
-			 * values
-			 */
-			playerInput.clear();
-			teamInput.clear();
-			goalInput.clear();
-			yellowInput.clear();
-			redInput.clear();
-			winInput.clear();
-			lossInput.clear();
-			League.SAVE();
-		});
+		GridPane.setConstraints(saveButton, 1, 6);
+		saveButton
+				.setOnAction(e -> {
+					if (playerInput.getText().equals("")
+							&& (!goalInput.getText().equals(""))
+							|| !yellowInput.getText().equals("")
+							|| !redInput.getText().equals("")) {
+						warning.setText("Please enter a player name.");
+					} else if (teamInput.getText().equals("")
+							&& (!winInput.getText().equals(""))
+							|| !lossInput.getText().equals("")
+							|| !tieInput.getText().equals("")) {
+						warning.setText("Please enter a team name.");
+					} else if (!isInt(goalInput.getText())
+							|| !isInt(yellowInput.getText())
+							|| !isInt(redInput.getText())
+							|| !isInt(winInput.getText())
+							|| !isInt(lossInput.getText())
+							|| !isInt(tieInput.getText())) {
+						warning.setText("Please enter the increment value as an integer");
+					} else {
+						/*
+						 * Must implement a way to increment the stats by the
+						 * input int values
+						 */
+						playerInput.clear();
+						teamInput.clear();
+						goalInput.clear();
+						yellowInput.clear();
+						redInput.clear();
+						winInput.clear();
+						lossInput.clear();
+						League.SAVE();
+						warning.setText("Save successful!");
+					}
+				});
 
-		grid.getChildren().addAll(title, instructions, backButton, saveButton,
-				playerLabel, playerInput, teamLabel, teamInput, goalLabel,
-				goalInput, yellowLabel, yellowInput, redLabel, redInput,
-				winLabel, winInput, lossLabel, lossInput, tieLabel, tieInput);
+		grid.getChildren().addAll(title, warning, instructions, backButton,
+				saveButton, playerLabel, playerInput, teamLabel, teamInput,
+				goalLabel, goalInput, yellowLabel, yellowInput, redLabel,
+				redInput, winLabel, winInput, lossLabel, lossInput, tieLabel,
+				tieInput);
 
 		batchScene = new Scene(grid, 1200, 280);
+	}
+
+	private boolean isInt(String input) {
+		try {
+			int inc = Integer.parseInt(input);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 	/*
