@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="steven-N56VJ" id="0" name="ModelTest" package="ca.mcgill.ecse321.scorekeeper.model_test" skipped="0" tests="5" time="0.25" timestamp="2015-12-04T20:38:40">
+  <testsuite errors="0" failures="0" hostname="steven-N56VJ" id="0" name="ModelTest" package="ca.mcgill.ecse321.scorekeeper.model_test" skipped="0" tests="5" time="0.217" timestamp="2015-12-04T21:17:54">
       <properties>
           <property name="java.vendor" value="Oracle Corporation" />
 
@@ -138,7 +138,7 @@
 
           <property name="env.QTINC" value="/usr/lib64/qt-3.3/include" />
 
-          <property name="env.DESKTOP_STARTUP_ID" value="i3/urxvt256c/3224-19-steven-N56VJ_TIME2656373" />
+          <property name="env.DESKTOP_STARTUP_ID" value="i3/urxvt256c/3224-23-steven-N56VJ_TIME3035270" />
 
           <property name="ant.library.dir" value="/usr/share/ant/lib" />
 
@@ -180,7 +180,7 @@
 
           <property name="java.class.path" value="/home/steven/Workspaces/Git/team1/bin:/home/steven/Workspaces/Git/team1/lib/org.junit_4.11.0.v201303080030/junit.jar:/home/steven/Workspaces/Git/team1/lib/org.hamcrest.core_1.3.0.v201303031735.jar:/home/steven/Workspaces/Git/team1/lib/xmlpull-1.1.3.1.jar:/home/steven/Workspaces/Git/team1/lib/xpp3_min-1.1.4c.jar:/home/steven/Workspaces/Git/team1/lib/xstream-1.4.7.jar:/usr/share/java/junit.jar:/usr/share/java/ant/ant-launcher.jar:/usr/share/java/ant/ant.jar:/usr/share/java/ant/ant-junit.jar:/usr/share/java/ant/ant-junit4.jar" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher856849541861838483.properties propsfile=/home/steven/Workspaces/Git/team1/junit5912613732170296153.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner ca.mcgill.ecse321.scorekeeper.model_test.ModelTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/steven/Workspaces/Git/team1/junit/TEST-ca.mcgill.ecse321.scorekeeper.model_test.ModelTest.xml crashfile=/home/steven/Workspaces/Git/team1/junitvmwatcher5858140024296794059.properties propsfile=/home/steven/Workspaces/Git/team1/junit1256183319364247189.properties" />
 
           <property name="ant.version" value="Apache Ant(TM) version 1.9.4 compiled on February 4 2015" />
 
@@ -262,15 +262,15 @@
 
       </properties>
 
-      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="infractionTest" time="0.009" />
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="infractionTest" time="0.01" />
 
-      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="setupTest" time="0.001" />
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="setupTest" time="0.0" />
 
       <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="sortTest" time="0.001" />
 
-      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="goalTest" time="0.001" />
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="goalTest" time="0.0" />
 
-      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="persistenceTest" time="0.17" />
+      <testcase classname="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" name="persistenceTest" time="0.138" />
 
       <system-out />
 

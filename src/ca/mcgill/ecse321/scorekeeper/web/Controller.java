@@ -1,8 +1,11 @@
+package ca.mcgill.ecse321.scorekeeper.web;
+
+import ca.mcgill.ecse321.scorekeeper.model.*;
+import ca.mcgill.ecse321.scorekeeper.search_utils.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-//import ca.mcgill.ecse321.scorekeeper.model;
 
 public class Controller {
 	//args[0] is the type of view
@@ -82,7 +85,7 @@ public class Controller {
 				game.addShot(shot);
 				player.addShot(shot);
 				goalie.addSave(false, (int)time, player, game);
-				League.getInstance().save();
+				League.save(League.getInstance());
 				
 			}
 			else if(args[0].equals("GOAL"))
@@ -90,7 +93,7 @@ public class Controller {
 				Shot shot = new Shot(true, (int)time, player, goalie, game);
 				game.addShot(shot);
 				player.addShot(shot);
-				League.getInstance().save();
+				League.save(League.getInstance());
 			}
 			else if(args[0].equals("YELLOWCARD"))
 			{
@@ -98,7 +101,7 @@ public class Controller {
 				Infraction infraction = new Infraction(color, false, (int)time, player, game);
 				player.addInfraction(infraction);
 				player.addInfraction(color, false, (int) time, game);
-				League.getInstance().save();
+				League.save(League.getInstance());
 			}
 			else if(args[0].equals("REDCARD"))
 			{
@@ -106,7 +109,7 @@ public class Controller {
 				Infraction infraction = new Infraction(color, true, (int)time, player, game);
 				player.addInfraction(infraction);
 				player.addInfraction(color, true, (int) time, game);
-				League.getInstance().save();
+				League.save(League.getInstance());
 			}
 		}
 	}
@@ -119,7 +122,7 @@ public class Controller {
 		League.getInstance().addGame(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], team1,team2);
 		Game game = new Game(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], League.getInstance(), team1, team2);
 		League.getInstance().addGame(game);
-		League.getInstance().save();
+		League.save(League.getInstance());
 		
 	}
 	
@@ -143,14 +146,14 @@ public class Controller {
 			{
 				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 				team.addPlayer(args[1], Integer.parseInt(args[2]), League.getInstance());
-				League.getInstance().save();
+				League.save(League.getInstance());
 				
 			}
 			else if (args[3].equals("goalie"))
 			{
 				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 				team.addPlayer(new Goalie(args[1], Integer.parseInt(args[2]), team, League.getInstance()));
-				League.getInstance().save();
+				League.save(League.getInstance());
 			}
 		}
 	}
@@ -161,7 +164,7 @@ public class Controller {
 		{
 			Team team = new Team(args[0],League.getInstance());
 			League.getInstance().removeTeam(team);
-			League.getInstance().save();
+			League.save(League.getInstance());
 		}
 	}
 	//(teamName,playerName, playerNumber)
@@ -173,7 +176,7 @@ public class Controller {
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
 			team.removePlayer(player);
 			League.getInstance().removePlayer(player);
-			League.getInstance().save();
+			League.save(League.getInstance());
 		}
 	}
 	

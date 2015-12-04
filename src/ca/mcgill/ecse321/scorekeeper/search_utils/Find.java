@@ -1,3 +1,6 @@
+package ca.mcgill.ecse321.scorekeeper.search_utils;
+
+import ca.mcgill.ecse321.scorekeeper.model.*;
 import java.util.List;
 
 public class Find {

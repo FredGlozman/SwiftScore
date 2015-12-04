@@ -41,6 +41,7 @@
   <target name="clean">
     <delete dir="${blddir}" />
     <delete dir="${junitdir}" />
+    <delete file="data.xml" />
   </target>
 
   <target name="init" depends="clean">
@@ -60,6 +61,8 @@
       <classpath refid="persistencepath" />
     </javac>
     <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
+    <javac includeantruntime="false" srcdir="${srcdir}/search_utils" destdir="${blddir}" />
+    <javac includeantruntime="false" srcdir="${srcdir}/web" destdir="${blddir}" />
   </target>
 
   <!-- <target name="link" depends="compile">
