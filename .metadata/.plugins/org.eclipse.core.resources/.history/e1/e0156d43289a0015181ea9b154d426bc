@@ -90,7 +90,6 @@ public class Controller {
 				Shot shot = new Shot(true, (int)time, player, goalie, game);
 				game.addShot(shot);
 				player.addShot(shot);
-				League.getInstance().save();
 			}
 			else if(args[0].equals("YELLOWCARD"))
 			{
@@ -98,7 +97,6 @@ public class Controller {
 				Infraction infraction = new Infraction(color, false, (int)time, player, game);
 				player.addInfraction(infraction);
 				player.addInfraction(color, false, (int) time, game);
-				League.getInstance().save();
 			}
 			else if(args[0].equals("REDCARD"))
 			{
@@ -106,7 +104,6 @@ public class Controller {
 				Infraction infraction = new Infraction(color, true, (int)time, player, game);
 				player.addInfraction(infraction);
 				player.addInfraction(color, true, (int) time, game);
-				League.getInstance().save();
 			}
 		}
 	}
@@ -117,9 +114,8 @@ public class Controller {
 		Team team1 = new Team(args[0], League.getInstance());
 		Team team2 = new Team(args[1], League.getInstance());
 		League.getInstance().addGame(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], team1,team2);
-		Game game = new Game(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], League.getInstance(), team1, team2);
-		League.getInstance().addGame(game);
-		League.getInstance().save();
+//		Game game = new Game(Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[2], League.getInstance(), team1, team2);
+//		League.getInstance().addGame(game);
 		
 	}
 	
@@ -143,14 +139,12 @@ public class Controller {
 			{
 				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 				team.addPlayer(args[1], Integer.parseInt(args[2]), League.getInstance());
-				League.getInstance().save();
 				
 			}
 			else if (args[3].equals("goalie"))
 			{
 				League.getInstance().addPlayer(args[1], Integer.parseInt(args[2]), team);
 				team.addPlayer(new Goalie(args[1], Integer.parseInt(args[2]), team, League.getInstance()));
-				League.getInstance().save();
 			}
 		}
 	}
@@ -161,7 +155,6 @@ public class Controller {
 		{
 			Team team = new Team(args[0],League.getInstance());
 			League.getInstance().removeTeam(team);
-			League.getInstance().save();
 		}
 	}
 	//(teamName,playerName, playerNumber)
@@ -173,7 +166,6 @@ public class Controller {
 			Player player = new Player (args[1], Integer.parseInt(args[2]), team, League.getInstance());
 			team.removePlayer(player);
 			League.getInstance().removePlayer(player);
-			League.getInstance().save();
 		}
 	}
 	
@@ -181,7 +173,6 @@ public class Controller {
 	public static void PlayerAnalysisMode(String [] args)
 	{
 		List<Player> players = new ArrayList<Player>(League.getInstance().getPlayers());
-		League.getInstance().load();
 		//sorts via:
 		//Name
 		if (args[0].equals("N"))
@@ -228,7 +219,6 @@ public class Controller {
 	//(type of sorting)
 		public static void LeagueAnalysisMode(String [] args)
 		{
-			League.getInstance().load();
 			List<Team> teams = new ArrayList<Team>(League.getInstance().getTeams());
 			//sorts via:
 			//Name

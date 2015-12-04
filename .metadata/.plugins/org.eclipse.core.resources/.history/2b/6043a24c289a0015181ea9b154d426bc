@@ -228,7 +228,6 @@ public class Controller {
 	//(type of sorting)
 		public static void LeagueAnalysisMode(String [] args)
 		{
-			League.getInstance().load();
 			List<Team> teams = new ArrayList<Team>(League.getInstance().getTeams());
 			//sorts via:
 			//Name

@@ -181,7 +181,6 @@ public class Controller {
 	public static void PlayerAnalysisMode(String [] args)
 	{
 		List<Player> players = new ArrayList<Player>(League.getInstance().getPlayers());
-		League.getInstance().load();
 		//sorts via:
 		//Name
 		if (args[0].equals("N"))
@@ -228,7 +227,6 @@ public class Controller {
 	//(type of sorting)
 		public static void LeagueAnalysisMode(String [] args)
 		{
-			League.getInstance().load();
 			List<Team> teams = new ArrayList<Team>(League.getInstance().getTeams());
 			//sorts via:
 			//Name
