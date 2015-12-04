@@ -19,21 +19,46 @@
     <pathelement location="${libdir}/org.junit_4.11.0.v201303080030/junit.jar"/>
     <pathelement location="${libdir}/org.hamcrest.core_1.3.0.v201303031735.jar"/>
   </path> 
+  
+  <path id="xstreampath">
+    <pathelement location="${libdir}/xmlpull-1.1.3.1.jar"/>
+    <pathelement location="${libdir}/xpp3_min-1.1.4c.jar"/>
+    <pathelement location="${libdir}/xstream-1.4.7.jar"/>
+  </path>
 
-   <path id="testpath">
-      <pathelement location="bin" />
-      <path refid="junitpath" />
+  <path id="testpath">
+    <pathelement location="bin" />
+    <path refid="junitpath" />
+  </path>
+
+  <path id="persistencepath">
+    <pathelement location="bin" />
+    <path refid="xstreampath" />
   </path>
 
   <!-- TARGETS -->
+
+  <target name="clean">
+    <delete dir="${blddir}" />
+    <delete dir="${junitdir}" />
+  </target>
 
   <target name="init" depends="clean">
     <mkdir dir="${blddir}" />
     <mkdir dir="${classdir}" />
     <mkdir dir="${jardir}" />
   </target>
+  
+  <target name="umplegen" depends="init">
+    <java jar="${libdir}/umple_1.22.0.5146.jar" fork="true">
+      <arg value="src/ScoreKeeper.ump"/>
+    </java>
+  </target>
 
-  <target name="compile" depends="init">
+  <target name="compile" depends="umplegen">
+    <javac includeantruntime="false" srcdir="${srcdir}/persistence" destdir="${blddir}">
+      <classpath refid="persistencepath" />
+    </javac>
     <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
   </target>
 
@@ -54,6 +79,7 @@
       <formatter type="xml" />
       <test name="ca.mcgill.ecse321.scorekeeper.model_test.ModelTest" todir="${junitdir}" />
       <classpath refid="testpath" />
+      <classpath refid="persistencepath" />
       <classpath location="${blddir}"/>
     </junit>
     <junitreport todir="${junitdir}">
@@ -62,11 +88,6 @@
       </fileset>
       <report format="frames" todir="${junitdir}" />
     </junitreport>
-  </target>
-
-  <target name="clean">
-    <delete dir="${blddir}" />
-    <delete dir="${junitdir}" />
   </target>
 
 </project>

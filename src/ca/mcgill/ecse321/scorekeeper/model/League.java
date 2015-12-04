@@ -2,6 +2,7 @@
 /*This code was generated using the UMPLE 1.22.0.5146 modeling language!*/
 
 package ca.mcgill.ecse321.scorekeeper.model;
+import ca.mcgill.ecse321.scorekeeper.persistence.PersistenceXStream;
 import java.util.*;
 
 /**
@@ -15,8 +16,8 @@ import java.util.*;
  * @see Player
  */
 // line 677 "../../../../../ScoreKeeper.ump"
-// line 722 "../../../../../ScoreKeeper.ump"
-// line 735 "../../../../../ScoreKeeper.ump"
+// line 745 "../../../../../ScoreKeeper.ump"
+// line 758 "../../../../../ScoreKeeper.ump"
 public class League
 {
 
@@ -382,6 +383,28 @@ public class League
       Player aPlayer = players.get(i - 1);
       aPlayer.delete();
     }
+  }
+
+
+  /**
+   * Java Code //
+   */
+  // line 691 "../../../../../ScoreKeeper.ump"
+   public static  boolean save(League l){
+    PersistenceXStream.setFilename("scorekeeper.xml");
+    PersistenceXStream.setAlias("league", League.class);
+    PersistenceXStream.setAlias("team", Team.class);
+    PersistenceXStream.setAlias("player", Player.class);
+    PersistenceXStream.setAlias("goalie", Goalie.class);
+    PersistenceXStream.setAlias("game", Game.class);
+    PersistenceXStream.setAlias("shot", Shot.class);
+    PersistenceXStream.setAlias("infraction", Infraction.class);
+    return PersistenceXStream.saveToXMLwithXStream(l);
+  }
+
+  // line 704 "../../../../../ScoreKeeper.ump"
+   public static  League load(){
+    return (League) PersistenceXStream.loadFromXMLwithXStream();
   }
 
 }

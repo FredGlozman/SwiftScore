@@ -13,8 +13,8 @@ package ca.mcgill.ecse321.scorekeeper.model;
  * @param time         time of the infraction in milliseconds since the start of the game
  */
 // line 661 "../../../../../ScoreKeeper.ump"
-// line 717 "../../../../../ScoreKeeper.ump"
-// line 730 "../../../../../ScoreKeeper.ump"
+// line 740 "../../../../../ScoreKeeper.ump"
+// line 753 "../../../../../ScoreKeeper.ump"
 public class Infraction
 {
 

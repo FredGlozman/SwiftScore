@@ -1,0 +1,351 @@
+<league id="1">
+  <teams id="2">
+    <team id="3">
+      <name>Quarks</name>
+      <players id="4">
+        <player id="5">
+          <name>Up Quark</name>
+          <jerseyNumber>1</jerseyNumber>
+          <shots id="6">
+            <shot id="7">
+              <goal>true</goal>
+              <time>1449003576</time>
+              <player reference="5"/>
+              <goalie id="8">
+                <name>Tau Neutrino</name>
+                <jerseyNumber>60</jerseyNumber>
+                <shots id="9"/>
+                <infractions id="10"/>
+                <team id="11">
+                  <name>Leptons</name>
+                  <players id="12">
+                    <player id="13">
+                      <name>Electron</name>
+                      <jerseyNumber>10</jerseyNumber>
+                      <shots id="14"/>
+                      <infractions id="15">
+                        <infraction id="16">
+                          <color>RED</color>
+                          <penaltyShot>false</penaltyShot>
+                          <time>1449005675</time>
+                          <player reference="13"/>
+                          <game id="17">
+                            <startTime>1449002076</startTime>
+                            <endTime>1449005676</endTime>
+                            <location>Venus</location>
+                            <competitors id="18">
+                              <team reference="3"/>
+                              <team reference="11"/>
+                            </competitors>
+                            <shots id="19">
+                              <shot id="20">
+                                <goal>true</goal>
+                                <time>1449003076</time>
+                                <player id="21">
+                                  <name>Charm Quark</name>
+                                  <jerseyNumber>5</jerseyNumber>
+                                  <shots id="22">
+                                    <shot reference="20"/>
+                                    <shot id="23">
+                                      <goal>true</goal>
+                                      <time>1449003077</time>
+                                      <player reference="21"/>
+                                      <goalie reference="8"/>
+                                      <game reference="17"/>
+                                    </shot>
+                                    <shot id="24">
+                                      <goal>true</goal>
+                                      <time>1429003076</time>
+                                      <player reference="21"/>
+                                      <goalie id="25">
+                                        <name>Higgs Boson</name>
+                                        <jerseyNumber>500</jerseyNumber>
+                                        <shots id="26"/>
+                                        <infractions id="27"/>
+                                        <team id="28">
+                                          <name>Bosons</name>
+                                          <players id="29">
+                                            <player id="30">
+                                              <name>Gluon</name>
+                                              <jerseyNumber>100</jerseyNumber>
+                                              <shots id="31"/>
+                                              <infractions id="32"/>
+                                              <team reference="28"/>
+                                              <league reference="1"/>
+                                            </player>
+                                            <player id="33">
+                                              <name>Photon</name>
+                                              <jerseyNumber>200</jerseyNumber>
+                                              <shots id="34"/>
+                                              <infractions id="35"/>
+                                              <team reference="28"/>
+                                              <league reference="1"/>
+                                            </player>
+                                            <player id="36">
+                                              <name>Z Boson</name>
+                                              <jerseyNumber>300</jerseyNumber>
+                                              <shots id="37">
+                                                <shot id="38">
+                                                  <goal>true</goal>
+                                                  <time>1429003576</time>
+                                                  <player reference="36"/>
+                                                  <goalie id="39">
+                                                    <name>Strange Quark</name>
+                                                    <jerseyNumber>6</jerseyNumber>
+                                                    <shots id="40"/>
+                                                    <infractions id="41"/>
+                                                    <team reference="3"/>
+                                                    <league reference="1"/>
+                                                    <saves id="42">
+                                                      <shot reference="38"/>
+                                                      <shot id="43">
+                                                        <goal>true</goal>
+                                                        <time>1429003116</time>
+                                                        <player reference="36"/>
+                                                        <goalie reference="39"/>
+                                                        <game reference="17"/>
+                                                      </shot>
+                                                    </saves>
+                                                  </goalie>
+                                                  <game reference="17"/>
+                                                </shot>
+                                                <shot reference="43"/>
+                                              </shots>
+                                              <infractions id="44"/>
+                                              <team reference="28"/>
+                                              <league reference="1"/>
+                                            </player>
+                                            <player id="45">
+                                              <name>W Boson</name>
+                                              <jerseyNumber>400</jerseyNumber>
+                                              <shots id="46"/>
+                                              <infractions id="47"/>
+                                              <team reference="28"/>
+                                              <league reference="1"/>
+                                            </player>
+                                            <goalie reference="25"/>
+                                          </players>
+                                          <games id="48"/>
+                                          <league reference="1"/>
+                                        </team>
+                                        <league reference="1"/>
+                                        <saves id="49">
+                                          <shot reference="24"/>
+                                          <shot id="50">
+                                            <goal>true</goal>
+                                            <time>1429003077</time>
+                                            <player reference="21"/>
+                                            <goalie reference="25"/>
+                                            <game reference="17"/>
+                                          </shot>
+                                          <shot id="51">
+                                            <goal>false</goal>
+                                            <time>1429003216</time>
+                                            <player id="52">
+                                              <name>Top Quark</name>
+                                              <jerseyNumber>3</jerseyNumber>
+                                              <shots id="53">
+                                                <shot id="54">
+                                                  <goal>false</goal>
+                                                  <time>1449003216</time>
+                                                  <player reference="52"/>
+                                                  <goalie reference="8"/>
+                                                  <game reference="17"/>
+                                                </shot>
+                                                <shot id="55">
+                                                  <goal>false</goal>
+                                                  <time>1449003116</time>
+                                                  <player reference="52"/>
+                                                  <goalie reference="8"/>
+                                                  <game reference="17"/>
+                                                </shot>
+                                                <shot reference="51"/>
+                                              </shots>
+                                              <infractions id="56">
+                                                <infraction id="57">
+                                                  <color>RED</color>
+                                                  <penaltyShot>true</penaltyShot>
+                                                  <time>1449005295</time>
+                                                  <player reference="52"/>
+                                                  <game reference="17"/>
+                                                </infraction>
+                                              </infractions>
+                                              <team reference="3"/>
+                                              <league reference="1"/>
+                                            </player>
+                                            <goalie reference="25"/>
+                                            <game reference="17"/>
+                                          </shot>
+                                        </saves>
+                                      </goalie>
+                                      <game reference="17"/>
+                                    </shot>
+                                    <shot reference="50"/>
+                                  </shots>
+                                  <infractions id="58"/>
+                                  <team reference="3"/>
+                                  <league reference="1"/>
+                                </player>
+                                <goalie reference="8"/>
+                                <game reference="17"/>
+                              </shot>
+                              <shot reference="23"/>
+                              <shot reference="54"/>
+                              <shot reference="7"/>
+                              <shot reference="55"/>
+                              <shot reference="24"/>
+                              <shot reference="50"/>
+                              <shot reference="51"/>
+                              <shot reference="38"/>
+                              <shot reference="43"/>
+                            </shots>
+                            <infractions id="59">
+                              <infraction reference="16"/>
+                              <infraction reference="57"/>
+                              <infraction id="60">
+                                <color>YELLOW</color>
+                                <penaltyShot>false</penaltyShot>
+                                <time>1449005275</time>
+                                <player reference="13"/>
+                                <game reference="17"/>
+                              </infraction>
+                              <infraction id="61">
+                                <color>RED</color>
+                                <penaltyShot>false</penaltyShot>
+                                <time>1449005675</time>
+                                <player reference="13"/>
+                                <game reference="17"/>
+                              </infraction>
+                              <infraction id="62">
+                                <color>RED</color>
+                                <penaltyShot>true</penaltyShot>
+                                <time>1449005295</time>
+                                <player id="63">
+                                  <name>Muon</name>
+                                  <jerseyNumber>20</jerseyNumber>
+                                  <shots id="64"/>
+                                  <infractions id="65">
+                                    <infraction reference="62"/>
+                                    <infraction id="66">
+                                      <color>YELLOW</color>
+                                      <penaltyShot>true</penaltyShot>
+                                      <time>1449005275</time>
+                                      <player reference="63"/>
+                                      <game reference="17"/>
+                                    </infraction>
+                                  </infractions>
+                                  <team reference="11"/>
+                                  <league reference="1"/>
+                                </player>
+                                <game reference="17"/>
+                              </infraction>
+                              <infraction reference="66"/>
+                            </infractions>
+                            <league reference="1"/>
+                          </game>
+                        </infraction>
+                        <infraction reference="60"/>
+                        <infraction reference="61"/>
+                      </infractions>
+                      <team reference="11"/>
+                      <league reference="1"/>
+                    </player>
+                    <player reference="63"/>
+                    <player id="67">
+                      <name>Tau</name>
+                      <jerseyNumber>30</jerseyNumber>
+                      <shots id="68"/>
+                      <infractions id="69"/>
+                      <team reference="11"/>
+                      <league reference="1"/>
+                    </player>
+                    <player id="70">
+                      <name>Electron Neutrino</name>
+                      <jerseyNumber>40</jerseyNumber>
+                      <shots id="71"/>
+                      <infractions id="72"/>
+                      <team reference="11"/>
+                      <league reference="1"/>
+                    </player>
+                    <player id="73">
+                      <name>Muon Neutrino</name>
+                      <jerseyNumber>50</jerseyNumber>
+                      <shots id="74"/>
+                      <infractions id="75"/>
+                      <team reference="11"/>
+                      <league reference="1"/>
+                    </player>
+                    <goalie reference="8"/>
+                  </players>
+                  <games id="76">
+                    <game reference="17"/>
+                  </games>
+                  <league reference="1"/>
+                </team>
+                <league reference="1"/>
+                <saves id="77">
+                  <shot reference="20"/>
+                  <shot reference="23"/>
+                  <shot reference="54"/>
+                  <shot reference="7"/>
+                  <shot reference="55"/>
+                </saves>
+              </goalie>
+              <game reference="17"/>
+            </shot>
+          </shots>
+          <infractions id="78"/>
+          <team reference="3"/>
+          <league reference="1"/>
+        </player>
+        <player id="79">
+          <name>Down Quark</name>
+          <jerseyNumber>2</jerseyNumber>
+          <shots id="80"/>
+          <infractions id="81"/>
+          <team reference="3"/>
+          <league reference="1"/>
+        </player>
+        <player reference="52"/>
+        <player id="82">
+          <name>Bottom Quark</name>
+          <jerseyNumber>4</jerseyNumber>
+          <shots id="83"/>
+          <infractions id="84"/>
+          <team reference="3"/>
+          <league reference="1"/>
+        </player>
+        <player reference="21"/>
+        <goalie reference="39"/>
+      </players>
+      <games id="85">
+        <game reference="17"/>
+      </games>
+      <league reference="1"/>
+    </team>
+    <team reference="11"/>
+    <team reference="28"/>
+  </teams>
+  <games id="86">
+    <game reference="17"/>
+  </games>
+  <players id="87">
+    <player reference="5"/>
+    <player reference="79"/>
+    <player reference="52"/>
+    <player reference="82"/>
+    <player reference="21"/>
+    <goalie reference="39"/>
+    <player reference="13"/>
+    <player reference="63"/>
+    <player reference="67"/>
+    <player reference="70"/>
+    <player reference="73"/>
+    <goalie reference="8"/>
+    <player reference="30"/>
+    <player reference="33"/>
+    <player reference="36"/>
+    <player reference="45"/>
+    <goalie reference="25"/>
+  </players>
+</league>

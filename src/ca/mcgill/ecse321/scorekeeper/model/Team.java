@@ -18,7 +18,7 @@ import java.util.*;
  * 
  */
 // line 311 "../../../../../ScoreKeeper.ump"
-// line 700 "../../../../../ScoreKeeper.ump"
+// line 723 "../../../../../ScoreKeeper.ump"
 public class Team
 {
 
@@ -499,7 +499,7 @@ public class Team
   // line 460 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_NAME = new Comparator<Team>() {public int compare(Team one, Team other)
   	{
-  		return one.name.compareTo(other.name);
+  		return other.name.compareTo(one.name);
   	}};
 // line 474 ../../../../../ScoreKeeper.ump
   public static Comparator<Team> COMPARE_BY_SHOTS = new Comparator<Team>() {public int compare(Team one, Team other)
