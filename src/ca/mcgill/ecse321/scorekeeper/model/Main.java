@@ -28,28 +28,6 @@ public class Main extends Application {
 			liveScene, batchScene;
 	
 	boolean hasLoggedIn = false;
-	
-	/*
-	 *  The following string arrays were created for the purpose of the presentation
-	 */
-	
-	String[] topTeams = { "New York Red Bulls", "FC Dallas",
-			"Columbus Crew SC", "Portland Timbers", "Vancouver Whitecaps FC",
-			"D.C. United", "Montreal Impact", "LA Galaxy",
-			"Sporting Kansas City", "Seattle Sounders FC",
-			"New England Revolution" };
-	String[] topTeamsPoints = { "60", "60", "53", "53", "53", "51", "51", "51",
-			"51", "50" };
-
-	String[] topPlayers = { "Sebastian Giovinco", "Kei Kamara", "Robbie Keane",
-			"David Villa", "Bradley Wright-Phillips" };
-
-	String[] topPlayersPoints = { "22", "22", "20", "18", "17" };
-
-	String[] infPlayers = { "Marco Donadel", "Damien Perrinelle",
-			"Kendall Waston", "Luis Garrido", "Christian Higuita" };
-
-	String[] infPlayersPoints = { "13", "11", "11", "10", "10" };
 
 	/**
 	 * Main, which launches the desktop app
@@ -64,7 +42,10 @@ public class Main extends Application {
 		
 		// Set up 
 		
+		// For testing, has some test variables
 		setupData();
+		
+		League.LOAD();
 		
 		List<Player> playerList = new ArrayList<Player>();
 		List<Team> teamList = new ArrayList<Team>();
@@ -95,12 +76,12 @@ public class Main extends Application {
 		Collections.sort(playerList, Player.COMPARE_BY_TOTAL_INFRACTIONS);
 		Collections.reverse(playerList);
 		
-		List<Player> topPlayersInfractions = new ArrayList<Player>(playerList);
+		List<Player> topPlayersInf = new ArrayList<Player>(playerList);
 		
-		for (Player player : playerList){
-			System.out.println(player.getRedInfractionCount() + player.getYellowInfractionCount());
-		}
-
+		Collections.sort(teamList, Team.COMPARE_BY_POINTS);
+		Collections.reverse(teamList);
+		
+		List<Team> topTeams = new ArrayList<Team>(teamList);
 		
 		// Generate the application
 		
@@ -117,11 +98,10 @@ public class Main extends Application {
 		createPwAuthBatch(pwAuthBatchGrid);
 
 		GridPane playerGrid = new GridPane();
-		createPlayerAnalysis(playerGrid, topPlayers, topPlayersPoints,
-				infPlayers, infPlayersPoints);
+		createPlayerAnalysis(playerGrid, topPlayersGoals, topPlayersInf);
 
 		GridPane leagueGrid = new GridPane();
-		createLeagueAnalysis(leagueGrid, topTeams, topTeamsPoints);
+		createLeagueAnalysis(leagueGrid, topTeams);
 
 		GridPane liveGrid = new GridPane();
 		createLiveMode(liveGrid);
@@ -292,8 +272,7 @@ public class Main extends Application {
 	 * @param playerStrings2
 	 * @param infStrings
 	 */
-	public void createPlayerAnalysis(GridPane grid, String[] playerStrings,
-			String[] pointStrings, String[] playerStrings2, String[] infStrings) {
+	public void createPlayerAnalysis(GridPane grid, List<Player> topScorers, List<Player> topInf) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
 		grid.setVgap(8);
@@ -329,23 +308,23 @@ public class Main extends Application {
 		Label[] player2Labels = new Label[5];
 		Label[] infLabels = new Label[5];
 
-		for (int i = 0; i < playerLabels.length; i++) {
-			playerLabels[i] = new Label(playerStrings[i]);
+		for (int i = 0; i < 5; i++) {
+			playerLabels[i] = new Label(topScorers.get(i).getName());
 			GridPane.setConstraints(playerLabels[i], 1, 2 + i);
 		}
 
-		for (int i = 0; i < pointsLabels.length; i++) {
-			pointsLabels[i] = new Label(pointStrings[i]);
+		for (int i = 0; i < 5; i++) {
+			pointsLabels[i] = new Label(""+topScorers.get(i).getSuccessfulShotCount());
 			GridPane.setConstraints(pointsLabels[i], 2, 2 + i);
 		}
 
-		for (int i = 0; i < player2Labels.length; i++) {
-			player2Labels[i] = new Label(playerStrings2[i]);
+		for (int i = 0; i < 5; i++) {
+			player2Labels[i] = new Label(topInf.get(i).getName());
 			GridPane.setConstraints(player2Labels[i], 6, 2 + i);
 		}
 
-		for (int i = 0; i < infLabels.length; i++) {
-			infLabels[i] = new Label(infStrings[i]);
+		for (int i = 0; i < 5; i++) {
+			infLabels[i] = new Label(""+(topInf.get(i).getRedInfractionCount() + topInf.get(i).getYellowInfractionCount()));
 			GridPane.setConstraints(infLabels[i], 10, 2 + i);
 		}
 
@@ -368,8 +347,7 @@ public class Main extends Application {
 	 * @param teamNames
 	 * @param topTeamPoints
 	 */
-	public void createLeagueAnalysis(GridPane grid, String[] teamNames,
-			String[] topTeamPoints) {
+	public void createLeagueAnalysis(GridPane grid, List<Team> topTeams) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
 		grid.setVgap(8);
@@ -383,9 +361,9 @@ public class Main extends Application {
 		GridPane.setConstraints(backButton, 2, 12);
 		backButton.setOnAction(e -> window.setScene(mainScene));
 
-		Label topTeams = new Label("Top Teams");
-		topTeams.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
-		GridPane.setConstraints(topTeams, 1, 1);
+		Label topTeamsLabel = new Label("Top Teams");
+		topTeamsLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
+		GridPane.setConstraints(topTeamsLabel, 1, 1);
 
 		Label points = new Label("Points");
 		points.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
@@ -394,17 +372,17 @@ public class Main extends Application {
 		Label[] teamLabels = new Label[10];
 		Label[] pointsLabels = new Label[10];
 
-		for (int i = 0; i < teamLabels.length; i++) {
-			teamLabels[i] = new Label(teamNames[i]);
+		for (int i = 0; i < 10; i++) {
+			teamLabels[i] = new Label(topTeams.get(i).getName());
 			GridPane.setConstraints(teamLabels[i], 1, 2 + i);
 		}
 
-		for (int i = 0; i < pointsLabels.length; i++) {
-			pointsLabels[i] = new Label(topTeamPoints[i]);
+		for (int i = 0; i < 10; i++) {
+			pointsLabels[i] = new Label(""+topTeams.get(i).getPoints());
 			GridPane.setConstraints(pointsLabels[i], 2, 2 + i);
 		}
 
-		grid.getChildren().addAll(title, backButton, topTeams, points,
+		grid.getChildren().addAll(title, backButton, topTeamsLabel, points,
 				teamLabels[0], teamLabels[1], teamLabels[2], teamLabels[3],
 				teamLabels[4], teamLabels[5], teamLabels[6], teamLabels[7],
 				teamLabels[8], teamLabels[9], pointsLabels[0], pointsLabels[1],
@@ -446,6 +424,7 @@ public class Main extends Application {
 		saveButton.setOnAction(e -> {
 			playerInput.clear();
 			teamInput.clear();
+			League.SAVE();
 		});
 
 		Button backButton = new Button("Back");
