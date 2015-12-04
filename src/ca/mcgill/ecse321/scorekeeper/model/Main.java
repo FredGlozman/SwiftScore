@@ -45,6 +45,10 @@ public class Main extends Application {
 
 	String[] infPlayersPoints = { "13", "11", "11", "10", "10" };
 
+	/**
+	 * Main, which launches the desktop app
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -81,6 +85,10 @@ public class Main extends Application {
 
 	}
 
+	/**
+	 * Creates the scene for the main menu page
+	 * @param grid The layout to be used
+	 */
 	public void createMain(GridPane grid) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
@@ -121,6 +129,10 @@ public class Main extends Application {
 		mainScene = new Scene(grid, 220, 310);
 	}
 
+	/**
+	 * Creates the scene for the password authentication page going to the live input mode
+	 * @param grid The layout to be used
+	 */
 	public void createPwAuthLive(GridPane grid) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
@@ -171,6 +183,10 @@ public class Main extends Application {
 		pwLiveScene = new Scene(grid, 350, 250);
 	}
 
+	/**
+	 * Creates the scene for the password authentication page going to the batch live input mode
+	 * @param grid The layout to be used
+	 */
 	public void createPwAuthBatch(GridPane grid) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
@@ -221,6 +237,14 @@ public class Main extends Application {
 		pwBatchScene = new Scene(grid, 350, 250);
 	}
 
+	/**
+	 * Creates the scene for the player analysis page
+	 * @param grid The layout to be used
+	 * @param playerStrings
+	 * @param pointStrings
+	 * @param playerStrings2
+	 * @param infStrings
+	 */
 	public void createPlayerAnalysis(GridPane grid, String[] playerStrings,
 			String[] pointStrings, String[] playerStrings2, String[] infStrings) {
 
@@ -291,6 +315,12 @@ public class Main extends Application {
 		playerScene = new Scene(grid, 550, 250);
 	}
 
+	/**
+	 * Creates the scene for the league analysis page
+	 * @param grid The layout to be used
+	 * @param teamNames
+	 * @param topTeamPoints
+	 */
 	public void createLeagueAnalysis(GridPane grid, String[] teamNames,
 			String[] topTeamPoints) {
 
@@ -338,6 +368,10 @@ public class Main extends Application {
 		leagueScene = new Scene(grid, 300, 350);
 	}
 
+	/**
+	 * Creates the scene for the live input mode page
+	 * @param grid The layout to be used
+	 */
 	public void createLiveMode(GridPane grid) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
@@ -396,6 +430,10 @@ public class Main extends Application {
 		liveScene = new Scene(grid, 500, 220);
 	}
 
+	/**
+	 * Creates the scene for the batch input mode page
+	 * @param grid The layout to be used
+	 */
 	public void createBatchMode(GridPane grid) {
 
 		grid.setPadding(new Insets(10, 10, 10, 10));
