@@ -1,5 +1,7 @@
 package ca.mcgill.ecse321.scorekeeper.model;
 
+import java.util.Random;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -9,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
@@ -26,6 +27,10 @@ public class Main extends Application {
 			liveScene, batchScene;
 	
 	boolean hasLoggedIn = false;
+	
+	/*
+	 *  The following string arrays were created for the purpose of the presentation
+	 */
 	
 	String[] topTeams = { "New York Red Bulls", "FC Dallas",
 			"Columbus Crew SC", "Portland Timbers", "Vancouver Whitecaps FC",
@@ -55,6 +60,9 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		
+		setupData();
+		
 		window = primaryStage;
 		window.setTitle("swiftScore");
 
@@ -82,6 +90,9 @@ public class Main extends Application {
 
 		window.setScene(mainScene);
 		window.show();
+		
+//       System.out.println(League.getInstance().getPlayer(0).getName());
+//       System.out.println(League.getInstance().getPlayer(1).getName());
 
 	}
 
@@ -103,7 +114,6 @@ public class Main extends Application {
 		GridPane.setConstraints(ballImage, 0, 5);
 
 		Label welcome = new Label("Welcome to swiftScore!");
-		welcome.setTextFill(Color.web("#0076a3"));
 		welcome.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
 		GridPane.setConstraints(welcome, 0, 0);
 
@@ -164,7 +174,6 @@ public class Main extends Application {
 				pwInput.clear();
 				nameInput.clear();
 				pleaseEnter.setText("Incorrect username or password.");
-				pleaseEnter.setTextFill(Color.RED);
 			}
 		});
 		GridPane.setConstraints(loginButton, 1, 3);
@@ -173,7 +182,6 @@ public class Main extends Application {
 		GridPane.setConstraints(backButton, 1, 5);
 		backButton.setOnAction(e -> {
 			pleaseEnter.setText("Please enter your username & password:");
-			pleaseEnter.setTextFill(Color.BLACK);
 			window.setScene(mainScene);
 		});
 
@@ -218,7 +226,6 @@ public class Main extends Application {
 				pwInput.clear();
 				nameInput.clear();
 				pleaseEnter.setText("Incorrect username or password.");
-				pleaseEnter.setTextFill(Color.RED);
 			}
 		});
 		GridPane.setConstraints(loginButton, 1, 3);
@@ -227,7 +234,6 @@ public class Main extends Application {
 		GridPane.setConstraints(backButton, 1, 5);
 		backButton.setOnAction(e -> {
 			pleaseEnter.setText("Please enter your username & password:");
-			pleaseEnter.setTextFill(Color.BLACK);
 			window.setScene(mainScene);
 		});
 
@@ -452,5 +458,142 @@ public class Main extends Application {
 
 		batchScene = new Scene(grid, 350, 250);
 	}
+    
+    /*
+     * The following methods were added for testing and demonstrating purposes only:
+     */
+	
+	public static void setupData(){
+		Team team0 = new Team("Montreal Impact", League.getInstance());
+		createAndAddPlayer("Jon",10,team0);
+		createAndAddPlayer("Fred", 22, team0);
+        createAndAddPlayer("Cesc Fabregas", 81, team0);
+        createAndAddPlayer("Sergio Aguero", 23, team0);
+        createAndAddPlayer("Sergio Busquets", 21, team0);
+        createAndAddPlayer("David Silva", 25, team0);
+        createAndAddPlayer("Gianluigi Buffon", 34, team0);
+        createAndAddPlayer("Jack Bauer", 24, team0);
+        createAndAddPlayer("Luis Suarez", 35, team0);
+        createAndAddPlayer("Sergio Ramos", 34, team0);
+        createAndAddPlayer("Vincent Kompany", 55, team0);
+        createAndAddPlayer("Gerard Pique", 48, team0);
+        createAndAddPlayer("Javier Mascherano", 67, team0);
+        createAndAddPlayer("Lionel Messi", 25, team0);
+        createAndAddPlayer("Cristiano Ronaldo", 27, team0);
+        createAndAddPlayer("Andres Iniesta", 28, team0);
+        createAndAddPlayer("Zlatan Ibrahimovic", 31, team0);
+        createAndAddPlayer("Radamel Falcao", 26, team0);
+        createAndAddPlayer("Robin van Persie", 29, team0);
+        createAndAddPlayer("Andrea Pirlo", 33, team0);
+        createAndAddPlayer("Yaya Toure", 37, team0);
 
+		Team team1 = new Team("Toronto FC", League.getInstance());
+		createAndAddPlayer("TheOtherGuy", 0, team1);
+		
+		Team team2 = new Team("New Yourk Red Bulls", League.getInstance());
+		Team team3 = new Team("FC Dallas", League.getInstance());
+		Team team4 = new Team("Columbus Crew SC", League.getInstance());
+		Team team5 = new Team("Portland Timbers", League.getInstance());
+		Team team6 = new Team("Vancouver Whitecaps FC", League.getInstance());
+		Team team7 = new Team("D.C. United", League.getInstance());
+		Team team8 = new Team("LA Galaxy", League.getInstance());
+		Team team9 = new Team("Sporting Kansas City", League.getInstance());
+		
+        for(Team team : League.getInstance().getTeams())
+        {
+            if(team.getName().matches("HBU"))
+            {
+                League.getInstance().removeTeam(team);
+            }
+        }
+	}
+    private static void createAndAddPlayer(String name, int number, Team team)
+    {
+        Player player = new Player(name, number, team, League.getInstance());
+        Team dummy = new Team("HBU", League.getInstance());
+ 
+        addShots(new Random().nextInt(50), player, dummy);
+        addGoals(new Random().nextInt(50), player, dummy);
+        addRed(new Random().nextInt(50), player, dummy);
+        addYellow(new Random().nextInt(50), player, dummy);
+ 
+        team.addPlayer(player);
+        League.getInstance().removeTeam(dummy);
+    }
+    private static void addShots(int numberOfShots, Player player, Team team)
+    {
+        // Shot(boolean aGoal, int aTime, Player aPlayer, Goalie aGoalie, Game aGame)
+        for(int i=0; i<numberOfShots; i++)
+        {
+            Goalie bob = new Goalie("Bob", -1, player.getTeam(), League.getInstance());
+            //public Game(int aStartTime, int aEndTime, String aLocation, League aLeague, Team... allCompetitors)
+            Game game = new Game(1000, 1000, "ctu", League.getInstance(), player.getTeam(), team);
+ 
+            player.addShot(false, 1000, bob, game);
+ 
+            player.getTeam().removePlayer(bob);
+            player.getTeam().removeGame(game);
+            team.removePlayer(bob);
+            League.getInstance().removePlayer(bob);
+            League.getInstance().removeGame(game);
+            League.getInstance().removeTeam(team);
+        }
+    }
+    private static void addGoals(int numberOfShots, Player player, Team team)
+    {
+        // Shot(boolean aGoal, int aTime, Player aPlayer, Goalie aGoalie, Game aGame)
+        for(int i=0; i<numberOfShots; i++)
+        {
+            Goalie bob = new Goalie("Bob", -1, player.getTeam(), League.getInstance());
+            //public Game(int aStartTime, int aEndTime, String aLocation, League aLeague, Team... allCompetitors)
+            Game game = new Game(1000, 1000, "ctu", League.getInstance(), player.getTeam(), team);
+ 
+            player.addShot(true, 1000, bob, game);
+ 
+            player.getTeam().removePlayer(bob);
+            player.getTeam().removeGame(game);
+            team.removePlayer(bob);
+            League.getInstance().removePlayer(bob);
+            League.getInstance().removeGame(game);
+            League.getInstance().removeTeam(team);
+        }
+    }
+    private static void addRed(int numberOfShots, Player player, Team team)
+    {
+        //public Infraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer, Game aGame)
+        for(int i=0; i<numberOfShots; i++)
+        {
+            Goalie bob = new Goalie("Bob", -1, player.getTeam(), League.getInstance());
+            //public Game(int aStartTime, int aEndTime, String aLocation, League aLeague, Team... allCompetitors)
+            Game game = new Game(1000, 1000, "ctu", League.getInstance(), player.getTeam(), team);
+ 
+            player.addInfraction(Color.YELLOW, false, 1000, game);
+ 
+            player.getTeam().removePlayer(bob);
+            player.getTeam().removeGame(game);
+            team.removePlayer(bob);
+            League.getInstance().removePlayer(bob);
+            League.getInstance().removeGame(game);
+            League.getInstance().removeTeam(team);
+        }
+    }
+    private static void addYellow(int numberOfShots, Player player, Team team)
+    {
+        //public Infraction(Color aColor, boolean aPenaltyShot, int aTime, Player aPlayer, Game aGame)
+        for(int i=0; i<numberOfShots; i++)
+        {
+            Goalie bob = new Goalie("Bob", -1, player.getTeam(), League.getInstance());
+            //public Game(int aStartTime, int aEndTime, String aLocation, League aLeague, Team... allCompetitors)
+            Game game = new Game(1000, 1000, "ctu", League.getInstance(), player.getTeam(), team);
+ 
+            player.addInfraction(Color.RED, false, 1000, game);
+ 
+            player.getTeam().removePlayer(bob);
+            player.getTeam().removeGame(game);
+            team.removePlayer(bob);
+            League.getInstance().removePlayer(bob);
+            League.getInstance().removeGame(game);
+            League.getInstance().removeTeam(team);
+        }
+    }
 }
