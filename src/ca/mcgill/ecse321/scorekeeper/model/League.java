@@ -391,7 +391,7 @@ public class League
    */
   // line 691 "../../../../../ScoreKeeper.ump"
    public static  boolean save(League l){
-    PersistenceXStream.setFilename("scorekeeper.xml");
+    PersistenceXStream.setFilename("data.xml");
     PersistenceXStream.setAlias("league", League.class);
     PersistenceXStream.setAlias("team", Team.class);
     PersistenceXStream.setAlias("player", Player.class);
