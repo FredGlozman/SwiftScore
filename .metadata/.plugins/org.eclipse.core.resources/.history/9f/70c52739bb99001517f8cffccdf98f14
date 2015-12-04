@@ -1,0 +1,64 @@
+<html>
+<style>
+p, font, th, td {
+	color: white;
+}
+</style>
+<head>
+<title>SwiftScore</title>
+</head>
+<body background="soccer.jpg">
+	<center>
+	<p>
+		Choose Sort: 
+	</p>
+<select>
+	<option name="sort" value="N">Name</option>
+	<option name="sort" value="J">Jersey</option>
+	<option name="sort" value="S">Shots</option>
+	<option name="sort" value="SS">Successful Shots</option>
+	<option name="sort" value="I">Infractions</option>
+	<option name="sort" value="PS">Penalty Shots</option>
+	<option name="sort" value="RC">Red Cards</option>
+	<option name="sort" value="YC">Yellow Cards</option>
+</select>
+<br>
+<form action="PlayerAnalysisMode.php" method="post">
+		<p>
+			<font>Display Player Analysis by Goals</font> <!-- implement get -->
+		</p>
+		<p>
+		<table style="width: 30%" border="1">
+			<tr>
+				<font><th>Player</th>
+					<th>Jersey Number</th>
+					<th>Goals</th></font>
+			</tr>
+			<tr>
+				<font><td>Cristiano Ronaldo</td>
+					<td>7</td>
+					<td>9000</td></font>
+			</tr>
+			<tr>
+				<font><td>Bilbo Baggins</td>
+					<td>42</td>
+					<td>180</td></font>
+			</tr>
+			<tr>
+				<font><td>Hope Solo</td>
+					<td>1</td>
+					<td>1</td></font>
+			</tr>
+			<tr>
+				<font><td>Rhian Wilkinson</td>
+					<td>13</td>
+					<td>0</td></font>
+			</tr>
+		</table>
+
+		</p>
+		<input type="submit" value="Go">
+	</form>	
+	</center>
+</body>
+</html>

@@ -1,0 +1,8 @@
+package ca.mcgill.ecse321.scorekeeper.model;
+
+/**
+ * Enum for the color of an Infraction.
+ *
+ * @see Infraction
+ */
+public enum Color{RED, YELLOW}

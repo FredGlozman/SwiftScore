@@ -1,0 +1,24 @@
+<html>
+<style>
+p, font, th, td {
+	color: white;
+}
+</style>
+<head>
+<title>SwiftScore</title>
+</head>
+<center>
+<body background="soccer.jpg">
+	<form action="LeagueConfiguration.php" method="post">
+		League Configuration <br>
+		<br> <input type="radio" name="newTeam" value="1">New
+		Team <br> <input type="radio" name="newPlayer" value="2">New
+		Player <br> <input type="radio" name="removeTeam" value="3">Remove
+		Team <br> <input type="radio" name="removePlayer" value="4">Remove
+		Player <br>
+		<br> <input type="submit" value="Go">
+
+	</form>
+	</center>
+</body>
+</html>

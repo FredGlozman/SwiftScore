@@ -1,0 +1,12 @@
+<html>
+<head>
+<title>Batch Input Mode</title>
+</head>
+<body>
+<p>
+Display Batch Input
+</p>
+
+<input type= "submit" value= "Done"> 
+</body>
+</html>

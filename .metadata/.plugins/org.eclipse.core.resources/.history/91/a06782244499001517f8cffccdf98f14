@@ -1,0 +1,25 @@
+<html>
+<style>
+p, input {
+	color: white;
+}
+</style>
+<head>
+<title>Live Score Keeping</title>
+</head>
+<body background="soccer.jpg">
+<form action="LiveScoreKeeping.php" method = "post" >
+Live Game
+<br><br>
+Player: <input type="text" name="player"> Number: <input type="text" name="number" > Team: <input type="text" name="number" ><input type= "submit" value= "Select">
+ <br>
+  <input type= "submit" name= "action" value= "SHOT">
+  <input type= "submit" name= "action" value= "GOAL">
+ <br>
+  <input type= "submit" name= "action" value= "YELLOWCARD">
+  <input type= "submit" name= "action" value= "REDCARD">
+   <br> <br>
+<input type= "submit" name= "action" value= "Done">
+</form>
+</body>
+</html>
