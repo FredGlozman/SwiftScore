@@ -628,14 +628,14 @@ public class Main extends Application {
 		saveButton
 				.setOnAction(e -> {
 					if (playerInput.getText().equals("")
-							&& (!goalInput.getText().equals(""))
-							|| !yellowInput.getText().equals("")
-							|| !redInput.getText().equals("")) {
+							&& (!goalInput.getText().equals("0")
+									|| !yellowInput.getText().equals("0") || !redInput
+									.getText().equals("0"))) {
 						warning.setText("Please enter a player name.");
-					} else if (teamInput.getText().equals("")
-							&& (!winInput.getText().equals(""))
-							|| !lossInput.getText().equals("")
-							|| !tieInput.getText().equals("")) {
+					} else if (teamInput.getText().equals("0")
+							&& (!winInput.getText().equals("0")
+									|| !lossInput.getText().equals("0") || !tieInput
+									.getText().equals("0"))) {
 						warning.setText("Please enter a team name.");
 					} else if (!isInt(goalInput.getText())
 							|| !isInt(yellowInput.getText())
@@ -643,7 +643,10 @@ public class Main extends Application {
 							|| !isInt(winInput.getText())
 							|| !isInt(lossInput.getText())
 							|| !isInt(tieInput.getText())) {
-						warning.setText("Please enter the increment value as an integer");
+						warning.setText("Please enter the increment value as an integer.");
+					} else if (playerInput.getText().equals("")
+							&& teamInput.getText().equals("")) {
+							warning.setText("Please enter a player or team name.");
 					} else {
 						/*
 						 * Must implement a way to increment the stats by the
@@ -651,15 +654,23 @@ public class Main extends Application {
 						 */
 						playerInput.clear();
 						teamInput.clear();
-						goalInput.clear();
-						yellowInput.clear();
-						redInput.clear();
-						winInput.clear();
-						lossInput.clear();
+						goalInput.setText("0");
+						yellowInput.setText("0");
+						redInput.setText("0");
+						winInput.setText("0");
+						lossInput.setText("0");
+						tieInput.setText("0");
 						League.SAVE();
-						warning.setText("Save successful!");
+						warning.setText("Update successful!");
 					}
 				});
+
+		goalInput.setText("0");
+		yellowInput.setText("0");
+		redInput.setText("0");
+		winInput.setText("0");
+		lossInput.setText("0");
+		tieInput.setText("0");
 
 		grid.getChildren().addAll(title, warning, instructions, backButton,
 				saveButton, playerLabel, playerInput, teamLabel, teamInput,
