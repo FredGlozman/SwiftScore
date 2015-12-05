@@ -50,7 +50,7 @@ public class Main extends Application {
 		// For testing, has some test variables
 		setupData();
 
-		League.LOAD();
+//		League.LOAD();
 
 		List<Player> playerList = new ArrayList<Player>();
 		List<Team> teamList = new ArrayList<Team>();
@@ -458,7 +458,7 @@ public class Main extends Application {
 		saveButton.setOnAction(e -> {
 			playerInput.clear();
 			teamInput.clear();
-			League.SAVE();
+//			League.SAVE();
 			warning.setText("Save successful!");
 		});
 
@@ -663,7 +663,7 @@ public class Main extends Application {
 						winInput.setText("0");
 						lossInput.setText("0");
 						tieInput.setText("0");
-						League.SAVE();
+//						League.SAVE();
 						warning.setText("Update successful!");
 					}
 				});
