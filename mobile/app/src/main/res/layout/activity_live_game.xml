@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="app.com.example.fredglozman.soccerscorekeepingmobile.LiveGame">
+
+    <EditText android:id="@+id/player_id_field"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="Player"
+        android:inputType="text"/>
+
+    <Button android:id="@+id/select_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select"
+        android:layout_below="@id/player_id_field"
+        android:layout_centerHorizontal="true"
+        android:background="#4d94ff"
+        android:onClick="select" />
+
+    <Button
+        android:id="@+id/shot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_button"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/space"
+        android:layout_marginTop="10pt"
+        android:background="#8144e4"
+        android:onClick="shot"
+        android:text="Shot"/>
+    <TextView
+        android:id="@id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/goal"
+        android:layout_toRightOf="@id/shot"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_button"
+        android:layout_marginTop="10pt"
+        android:layout_alignParentRight="true"
+        android:background="#2eb82e"
+        android:onClick="goal"
+        android:text="Goal"/>
+
+    <Button
+        android:id="@+id/yellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shot"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="10pt"
+        android:layout_toLeftOf="@+id/space"
+        android:background="#ffff1a"
+        android:onClick="yellow"
+        android:text="Yellow Card"/>
+    <TextView
+        android:id="@id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/red"
+        android:layout_toRightOf="@id/yellow"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10pt"
+        android:layout_below="@id/goal"
+        android:layout_alignParentRight="true"
+        android:background="#e60000"
+        android:onClick="red"
+        android:text="Red Card"/>
+
+
+
+    <TextView android:id="@+id/team1_score_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:gravity="left"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp"
+        android:text="Team1\n0"/>
+
+    <TextView android:id="@+id/team2_score_text"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:gravity="right"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp"
+        android:text="Team2\n0"/>
+
+
+    <ImageView
+        android:id="@+id/image_logo"
+        android:layout_width="50pt"
+        android:layout_height="50pt"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/swift_score" />
+
+</RelativeLayout>
