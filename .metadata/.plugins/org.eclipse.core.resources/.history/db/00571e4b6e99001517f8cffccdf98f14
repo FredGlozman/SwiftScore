@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Batch Input Mode</title>
+</head>
+<body>
+<p>
+Display Batch Input
+</p>
+Select Team: 
+<select>
+	<option name="team1" value="N">Canada</option>
+	<option name="team1" value="S">Germany</option>
+	<option name="team1" value="SS">Italy</option>
+
+</select>
+<input type= "submit" value= "Done"> 
+</body>
+</html>

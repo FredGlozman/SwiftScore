@@ -1,0 +1,11 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+<form action="LeagueConfiguration.php" method="post">
+
+</form>
+	
+</body>
+</html>

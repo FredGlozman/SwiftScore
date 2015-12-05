@@ -270,5 +270,35 @@ public class ModelTest
     assertEquals(nameSort.get(2), down);
 	}
 
+  @Test
+  public void persistenceTest()
+  {
+    Game g1 = new Game(1449002076, 1449002076+3600, "Venus", league, quarks, leptons);
+
+	  new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
+	  new Infraction(Color.RED, true, 1449002076+3219, top, g1);
+	  new Infraction(Color.YELLOW, false, 1449002076+3199, electron, g1);
+		new Infraction(Color.RED, false, 1449002076+3599, electron, g1);
+	  new Infraction(Color.RED, true, 1449002076+3219, muon, g1);
+	  new Infraction(Color.YELLOW, true, 1449002076+3199, muon, g1);
+		new Shot(true, 1449002076 + 1000, charm, tauNeutrino, g1);
+		new Shot(true, 1449002076 + 1001, charm, tauNeutrino, g1);
+		new Shot(false, 1449002076 + 1140, top, tauNeutrino, g1);
+		new Shot(true, 1449002076 + 1500, up, tauNeutrino, g1);
+		new Shot(false, 1449002076 + 1040, top, tauNeutrino, g1);
+		new Shot(true, 1429002076 + 1000, charm, higgsBoson, g1);
+		new Shot(true, 1429002076 + 1001, charm, higgsBoson, g1);
+		new Shot(false, 1429002076 + 1140, top, higgsBoson, g1);
+		new Shot(true, 1429002076 + 1500, zBoson, strange, g1);
+		new Shot(true, 1429002076 + 1040, zBoson, strange, g1);
+
+    League.save(league);
+    league.delete();
+    assertEquals(0, league.numberOfTeams());
+    assertEquals(0, league.numberOfPlayers());
+    league = League.load();
+    assertEquals(3, league.numberOfTeams());
+    assertEquals(17, league.numberOfPlayers());
+  }
 }
 

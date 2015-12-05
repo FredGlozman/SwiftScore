@@ -1,0 +1,11 @@
+
+public class Controller {
+	public static void main(String [ ] args)
+	{
+		String command1 = args[0]; //action (goal,redcard,getLeague...)
+		String command2 = args[1]; //actors (player,team..)
+		String command3 = args[2];
+		
+
+	}
+}

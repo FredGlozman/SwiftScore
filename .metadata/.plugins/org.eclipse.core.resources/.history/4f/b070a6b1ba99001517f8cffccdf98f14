@@ -1,0 +1,55 @@
+<html>
+<style>
+p, font, th, td {
+	color: white;
+}
+</style>
+<head>
+<title>Swift Score</title>
+</head>
+<body background="soccer.jpg">
+<center>
+<p>
+<font color="white" size = 30x >Sort by</font>: 
+</p>
+<select>
+	<option name="sort" value="N">Name</option>
+	<option name="sort" value="S">Shots</option>
+	<option name="sort" value="SS">Successful Shots</option>
+	<option name="sort" value="P">Points</option>
+	<option name="sort" value="I">Infractions</option>
+	<option name="sort" value="PS">Penalty Shots</option>
+	<option name="sort" value="RC">Red Cards</option>
+	<option name="sort" value="YC">Yellow Cards</option>
+</select>
+<br>
+<form action="LeagueAnalysisMode.php" method="post">
+		<p>
+			<font color="white" size = 30x >Display League analysis by Number of Shots</font>
+		</p>
+		<p>
+		<table style="width: 30%" border="1">
+			<tr>
+				<font><th>Team</th>
+					<th>Number of Shots</th></font>
+			</tr>
+			<tr>
+				<font><td>Canada</td>
+					<td>101</td></font>
+			</tr>
+			<tr>
+				<font><td>Italy</td>
+					<td>89</td></font>
+			</tr>
+			<tr>
+				<font><td>Germany</td>
+					<td>75</td></font>
+			</tr>
+		</table>
+
+		</p>
+		<input type="submit" value="Go">
+	</form>
+	</center>
+</body>
+</html>

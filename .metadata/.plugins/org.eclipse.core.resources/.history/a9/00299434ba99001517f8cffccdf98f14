@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>SwiftScore</title>
+</head>
+<body background="soccer.jpg">
+<form action="CreatePlayer.php" method="post">
+	<font color="white" size = 30x >Create Player</font> 
+	<br><br> 
+	<font color="white" size = 30x >Team:</font>
+	<!-- implement get teams -->
+	<select>
+		<option name=team value="team1">Team1</option>
+		<option name=team value="team2">Team2</option>
+	</select>
+	<font color="white" size = 30x > Player Name:</font> <input type="text" name="PlayerName"> 
+	<br>
+	Player Number: <input type="text" name="PlayerNumber">
+	<br>
+	<input type="radio" name="Type" value="player">Player 
+	<input type="radio" name="Type" value="goalie">Goalie <br>
+	<br> <input type="submit" name="Done" value="Done">
+</form>
+
+</body>
+</html>

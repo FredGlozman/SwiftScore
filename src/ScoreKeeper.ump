@@ -676,10 +676,33 @@ class Infraction
  */
 class League
 {
+  // Umple Code //
   singleton;
   1 -- * Team teams;
   1 -- * Game games;
   1 -- * Player players;
+
+  depend ca.mcgill.ecse321.scorekeeper.persistence.PersistenceXStream;
+
+  // Java Code //
+
+  public static boolean save(League l)
+  {
+    PersistenceXStream.setFilename("data.xml");
+    PersistenceXStream.setAlias("league", League.class);
+    PersistenceXStream.setAlias("team", Team.class);
+    PersistenceXStream.setAlias("player", Player.class);
+    PersistenceXStream.setAlias("goalie", Goalie.class);
+    PersistenceXStream.setAlias("game", Game.class);
+    PersistenceXStream.setAlias("shot", Shot.class);
+    PersistenceXStream.setAlias("infraction", Infraction.class);
+    return PersistenceXStream.saveToXMLwithXStream(l);
+  }
+
+  public static League load()
+  {
+    return (League) PersistenceXStream.loadFromXMLwithXStream();
+  }
 }
 //$?[End_of_model]$?
 

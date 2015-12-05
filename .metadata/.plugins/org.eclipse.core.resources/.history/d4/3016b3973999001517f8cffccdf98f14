@@ -1,0 +1,15 @@
+<html>
+<head>
+<title>Authentication</title>
+</head>
+<body background="soccer.jpg">
+<center>
+<form action="PHP.php" method = "post" >
+Username: <input type="text" name="user"><font color="white"></font><br>
+Password: <input type="password" name="password"><font color="white"></font>
+<br><br>
+<input type= "submit" value= "Go">
+</form>
+</center>
+</body>
+</html>

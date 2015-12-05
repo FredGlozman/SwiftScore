@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>Authentication</title>
+</head>
+<body>
+<form action="Authentication.php" method = "post" >
+Username: <input type="text" name="user"><br>
+Password: <input type="password" name="password">
+<br><br>
+<input type= "submit" value= "Back"> <!-- how to go to Website.html? -->
+<input type= "submit" value= "Go">
+</form>
+</body>
+</html>

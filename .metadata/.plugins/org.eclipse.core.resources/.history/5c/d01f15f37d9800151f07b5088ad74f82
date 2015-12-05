@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>EditMode</title>
+</head>
+<body>
+<form action="EditMode.php" method = "post" >
+Add Team: <input type="text" name="add"><br> <!-- how to check if team is already there -->
+Remove Team: <select>
+					<option value="team1">Team1</option>
+					<option value="team2">Team2</option>
+					<option value="team3">Team3</option>
+					<option value="team4">Team4</option>
+			</select>
+			<input type= "submit" value= "Remove">
+<br><br>
+Add Player: <input type="text" name="user"><br> <!-- how to check if player is already there -->
+Remove Player: <select>
+					<option value="Player1">Player1</option>
+					<option value="Player2">Player2</option>
+					<option value="Player3">Player3</option>
+					<option value="Player4">Player4</option>
+			</select>
+			<input type= "submit" value= "Remove">
+<br><br>
+<input type= "submit" value= "Back"> <!-- how to go to Website.html? -->
+<input type= "submit" value= "Go">
+</form>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+<style>
+p, font, th, td {
+	color: white;
+}
+</style>
+<head>
+<title>Swift Score</title>
+</head>
+<body background="soccer.jpg">
+<center>
+		<p>
+			<font>Display League analysis by Number of Shots</font>
+		</p>
+		<p>
+		<table style="width: 30%" border="1">
+			<tr>
+				<font><th>Team</th>
+					<th>Number of Shots</th>
+				</font>
+			</tr>
+			<tr>
+				<font><td>Cristiano Ronaldo</td>
+					<td>7</td>
+					<td>9000</td></font>
+			</tr>
+			<tr>
+				<font><td>Bilbo Baggins</td>
+					<td>42</td>
+					<td>180</td></font>
+			</tr>
+			<tr>
+				<font><td>Hope Solo</td>
+					<td>1</td>
+					<td>1</td></font>
+			</tr>
+			<tr>
+				<font><td>Rhian Wilkinson</td>
+					<td>13</td>
+					<td>0</td></font>
+			</tr>
+		</table>
+
+		</p>
+		<input type="submit" value="Go">
+	</center>
+</body>
+</html>

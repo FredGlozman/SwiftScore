@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>SwiftScore</title>
+</head>
+
+<form action="RemovePlayer.php" method="post">
+<font color="white" size = 30x >Remove Player</font>
+<br><br>
+<font color="white" size = 30x >Team:</font> <!-- implement get teams -->
+<select>
+	<option name = team value="team1">Team1</option>
+	<option name = team value="team2">Team2</option>
+</select>
+<br>
+Player Name: <input type="text" name="PlayerName"> 
+<br>
+Player Number: <input type="text" name="PlayerNumber"> 
+<br>
+<br><br>
+<input type= "submit" name= "remove" value= "Remove">
+</form>
+	
+</body>
+</html>

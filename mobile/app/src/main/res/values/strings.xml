@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">SoccerScorekeepingMobile</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_live_scorekeeping">LiveScorekeeping</string>
+    <string name="title_activity_player_analysis">PlayerAnalysis</string>
+    <string name="title_activity_league_analysis">LeagueAnalysis</string>
+    <string name="title_activity_authentication">Authentication</string>
+    <string name="title_activity_league_configuration">LeagueConfiguration</string>
+    <string name="title_activity_create_team">CreateTeam</string>
+    <string name="title_activity_add_player">AddPlayer</string>
+    <string name="title_activity_remove_team">RemoveTeam</string>
+    <string name="title_activity_remove_player">RemovePlayer</string>
+    <string name="title_activity_live_game">LiveGame</string>
+    <string name="title_activity_match_full_data">MatchFullData</string>
+    <string name="title_activity_batch_input">BatchInput</string>
+    <string name="title_activity_time_input">TimeInput</string>
+    <string name="title_activity_end_time_input">EndTimeInput</string>
+    <string name="title_activity_date_input">DateInput</string>
+</resources>
