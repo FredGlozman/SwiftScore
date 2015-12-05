@@ -64,6 +64,8 @@
     <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
     <javac includeantruntime="false" srcdir="${srcdir}/search_utils" destdir="${blddir}" />
     <javac includeantruntime="false" srcdir="${srcdir}/web" destdir="${blddir}" />
+    <javac includeantruntime="false" srcdir="${srcdir}/desktop" destdir="${blddir}">
+    </javac>
   </target>
 
   <target name="test" depends="compile">
@@ -93,7 +95,7 @@
       />
     <jar destfile="${androiddir}/ScoreKeeperModel.jar"
         basedir="bin"
-        excludes="**/jar/ **/web/ **model_test/"
+        excludes="**/jar/ **/web/ **/desktop **model_test/"
       />
     </target>
 

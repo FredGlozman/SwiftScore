@@ -1,4 +1,4 @@
-package ca.mcgill.ecse321.scorekeeper.model;
+package ca.mcgill.ecse321.scorekeeper.desktop;
 
 import java.util.Random;
 
@@ -15,6 +15,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import java.util.*;
+
+import ca.mcgill.ecse321.scorekeeper.model.*;
+import ca.mcgill.ecse321.scorekeeper.search_utils.Find;
 
 /**
  * Class the runs the Desktop Application
