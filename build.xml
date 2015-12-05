@@ -12,6 +12,7 @@
   <property name="junitdir" value="junit" />
   <property name="libdir" value="lib" />
   <property name="androiddir" value="mobile/app/libs" />
+  <property name="docdir" value="doc" />
 
   <!-- PATHS -->
 
@@ -40,6 +41,7 @@
 
   <target name="clean">
     <delete dir="${blddir}" />
+    <delete dir="${docdir}" />
     <delete dir="${junitdir}" />
     <delete file="data.xml" />
     <delete file="${androiddir}/ScoreKeeperModel.jar" />
@@ -63,12 +65,19 @@
     </javac>
     <javac includeantruntime="false" srcdir="${srcdir}/model" destdir="${blddir}" />
     <javac includeantruntime="false" srcdir="${srcdir}/search_utils" destdir="${blddir}" />
-    <javac includeantruntime="false" srcdir="${srcdir}/web" destdir="${blddir}" />
-    <javac includeantruntime="false" srcdir="${srcdir}/desktop" destdir="${blddir}">
-    </javac>
+    <javac includeantruntime="false" srcdir="web" destdir="${blddir}" />
+    <!--javac includeantruntime="false" srcdir="${srcdir}/desktop" destdir="${blddir}">
+    </javac-->
   </target>
 
-  <target name="test" depends="compile">
+  <target name="doc" depends="compile">
+    <javadoc destdir="${docdir}">
+      <fileset dir="src/ca/mcgill/ecse321/scorekeeper/model">
+      </fileset>
+    </javadoc>
+  </target>
+
+  <target name="test" depends="doc">
     <javac includeantruntime="false" srcdir="${srcdir}/model_test" destdir="${blddir}">
       <classpath refid="testpath" />
     </javac>
@@ -98,6 +107,5 @@
         excludes="**/jar/ **/web/ **/desktop **model_test/"
       />
     </target>
-
 
 </project>

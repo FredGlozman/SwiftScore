@@ -18,7 +18,7 @@
 	$UseCase = $_GET["UseCase"];
 	if($UseCase == 1 || $UseCase == 2 ||$UseCase == 3)
 	{
-		header('Location: Authentication.html');
+		header('Location: Authentication.php');
 				$array = array(
 			"user" => "password",
 			);
